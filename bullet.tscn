@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://de4nhm0c47le1"]
+
+[ext_resource type="Script" uid="uid://bxkqdt33jpi37" path="res://bullet.gd" id="1_v7oki"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7oki"]
+albedo_color = Color(0.5529412, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rtl8c"]
+material = SubResource("StandardMaterial3D_v7oki")
+radius = 0.1
+height = 0.5
+
+[node name="Bullet" type="Node3D"]
+script = ExtResource("1_v7oki")
+speed = 3.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_rtl8c")

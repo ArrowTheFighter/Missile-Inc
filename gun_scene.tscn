@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://1e44ftnnuyib"]
+
+[ext_resource type="Script" uid="uid://dl2mid72wii7w" path="res://gun_scene.gd" id="1_lpc8u"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ob047"]
+radius = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpc8u"]
+albedo_color = Color(0, 0.504174, 0.1848233, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4foi7"]
+material = SubResource("StandardMaterial3D_lpc8u")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lpc8u"]
+radius = 0.2
+height = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4foi7"]
+
+[node name="Gun" type="Node3D" node_paths=PackedStringArray("readyToFireMat")]
+script = ExtResource("1_lpc8u")
+readyToFireMat = NodePath("ReadyToFire")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23126423, 0)
+mesh = SubResource("SphereMesh_ob047")
+
+[node name="ReadyToFire" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04019852, 0.45771784)
+mesh = SubResource("SphereMesh_4foi7")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26576757, 0)
+mesh = SubResource("SphereMesh_ob047")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.23126423, 0)
+mesh = SubResource("SphereMesh_ob047")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.23126423, 0)
+mesh = SubResource("SphereMesh_ob047")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8375565, 0)
+mesh = SubResource("CapsuleMesh_lpc8u")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.83726424, 0)
+mesh = SubResource("CapsuleMesh_lpc8u")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.83726424, 0)
+mesh = SubResource("CapsuleMesh_lpc8u")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0.02970165, 0)
+mesh = SubResource("CapsuleMesh_4foi7")
