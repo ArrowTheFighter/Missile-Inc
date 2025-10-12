@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://cimng1naje5s6"]
+
+[ext_resource type="Script" uid="uid://bqlwn041ina1s" path="res://wheel_script.gd" id="1_0bb2e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxs0v"]
+albedo_color = Color(0.28485027, 0.28485027, 0.28485027, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_64hgq"]
+material = SubResource("StandardMaterial3D_rxs0v")
+radius = 1.0
+height = 2.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_7ae7t"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bqloa"]
+radius = 1.0
+
+[node name="Wheel" type="Node3D"]
+script = ExtResource("1_0bb2e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_64hgq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 1)
+mesh = SubResource("SphereMesh_7ae7t")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 1)
+mesh = SubResource("SphereMesh_7ae7t")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 1)
+mesh = SubResource("SphereMesh_7ae7t")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 1)
+mesh = SubResource("SphereMesh_7ae7t")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_bqloa")
+
+[connection signal="input_event" from="Area3D" to="." method="_on_input_event"]

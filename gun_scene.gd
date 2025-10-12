@@ -1,10 +1,15 @@
 extends Node3D
 var Fired := false
+var Power := 2.5
 @export var Bullet_Scene : PackedScene
 @export var readyToFireMat : MeshInstance3D
 
 func Rotate_Gun(value : float):
 	rotation_degrees.z = lerp(45,-45,value)
+	pass
+	
+func Set_Power(value : float):
+	Power = lerp(2.5,7.0,value)
 	pass
 	
 func Fire_Gun(value : float):
@@ -20,6 +25,7 @@ func Fire_Gun(value : float):
 			var spawnedBulletScene = Bullet_Scene.instantiate()
 			spawnedBulletScene.rotation_degrees = rotation_degrees
 			spawnedBulletScene.position = global_position
+			spawnedBulletScene.speed = Power
 			get_tree().root.add_child(spawnedBulletScene)
 		print("firing")
 	elif Fired and value <= 0.1:
