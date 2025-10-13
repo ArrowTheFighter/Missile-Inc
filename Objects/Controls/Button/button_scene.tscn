@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b6ln4quk1xu4g"]
 
-[ext_resource type="Script" uid="uid://cb6eqs84hsxkx" path="res://button_script.gd" id="1_c8lqy"]
+[ext_resource type="Script" uid="uid://cb6eqs84hsxkx" path="res://Objects/Controls/Button/button_script.gd" id="1_c8lqy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jka67"]
 

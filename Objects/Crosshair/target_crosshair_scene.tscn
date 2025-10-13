@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bxtk8t48rc7k5"]
 
-[ext_resource type="Script" uid="uid://je8hip2vftfq" path="res://target_crosshair_script.gd" id="1_gbmn1"]
+[ext_resource type="Script" uid="uid://je8hip2vftfq" path="res://Objects/Crosshair/target_crosshair_script.gd" id="1_gbmn1"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_i5arm"]
 radius = 0.4

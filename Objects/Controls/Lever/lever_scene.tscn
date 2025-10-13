@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bwvxpxvfbwq6v"]
 
-[ext_resource type="Script" uid="uid://xdcalobonf0t" path="res://ClickedObject.gd" id="1_8b7mp"]
+[ext_resource type="Script" uid="uid://xdcalobonf0t" path="res://Objects/Controls/Lever/LeverControl.gd" id="1_8b7mp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i5arm"]
 

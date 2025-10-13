@@ -1,6 +1,7 @@
 extends Node3D
 var Fired := false
 var Power := 2.5
+var Target_Pos : Vector3
 @export var Use_Crosshair := false
 @export var Crosshair : Crosshair
 @export var Bullet_Scene : PackedScene
@@ -17,6 +18,7 @@ func Rotate_Gun(value : float):
 	pass
 	
 func Aim_At_Target_Position(target_position : Vector3):
+	Target_Pos = target_position
 	var direction = (target_position - global_position).normalized()
 	var angle = atan2(direction.y, direction.x) - deg_to_rad(90)  # Rotate -90 degrees
 	rotation.z = angle
