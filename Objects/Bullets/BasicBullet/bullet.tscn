@@ -13,9 +13,9 @@ height = 0.5
 [sub_resource type="BoxShape3D" id="BoxShape3D_v7oki"]
 size = Vector3(0.23608398, 0.546875, 2.7497559)
 
-[node name="Bullet" type="Node3D"]
+[node name="Bullet" type="Node3D" node_paths=PackedStringArray("CollisionArea")]
 script = ExtResource("1_v7oki")
-speed = 3.0
+CollisionArea = NodePath("Area3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_rtl8c")

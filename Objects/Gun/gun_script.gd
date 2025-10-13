@@ -41,6 +41,7 @@ func Fire_Gun(value : float):
 			spawnedBulletScene.rotation_degrees = rotation_degrees
 			spawnedBulletScene.position = global_position
 			spawnedBulletScene.speed = Power
+			spawnedBulletScene.target_pos = Target_Pos
 			get_tree().root.add_child(spawnedBulletScene)
 		print("firing")
 	elif Fired and value <= 0.1:
