@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://de4nhm0c47le1"]
+[gd_scene load_steps=5 format=3 uid="uid://de4nhm0c47le1"]
 
 [ext_resource type="Script" uid="uid://bxkqdt33jpi37" path="res://bullet.gd" id="1_v7oki"]
 
@@ -10,9 +10,19 @@ material = SubResource("StandardMaterial3D_v7oki")
 radius = 0.1
 height = 0.5
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_v7oki"]
+size = Vector3(0.23608398, 0.546875, 2.7497559)
+
 [node name="Bullet" type="Node3D"]
 script = ExtResource("1_v7oki")
 speed = 3.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_rtl8c")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_v7oki")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

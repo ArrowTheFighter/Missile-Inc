@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ecwaimuy5r38"]
+[gd_scene load_steps=15 format=3 uid="uid://ecwaimuy5r38"]
 
 [ext_resource type="PackedScene" uid="uid://bwvxpxvfbwq6v" path="res://lever_scene.tscn" id="1_r3fl7"]
 [ext_resource type="PackedScene" uid="uid://1e44ftnnuyib" path="res://gun_scene.tscn" id="2_noarx"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b6ln4quk1xu4g" path="res://button_scene.tscn" id="4_r3fl7"]
 [ext_resource type="PackedScene" uid="uid://cimng1naje5s6" path="res://wheel_scene.tscn" id="5_jka67"]
 [ext_resource type="PackedScene" uid="uid://bxtk8t48rc7k5" path="res://target_crosshair_scene.tscn" id="6_i5arm"]
+[ext_resource type="PackedScene" uid="uid://dat61ko2q16a" path="res://enemy_scene.tscn" id="7_wc5p8"]
+[ext_resource type="PackedScene" uid="uid://be6kxn0nhuo1m" path="res://enemy_spawner_scene.tscn" id="8_jsk3o"]
 
 [sub_resource type="Environment" id="Environment_a202f"]
 background_color = Color(0.5481376, 0.6183476, 0.7303044, 1)
@@ -80,6 +82,13 @@ shape = SubResource("BoxShape3D_jka67")
 [node name="TargetCrosshair" parent="." node_paths=PackedStringArray("Crosshair_Limit_Shape") instance=ExtResource("6_i5arm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6144075, 0.35474503, 0.5629115)
 Crosshair_Limit_Shape = NodePath("../CrosshairArea/CollisionShape3D")
+
+[node name="Enemy" parent="." instance=ExtResource("7_wc5p8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6916342, 3.2748475, 1)
+speed = 0.25
+
+[node name="EnemySpawner" parent="." instance=ExtResource("8_jsk3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6437149, 3.764111, 1)
 
 [connection signal="onValueChanged" from="Lever" to="Gun" method="Set_Power"]
 [connection signal="onValueChanged" from="Lever2" to="TargetCrosshair" method="Set_Y_Position"]
