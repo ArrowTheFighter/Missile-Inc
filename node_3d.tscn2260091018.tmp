@@ -56,10 +56,8 @@ maxHeight = 1.2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3706517, -0.04593888, 0.515)
 maxHeight = 1.2
 
-[node name="Gun" parent="." node_paths=PackedStringArray("Crosshair") instance=ExtResource("2_noarx")]
-transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 1.7705522, -2.41142, 1.1975591)
-Use_Crosshair = true
-Crosshair = NodePath("../TargetCrosshair")
+[node name="Gun" parent="." instance=ExtResource("2_noarx")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 1.7705522, -2.41142, 0.6691439)
 Bullet_Scene = ExtResource("3_a0tk4")
 
 [node name="Button" parent="." instance=ExtResource("4_r3fl7")]

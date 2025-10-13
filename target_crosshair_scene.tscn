@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxtk8t48rc7k5"]
+
+[ext_resource type="Script" uid="uid://je8hip2vftfq" path="res://target_crosshair_script.gd" id="1_gbmn1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_i5arm"]
+radius = 0.4
+height = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wc5p8"]
+albedo_color = Color(0.14767182, 0.14767179, 0.14767179, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jsk3o"]
+material = SubResource("StandardMaterial3D_wc5p8")
+
+[node name="TargetCrosshair" type="Node3D"]
+script = ExtResource("1_gbmn1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_i5arm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.13678092, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_jsk3o")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0.13678092, 0, -1, -5.9788836e-09, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_jsk3o")
