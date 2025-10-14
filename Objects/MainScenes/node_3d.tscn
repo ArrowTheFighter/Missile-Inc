@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bwvxpxvfbwq6v" path="res://Objects/Controls/Lever/lever_scene.tscn" id="1_mf4r1"]
 [ext_resource type="PackedScene" uid="uid://1e44ftnnuyib" path="res://Objects/Gun/gun_scene.tscn" id="2_bdh18"]
-[ext_resource type="PackedScene" uid="uid://dx0qam1hilnr6" path="res://Objects/Bullets/ExplodingBullet/exploding_bullet.tscn" id="3_esko7"]
+[ext_resource type="PackedScene" uid="uid://de4nhm0c47le1" path="res://Objects/Bullets/BasicBullet/bullet.tscn" id="3_mf4r1"]
 [ext_resource type="PackedScene" uid="uid://b6ln4quk1xu4g" path="res://Objects/Controls/Button/button_scene.tscn" id="4_7pw70"]
 [ext_resource type="PackedScene" uid="uid://cimng1naje5s6" path="res://Objects/Controls/Wheel/wheel_scene.tscn" id="5_o8s7l"]
 [ext_resource type="PackedScene" uid="uid://bxtk8t48rc7k5" path="res://Objects/Crosshair/target_crosshair_scene.tscn" id="6_44otn"]
@@ -62,16 +62,13 @@ maxHeight = 1.2
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 1.7705522, -2.41142, 1.1975591)
 Use_Crosshair = true
 Crosshair = NodePath("../TargetCrosshair")
-Bullet_Scene = ExtResource("3_esko7")
+Bullet_Scene = ExtResource("3_mf4r1")
 
 [node name="Button" parent="." instance=ExtResource("4_7pw70")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3647346, 2.1241546, 0.54927635)
 
-[node name="Wheel" parent="." instance=ExtResource("5_o8s7l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.672231, -1.8078337, 0.55373144)
-
 [node name="Wheel2" parent="." instance=ExtResource("5_o8s7l")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.9918625, -0.019436866, 0.55373144)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6022444, -1.6946514, 0.55373144)
 
 [node name="CrosshairArea" type="Area3D" parent="."]
 
@@ -92,5 +89,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6437149, 3.764111, 1)
 [connection signal="onValueChanged" from="Lever" to="Gun" method="Set_Power"]
 [connection signal="onValueChanged" from="Lever2" to="TargetCrosshair" method="Set_Y_Position"]
 [connection signal="onValueChanged" from="Button" to="Gun" method="Fire_Gun"]
-[connection signal="onValueChanged" from="Wheel" to="Gun" method="Rotate_Gun"]
 [connection signal="onValueChanged" from="Wheel2" to="TargetCrosshair" method="Set_X_Position"]
