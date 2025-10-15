@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dx0qam1hilnr6"]
+[gd_scene load_steps=9 format=3 uid="uid://dx0qam1hilnr6"]
 
 [ext_resource type="Script" uid="uid://djfxwabnf6k6k" path="res://Objects/Bullets/ExplodingBullet/exploding_bullet_script.gd" id="1_fpbu3"]
+[ext_resource type="Texture2D" uid="uid://bst1xhlmsxkjo" path="res://Textures/Duck_14x14.png" id="2_rbg31"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7oki"]
 albedo_color = Color(0.5529412, 0, 0, 1)
@@ -17,6 +18,13 @@ size = Vector3(0.23608398, 0.546875, 2.7497559)
 radius = 1.1552734
 height = 2.9736328
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7b1pq"]
+albedo_texture = ExtResource("2_rbg31")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1ovbf"]
+material = SubResource("StandardMaterial3D_7b1pq")
+size = Vector2(0.5, 0.5)
+
 [node name="Bullet" type="Node3D" node_paths=PackedStringArray("Explosion_Area", "CollisionArea")]
 script = ExtResource("1_fpbu3")
 Explosion_Area = NodePath("ExplosionArea")
@@ -24,10 +32,12 @@ CollisionArea = NodePath("Area3D")
 deal_damage_on_touch = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_rtl8c")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 0, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_rtl8c")
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -41,5 +51,15 @@ transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ExplosionArea"]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 1, -4.3711385e-08, -4.371139e-08, 4.371139e-08, -4.371139e-08, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_fpbu3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("QuadMesh_1ovbf")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.029174805)
+pixel_size = 0.03
+texture_filter = 0
+texture = ExtResource("2_rbg31")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

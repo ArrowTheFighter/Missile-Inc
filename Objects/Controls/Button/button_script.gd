@@ -1,16 +1,13 @@
-extends Node3D
+extends Base_Control
 
-var selected := false
-
-signal onValueChanged(float)
 @export var mesh : MeshInstance3D 
-
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and !event.pressed and selected:
 			selected = false
-			onValueChanged.emit(0)
+			set_control_value(0)
+			# Set the button color
 			var mat = mesh.get_active_material(0)
 			if mat is StandardMaterial3D:
 				mat = mat.duplicate()
@@ -21,13 +18,14 @@ func _input(event: InputEvent) -> void:
 func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.pressed:
-			onValueChanged.emit(1)
-			print("Left clicked object")
+			set_control_value(1)
 			selected = true
+			
+			# set button color
 			var mat = mesh.get_active_material(0)
 			if mat is StandardMaterial3D:
 				mat = mat.duplicate()
 				mat.albedo_color = Color.html("#004126")
-			mesh.set_surface_override_material(0,mat)
+				mesh.set_surface_override_material(0,mat)
 	
 	pass # Replace with function body.

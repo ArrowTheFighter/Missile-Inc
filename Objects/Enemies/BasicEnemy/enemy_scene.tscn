@@ -1,16 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dat61ko2q16a"]
+[gd_scene load_steps=5 format=3 uid="uid://dat61ko2q16a"]
 
 [ext_resource type="Script" uid="uid://bpae46h3jofyj" path="res://Objects/Enemies/BasicEnemy/enemy_script.gd" id="1_horm3"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qipcl"]
+albedo_color = Color(0.8840818, 0.13950244, 0, 1)
+
 [sub_resource type="PrismMesh" id="PrismMesh_i5arm"]
+material = SubResource("StandardMaterial3D_qipcl")
 size = Vector3(0.2, 0.5, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wc5p8"]
 size = Vector3(0.203125, 0.49414063, 1)
 
-[node name="Enemy" type="Node3D"]
+[node name="Enemy" type="Node3D" node_paths=PackedStringArray("Area")]
 script = ExtResource("1_horm3")
-speed = 0.25
+speed = 0.5
+Area = NodePath("Area3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PrismMesh_i5arm")

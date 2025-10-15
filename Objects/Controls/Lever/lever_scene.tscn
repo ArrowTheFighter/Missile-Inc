@@ -16,9 +16,10 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_r3fl7"]
 material = SubResource("StandardMaterial3D_a0tk4")
 
-[node name="Lever" type="Node3D" node_paths=PackedStringArray("leverHandle")]
+[node name="Lever" type="Node3D" node_paths=PackedStringArray("Input_Area")]
 script = ExtResource("1_8b7mp")
-leverHandle = NodePath("Area3D2")
+maxHeight = 1.2
+Input_Area = NodePath("Area3D2")
 
 [node name="Area3D2" type="Area3D" parent="."]
 

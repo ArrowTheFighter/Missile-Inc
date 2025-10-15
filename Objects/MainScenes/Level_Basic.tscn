@@ -1,0 +1,137 @@
+[gd_scene load_steps=22 format=3 uid="uid://cg684dnwycudy"]
+
+[ext_resource type="PackedScene" uid="uid://bwvxpxvfbwq6v" path="res://Objects/Controls/Lever/lever_scene.tscn" id="1_gw31e"]
+[ext_resource type="PackedScene" uid="uid://1e44ftnnuyib" path="res://Objects/Gun/gun_scene.tscn" id="2_7nl7t"]
+[ext_resource type="PackedScene" uid="uid://de4nhm0c47le1" path="res://Objects/Bullets/BasicBullet/bullet.tscn" id="3_l2neb"]
+[ext_resource type="PackedScene" uid="uid://b6ln4quk1xu4g" path="res://Objects/Controls/Button/button_scene.tscn" id="4_o8yyk"]
+[ext_resource type="PackedScene" uid="uid://cimng1naje5s6" path="res://Objects/Controls/Wheel/wheel_scene.tscn" id="5_ep48d"]
+[ext_resource type="PackedScene" uid="uid://bxtk8t48rc7k5" path="res://Objects/Crosshair/target_crosshair_scene.tscn" id="6_3s4wp"]
+[ext_resource type="PackedScene" uid="uid://be6kxn0nhuo1m" path="res://Objects/Enemies/EnemySpawner/enemy_spawner_scene.tscn" id="7_bsok0"]
+[ext_resource type="Script" uid="uid://dhm6nex37emjt" path="res://Objects/Gun/AmmoCover/ammo_cover_script.gd" id="8_rvgdt"]
+[ext_resource type="Script" uid="uid://b8qdrqu7nmj5w" path="res://Objects/Gun/AmmoCover/ammo_load_script.gd" id="9_bbdqw"]
+
+[sub_resource type="Environment" id="Environment_a202f"]
+background_color = Color(0.5481376, 0.6183476, 0.7303044, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.9515795, 0.95157963, 0.9515795, 1)
+ambient_light_energy = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
+albedo_color = Color(0.14767182, 0.14767179, 0.14767179, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a0tk4"]
+material = SubResource("StandardMaterial3D_noarx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3fl7"]
+albedo_color = Color(0.7297452, 0.6326611, 0.4744336, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jka67"]
+material = SubResource("StandardMaterial3D_r3fl7")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jka67"]
+size = Vector3(6.2460938, 3.9196777, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esko7"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7pw70"]
+material = SubResource("StandardMaterial3D_esko7")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o8s7l"]
+albedo_color = Color(0, 0.50106174, 0.9646916, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_44otn"]
+material = SubResource("StandardMaterial3D_o8s7l")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pw70"]
+albedo_color = Color(0.95884234, 0, 0.06946598, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o8s7l"]
+material = SubResource("StandardMaterial3D_7pw70")
+size = Vector3(0.5, 0.25, 0.5)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_a202f")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.6549354)
+projection = 1
+size = 6.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(7.9516563, 0, 0, 0, 6.2014265, 0, 0, 0, 1, 1.880483, 0, 0)
+mesh = SubResource("BoxMesh_a0tk4")
+skeleton = NodePath("../Camera3D")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(7.9516563, 0, 0, 0, 6.2014265, 0, 0, 0, 1, -6.071, 0, 0)
+mesh = SubResource("BoxMesh_jka67")
+skeleton = NodePath("../Camera3D")
+
+[node name="Lever2" parent="." instance=ExtResource("1_gw31e")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -4.4973145, -1.2493057, 0.515)
+maxHeight = 1.2
+
+[node name="Gun" parent="." node_paths=PackedStringArray("Crosshair_Obj", "ammo_mesh") instance=ExtResource("2_7nl7t")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 1.7705522, -2.41142, 1.1975591)
+Use_Crosshair = true
+Crosshair_Obj = NodePath("../TargetCrosshair")
+Bullet_Scene = ExtResource("3_l2neb")
+ammo_mesh = NodePath("../Node3D2/MeshInstance3D4")
+Default_Power = 5.0
+
+[node name="Button" parent="." instance=ExtResource("4_o8yyk")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -2.7521732, -2.434963, 0.54927635)
+
+[node name="Button2" parent="." instance=ExtResource("4_o8yyk")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.9198012, 2.2128778, 0.54927635)
+
+[node name="Wheel3" parent="." instance=ExtResource("5_ep48d")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -3.0459507, -0.9233513, 0.55373144)
+rotation_damp = 20.0
+min_rotations = 1.0
+
+[node name="CrosshairArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrosshairArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6144075, 0.35474503, 0)
+shape = SubResource("BoxShape3D_jka67")
+
+[node name="TargetCrosshair" parent="." node_paths=PackedStringArray("Crosshair_Limit_Shape") instance=ExtResource("6_3s4wp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6144075, 0.35474503, 0.5629115)
+Crosshair_Limit_Shape = NodePath("../CrosshairArea/CollisionShape3D")
+
+[node name="EnemySpawner" parent="." instance=ExtResource("7_bsok0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6437149, 3.764111, 1)
+spawn_delay = 5.0
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.782889, 2.2028456, 0.6361213)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("BoxMesh_7pw70")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.17540288)
+mesh = SubResource("BoxMesh_44otn")
+skeleton = NodePath("../..")
+script = ExtResource("8_rvgdt")
+
+[node name="Node3D2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2785563, 2.2028456, 0.6361213)
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D2"]
+transform = Transform3D(0.84, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.109099865)
+mesh = SubResource("BoxMesh_o8s7l")
+skeleton = NodePath("../..")
+script = ExtResource("9_bbdqw")
+
+[connection signal="onValueChanged" from="Lever2" to="TargetCrosshair" method="Set_Y_Position"]
+[connection signal="onValueChanged" from="Button" to="Gun" method="Fire_Gun"]
+[connection signal="onValueChanged" from="Button2" to="Gun" method="Remove_Empty_Ammo"]
+[connection signal="onValueChanged" from="Wheel3" to="TargetCrosshair" method="Set_X_Position"]

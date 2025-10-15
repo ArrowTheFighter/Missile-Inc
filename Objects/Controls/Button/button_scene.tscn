@@ -10,9 +10,10 @@ albedo_color = Color(0, 0.5294118, 0.33333334, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_v703d"]
 material = SubResource("StandardMaterial3D_c8lqy")
 
-[node name="Button" type="Node3D" node_paths=PackedStringArray("mesh")]
+[node name="Button" type="Node3D" node_paths=PackedStringArray("mesh", "Input_Area")]
 script = ExtResource("1_c8lqy")
 mesh = NodePath("MeshInstance3D")
+Input_Area = NodePath("Area3D")
 
 [node name="Area3D" type="Area3D" parent="."]
 
@@ -21,5 +22,3 @@ shape = SubResource("SphereShape3D_jka67")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_v703d")
-
-[connection signal="input_event" from="Area3D" to="." method="_on_input_event"]

@@ -28,8 +28,9 @@ height = 0.5
 [sub_resource type="SphereShape3D" id="SphereShape3D_bqloa"]
 radius = 1.0
 
-[node name="Wheel" type="Node3D"]
+[node name="Wheel" type="Node3D" node_paths=PackedStringArray("Input_Area")]
 script = ExtResource("1_0bb2e")
+Input_Area = NodePath("Area3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_64hgq")
@@ -54,5 +55,3 @@ mesh = SubResource("SphereMesh_7ae7t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_bqloa")
-
-[connection signal="input_event" from="Area3D" to="." method="_on_input_event"]
