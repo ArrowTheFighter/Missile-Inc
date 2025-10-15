@@ -16,8 +16,10 @@ var Ammo_Chamber_Open := false
 @export var max_power := 7
 @export_category("Reloading Settings")
 @export var Require_Reloading := false
+signal Ammo_Chamber_State_Changed(bool)
 
 func _ready() -> void:
+	Ammo_Chamber_State_Changed.emit(Ammo_Chamber_Open)
 	Rotate_Gun(0)
 	Power = Default_Power
 	if Use_Crosshair and Crosshair_Obj != null:
@@ -90,8 +92,10 @@ func Load_Ammo(value : float):
 func Open_Ammo_Chamber(value : float):
 	if !Ammo_Chamber_Open and value > 0.9:
 		Ammo_Chamber_Open = true
+		Ammo_Chamber_State_Changed.emit(true)
 	elif Ammo_Chamber_Open and value < 0.1:
 		Ammo_Chamber_Open = false
+		Ammo_Chamber_State_Changed.emit(false)
 
 func Remove_Empty_Ammo(value : float):
 	if !Ammo_Loaded and Ammo_Shot:

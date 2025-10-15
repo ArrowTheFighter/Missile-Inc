@@ -7,6 +7,9 @@ extends Node3D
 @export var deal_damage_on_touch := true
 var target_pos : Vector3
 
+@export_category("Death Particle")
+@export var death_particle : PackedScene
+
 
 func _ready() -> void:
 	if CollisionArea != null:

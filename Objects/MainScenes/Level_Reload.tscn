@@ -75,6 +75,7 @@ skeleton = NodePath("../Camera3D")
 
 [node name="Lever3" parent="." instance=ExtResource("1_mf4r1")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -2.8981564, 0.55046296, 0.515)
+invert_locked = true
 
 [node name="Lever2" parent="." instance=ExtResource("1_mf4r1")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -4.4973145, -1.2493057, 0.515)
@@ -145,6 +146,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5916047, -2.8453853, 0.5588
 [connection signal="onValueChanged" from="Lever3" to="Gun" method="Load_Ammo"]
 [connection signal="onValueChanged" from="Lever3" to="Node3D2/MeshInstance3D4" method="set_cover_position"]
 [connection signal="onValueChanged" from="Lever2" to="TargetCrosshair" method="Set_Y_Position"]
+[connection signal="Ammo_Chamber_State_Changed" from="Gun" to="Lever3" method="set_locked"]
 [connection signal="onValueChanged" from="Button" to="Gun" method="Fire_Gun"]
 [connection signal="onValueChanged" from="Button2" to="Gun" method="Remove_Empty_Ammo"]
 [connection signal="onValueChanged" from="Wheel2" to="Gun" method="Open_Ammo_Chamber"]

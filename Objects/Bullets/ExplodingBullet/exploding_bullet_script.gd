@@ -23,6 +23,10 @@ func explode():
 		if area.get_parent() != null:
 			if area.get_parent().has_method("take_damage"):
 				area.get_parent().call("take_damage",1)
+	if death_particle != null:
+		var instanced_death_particle = death_particle.instantiate()
+		get_tree().root.add_child(instanced_death_particle)
+		instanced_death_particle.global_position = global_position
 	queue_free()
 		
 func Explosion_Area_Entered(area : Area3D):

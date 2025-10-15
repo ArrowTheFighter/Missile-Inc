@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://1e44ftnnuyib"]
+[gd_scene load_steps=8 format=3 uid="uid://1e44ftnnuyib"]
 
 [ext_resource type="Script" uid="uid://dl2mid72wii7w" path="res://Objects/Gun/gun_script.gd" id="1_lpc8u"]
+[ext_resource type="PackedScene" uid="uid://c5w6hfbm4me5x" path="res://Meshes/crossbow_2handed.fbx" id="2_m4tng"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_ob047"]
 radius = 0.4
@@ -25,36 +26,48 @@ readyToFireMat = NodePath("ReadyToFire")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23126423, 0)
+visible = false
 mesh = SubResource("SphereMesh_ob047")
 
 [node name="ReadyToFire" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04019852, 0.45771784)
+visible = false
 mesh = SubResource("SphereMesh_4foi7")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26576757, 0)
+visible = false
 mesh = SubResource("SphereMesh_ob047")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.23126423, 0)
+visible = false
 mesh = SubResource("SphereMesh_ob047")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.23126423, 0)
+visible = false
 mesh = SubResource("SphereMesh_ob047")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8375565, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_lpc8u")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.83726424, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_lpc8u")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.83726424, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_lpc8u")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0.02970165, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_4foi7")
+
+[node name="crossbow_2handed" parent="." instance=ExtResource("2_m4tng")]
+transform = Transform3D(-2, 3.019916e-07, 1.3200472e-14, 0, -8.742278e-08, 2, 3.019916e-07, 2, 8.742278e-08, 0, -0.75, 0)

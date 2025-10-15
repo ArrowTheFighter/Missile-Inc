@@ -33,5 +33,3 @@ mesh = SubResource("SphereMesh_wc5p8")
 transform = Transform3D(0.22474706, 0, 0, 0, -4.371139e-08, -0.6178216, 0, 1, -2.700584e-08, -0.022983551, 0.62631536, 0.0029689074)
 mesh = SubResource("PlaneMesh_r3fl7")
 skeleton = NodePath("../..")
-
-[connection signal="input_event" from="Area3D2" to="." method="_on_input_event"]
