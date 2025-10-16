@@ -65,6 +65,7 @@ func Fire_Gun(value : float):
 			spawnedBulletScene.speed = Power
 			spawnedBulletScene.target_pos = Target_Pos
 			get_tree().root.add_child(spawnedBulletScene)
+		get_tree().call_group("Camera","shake",0.2)
 	elif Fired and value <= 0.1:
 		Fired = false;
 		var mat = readyToFireMat.get_active_material(0)

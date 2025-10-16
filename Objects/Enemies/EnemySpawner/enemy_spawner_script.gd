@@ -44,7 +44,6 @@ func set_wave_timeout():
 
 func wait_for_enemies_to_die():
 	while(Spawned_Enemies.size() > 0):
-		print("waiting for enemies to die - " + str(Spawned_Enemies.size()))
 		await get_tree().create_timer(0.1).timeout
 	
 	match_ended.emit()
@@ -52,7 +51,6 @@ func wait_for_enemies_to_die():
 
 func spawn_enemy():
 	
-	print("Spawning enemy")
 	var shape = Spawn_Zone.shape
 	if(shape is BoxShape3D):
 		var half_size = shape.size.x / 2.0

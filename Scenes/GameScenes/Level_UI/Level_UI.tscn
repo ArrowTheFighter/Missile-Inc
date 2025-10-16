@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://vkee7ul42q82"]
+
+[ext_resource type="Script" uid="uid://cyvesexd0rxo7" path="res://Scenes/GameScenes/Level_1/LevelUIHandler.gd" id="1_5vi5y"]
+[ext_resource type="Script" uid="uid://bu2v6frf1ooc0" path="res://Objects/MenuUI/level_select_button.gd" id="2_y4hn7"]
+[ext_resource type="Script" uid="uid://vfawfos6e8vc" path="res://Scenes/MainMenu/main_menu_manager.gd" id="3_sx7rj"]
+[ext_resource type="Script" uid="uid://ju4455xlth6s" path="res://Objects/WaveProgress/wave_progress_script.gd" id="4_0re4l"]
+
+[node name="LevelUI" type="CanvasLayer" node_paths=PackedStringArray("end_match_buttons")]
+script = ExtResource("1_5vi5y")
+end_match_buttons = [NodePath("Button")]
+
+[node name="Button" type="Button" parent="."]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -463.0
+offset_top = 248.0
+offset_right = -280.0
+offset_bottom = 350.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 31
+text = "Level Select"
+script = ExtResource("2_y4hn7")
+metadata/_custom_type_script = "uid://bu2v6frf1ooc0"
+
+[node name="LevelManager" type="Node" parent="."]
+script = ExtResource("3_sx7rj")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 530.0
+offset_top = 31.0
+offset_right = 1010.0
+offset_bottom = 111.0
+max_value = 1.0
+step = 0.001
+script = ExtResource("4_0re4l")
+
+[connection signal="level_button_pressed" from="Button" to="LevelManager" method="load_main_menu"]

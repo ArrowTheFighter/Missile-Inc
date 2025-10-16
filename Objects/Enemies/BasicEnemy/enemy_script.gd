@@ -5,6 +5,8 @@ extends Node3D
 @export var speed := 1.0
 @export var damage_strength := 1
 @export var Area : Area3D
+@export_category("Death Particle")
+@export var death_particle : PackedScene
 var spawner_refrence : EnemySpawnerScript
 
 func _ready() -> void:
@@ -28,4 +30,8 @@ func enter_area(area: Area3D):
 	
 func die():
 	spawner_refrence.Spawned_Enemies.erase(self)
+	if death_particle != null:
+		var instanced_death_particle = death_particle.instantiate()
+		get_tree().root.add_child(instanced_death_particle)
+		instanced_death_particle.global_position = global_position
 	queue_free()

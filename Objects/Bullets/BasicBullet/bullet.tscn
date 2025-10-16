@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://de4nhm0c47le1"]
+[gd_scene load_steps=6 format=3 uid="uid://de4nhm0c47le1"]
 
 [ext_resource type="Script" uid="uid://bxkqdt33jpi37" path="res://Objects/Bullets/BasicBullet/bullet_script.gd" id="1_v7oki"]
+[ext_resource type="PackedScene" uid="uid://c5nyk0ucame22" path="res://Objects/Particles/BulletHitParticle/bullet_hit_particle.tscn" id="2_brw2b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7oki"]
 albedo_color = Color(0.5529412, 0, 0, 1)
@@ -16,6 +17,7 @@ size = Vector3(0.23608398, 0.546875, 2.7497559)
 [node name="Bullet" type="Node3D" node_paths=PackedStringArray("CollisionArea")]
 script = ExtResource("1_v7oki")
 CollisionArea = NodePath("Area3D")
+hit_particle = ExtResource("2_brw2b")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_rtl8c")

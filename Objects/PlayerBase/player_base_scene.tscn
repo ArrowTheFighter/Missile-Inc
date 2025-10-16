@@ -12,8 +12,11 @@ size = Vector3(6.8, 0.5, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_1tkv1"]
 size = Vector3(6.8, 0.5, 2)
 
-[node name="Player_Base" type="Node3D"]
+[node name="Player_Base" type="Node3D" node_paths=PackedStringArray("mesh")]
 script = ExtResource("1_q5nus")
+mesh = NodePath("MeshInstance3D")
+max_health_color = Color(0, 0.7924466, 0, 1)
+min_health_color = Color(0.28166673, 2.030516e-07, 1.0829419e-07, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_i04s5")

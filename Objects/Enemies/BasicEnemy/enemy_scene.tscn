@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dat61ko2q16a"]
+[gd_scene load_steps=6 format=3 uid="uid://dat61ko2q16a"]
 
 [ext_resource type="Script" uid="uid://bpae46h3jofyj" path="res://Objects/Enemies/BasicEnemy/enemy_script.gd" id="1_horm3"]
+[ext_resource type="PackedScene" uid="uid://ervowdcakywf" path="res://Objects/Particles/EnemyDeathParticle/enemy_death_particle.tscn" id="2_w12be"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qipcl"]
 albedo_color = Color(0.8840818, 0.13950244, 0, 1)
@@ -16,6 +17,7 @@ size = Vector3(0.203125, 0.49414063, 1)
 script = ExtResource("1_horm3")
 speed = 0.5
 Area = NodePath("Area3D")
+death_particle = ExtResource("2_w12be")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PrismMesh_i5arm")

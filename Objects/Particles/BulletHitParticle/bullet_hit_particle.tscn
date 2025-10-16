@@ -1,0 +1,52 @@
+[gd_scene load_steps=11 format=3 uid="uid://c5nyk0ucame22"]
+
+[ext_resource type="Script" uid="uid://qxig84dkf7hn" path="res://Objects/Particles/ExposionParticle/explosion_particle_script.gd" id="1_ghrgi"]
+
+[sub_resource type="Curve" id="Curve_cl1cs"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5736196, 1), 0.0, 0.0, 0, 0, Vector2(0.93558276, 0.7404922), -2.3205225, -2.3205225, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_m7mph"]
+curve = SubResource("Curve_cl1cs")
+
+[sub_resource type="Gradient" id="Gradient_thoys"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6ljjm"]
+gradient = SubResource("Gradient_thoys")
+
+[sub_resource type="Curve" id="Curve_fhds1"]
+_data = [Vector2(0, 0.77628636), 0.0, 0.6966513, 0, 0, Vector2(0.506135, 1), 0.024722308, 0.024722308, 0, 0, Vector2(1, 0), -4.6467214, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_feyir"]
+curve = SubResource("Curve_fhds1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qb4ok"]
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+damping_min = 3.0000002
+damping_max = 8.0
+scale_min = 0.19999999
+scale_max = 0.19999999
+scale_curve = SubResource("CurveTexture_feyir")
+color_ramp = SubResource("GradientTexture1D_6ljjm")
+alpha_curve = SubResource("CurveTexture_m7mph")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqtf5"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_aiv8l"]
+material = SubResource("StandardMaterial3D_yqtf5")
+
+[node name="ExplosionParticle" type="GPUParticles3D"]
+amount = 15
+lifetime = 0.35000000000000003
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_qb4ok")
+draw_pass_1 = SubResource("SphereMesh_aiv8l")
+script = ExtResource("1_ghrgi")
