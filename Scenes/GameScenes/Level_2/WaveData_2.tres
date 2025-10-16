@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=8 format=3 uid="uid://dqtv175yjo3l2"]
+
+[ext_resource type="Script" uid="uid://b130qkugcsawo" path="res://Objects/Enemies/EnemySpawner/Wave_Enemy_Data.gd" id="1_5hux0"]
+[ext_resource type="Script" uid="uid://c5y2s5btshlsd" path="res://Objects/Enemies/EnemySpawner/Wave_Data.gd" id="2_lwfwg"]
+[ext_resource type="PackedScene" uid="uid://dat61ko2q16a" path="res://Objects/Enemies/BasicEnemy/enemy_scene.tscn" id="2_xqcps"]
+[ext_resource type="PackedScene" uid="uid://b21us73bwyhcu" path="res://Objects/Enemies/ToughEnemy/tough_enemy_scene.tscn" id="3_fykcf"]
+
+[sub_resource type="Resource" id="Resource_jeaio"]
+script = ExtResource("1_5hux0")
+EnemyScene = ExtResource("2_xqcps")
+SpawnCount = 5
+SpawnDelay = 7.5
+metadata/_custom_type_script = "uid://b130qkugcsawo"
+
+[sub_resource type="Resource" id="Resource_nocdk"]
+script = ExtResource("1_5hux0")
+EnemyScene = ExtResource("2_xqcps")
+SpawnCount = 3
+SpawnDelay = 5.0
+metadata/_custom_type_script = "uid://b130qkugcsawo"
+
+[sub_resource type="Resource" id="Resource_24c7b"]
+script = ExtResource("1_5hux0")
+EnemyScene = ExtResource("3_fykcf")
+SpawnCount = 1
+SpawnDelay = 7.5
+metadata/_custom_type_script = "uid://b130qkugcsawo"
+
+[resource]
+script = ExtResource("2_lwfwg")
+initial_delay = 5.0
+Wave_Section = Array[ExtResource("1_5hux0")]([SubResource("Resource_jeaio"), SubResource("Resource_nocdk"), SubResource("Resource_24c7b")])
+metadata/_custom_type_script = "uid://c5y2s5btshlsd"

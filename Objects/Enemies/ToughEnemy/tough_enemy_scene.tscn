@@ -15,7 +15,7 @@ size = Vector3(0.203125, 0.49414063, 1)
 [node name="Tough_Enemy" type="Node3D" node_paths=PackedStringArray("Area")]
 script = ExtResource("1_ki1aa")
 health = 3
-speed = 0.5
+speed = 0.25
 Area = NodePath("Area3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

@@ -1,15 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://ylwklwjgoyux"]
+[gd_scene load_steps=3 format=3 uid="uid://ylwklwjgoyux"]
 
 [ext_resource type="Script" uid="uid://vfawfos6e8vc" path="res://Scenes/MainMenu/main_menu_manager.gd" id="1_2h4lj"]
-[ext_resource type="PackedScene" uid="uid://cg684dnwycudy" path="res://Scenes/GameScenes/Level_1/Level_1.tscn" id="2_cpns3"]
-[ext_resource type="PackedScene" uid="uid://ecwaimuy5r38" path="res://Scenes/GameScenes/Level_Reload.tscn" id="3_amr74"]
 [ext_resource type="Script" uid="uid://bu2v6frf1ooc0" path="res://Objects/MenuUI/level_select_button.gd" id="4_amr74"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="LevelLoader" type="Node" parent="."]
 script = ExtResource("1_2h4lj")
-Levels = Array[PackedScene]([ExtResource("2_cpns3"), ExtResource("3_amr74")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
