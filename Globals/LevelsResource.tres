@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LevelsResource" load_steps=5 format=3 uid="uid://c0lcsyemhwppu"]
+
+[ext_resource type="Script" uid="uid://b6i86cky4ob0n" path="res://Globals/levels_resource.gd" id="1_2scu1"]
+[ext_resource type="PackedScene" uid="uid://cg684dnwycudy" path="res://Scenes/GameScenes/Level_1/Level_1.tscn" id="1_vyw7j"]
+[ext_resource type="PackedScene" uid="uid://ecwaimuy5r38" path="res://Scenes/GameScenes/Level_Reload.tscn" id="2_m5k6i"]
+[ext_resource type="PackedScene" uid="uid://ylwklwjgoyux" path="res://Scenes/MainMenu/Main_Menu_Scene.tscn" id="3_421vx"]
+
+[resource]
+script = ExtResource("1_2scu1")
+mainMenu = ExtResource("3_421vx")
+Scenes = Array[PackedScene]([ExtResource("1_vyw7j"), ExtResource("2_m5k6i")])
+metadata/_custom_type_script = "uid://b6i86cky4ob0n"

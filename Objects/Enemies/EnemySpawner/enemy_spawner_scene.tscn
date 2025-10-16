@@ -1,16 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://be6kxn0nhuo1m"]
+[gd_scene load_steps=3 format=3 uid="uid://be6kxn0nhuo1m"]
 
 [ext_resource type="Script" uid="uid://1bcpsfjv1lmw" path="res://Objects/Enemies/EnemySpawner/enemy_spawner_script.gd" id="1_ott7r"]
-[ext_resource type="PackedScene" uid="uid://dat61ko2q16a" path="res://Objects/Enemies/BasicEnemy/enemy_scene.tscn" id="2_ipevv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wc5p8"]
 size = Vector3(6.973633, 1, 1)
 
 [node name="EnemySpawner" type="Node3D" node_paths=PackedStringArray("Spawn_Zone", "timer")]
 script = ExtResource("1_ott7r")
-enemy_scene = ExtResource("2_ipevv")
 Spawn_Zone = NodePath("Area3D/CollisionShape3D")
-spawn_delay = 2.5
 timer = NodePath("Timer")
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -20,5 +17,3 @@ shape = SubResource("BoxShape3D_wc5p8")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="spawn_enemy"]

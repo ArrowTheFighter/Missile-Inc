@@ -58,6 +58,9 @@ size = Vector3(0.5, 0.25, 0.5)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_a202f")
 
+[node name="EnemySpawner" parent="." instance=ExtResource("8_45b4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6437149, 3.764111, 1)
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.6549354)
 projection = 1
@@ -113,10 +116,6 @@ shape = SubResource("BoxShape3D_jka67")
 [node name="TargetCrosshair" parent="." node_paths=PackedStringArray("Crosshair_Limit_Shape") instance=ExtResource("6_44otn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6144075, 0.35474503, 0.5629115)
 Crosshair_Limit_Shape = NodePath("../CrosshairArea/CollisionShape3D")
-
-[node name="EnemySpawner" parent="." instance=ExtResource("8_45b4m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6437149, 3.764111, 1)
-spawn_delay = 10.0
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.782889, 2.2028456, 0.6361213)

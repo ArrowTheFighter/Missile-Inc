@@ -65,7 +65,6 @@ func Fire_Gun(value : float):
 			spawnedBulletScene.speed = Power
 			spawnedBulletScene.target_pos = Target_Pos
 			get_tree().root.add_child(spawnedBulletScene)
-		print("firing")
 	elif Fired and value <= 0.1:
 		Fired = false;
 		var mat = readyToFireMat.get_active_material(0)
@@ -73,7 +72,6 @@ func Fire_Gun(value : float):
 			mat = mat.duplicate()
 			mat.albedo_color = Color.GREEN
 			readyToFireMat.set_surface_override_material(0,mat)
-		print("ready to fire")
 	pass
 	
 func Load_Ammo(value : float):

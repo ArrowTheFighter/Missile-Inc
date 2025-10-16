@@ -1,7 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://cg684dnwycudy"]
+[gd_scene load_steps=27 format=3 uid="uid://cg684dnwycudy"]
 
 [ext_resource type="PackedScene" uid="uid://bwvxpxvfbwq6v" path="res://Objects/Controls/Lever/lever_scene.tscn" id="1_gw31e"]
+[ext_resource type="Script" uid="uid://cyvesexd0rxo7" path="res://Scenes/GameScenes/Level_1/LevelUIHandler.gd" id="1_u4w0x"]
+[ext_resource type="Script" uid="uid://bu2v6frf1ooc0" path="res://Objects/MenuUI/level_select_button.gd" id="1_ufgn4"]
 [ext_resource type="PackedScene" uid="uid://1e44ftnnuyib" path="res://Objects/Gun/gun_scene.tscn" id="2_7nl7t"]
+[ext_resource type="Resource" uid="uid://cw7vaaeb2duqo" path="res://Scenes/GameScenes/Level_1/WaveData-1.tres" id="2_bp0a3"]
+[ext_resource type="Script" uid="uid://vfawfos6e8vc" path="res://Scenes/MainMenu/main_menu_manager.gd" id="2_qamhq"]
 [ext_resource type="PackedScene" uid="uid://de4nhm0c47le1" path="res://Objects/Bullets/BasicBullet/bullet.tscn" id="3_l2neb"]
 [ext_resource type="PackedScene" uid="uid://b6ln4quk1xu4g" path="res://Objects/Controls/Button/button_scene.tscn" id="4_o8yyk"]
 [ext_resource type="PackedScene" uid="uid://cimng1naje5s6" path="res://Objects/Controls/Wheel/wheel_scene.tscn" id="5_ep48d"]
@@ -9,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://be6kxn0nhuo1m" path="res://Objects/Enemies/EnemySpawner/enemy_spawner_scene.tscn" id="7_bsok0"]
 [ext_resource type="Script" uid="uid://dhm6nex37emjt" path="res://Objects/Gun/AmmoCover/ammo_cover_script.gd" id="8_rvgdt"]
 [ext_resource type="Script" uid="uid://b8qdrqu7nmj5w" path="res://Objects/Gun/AmmoCover/ammo_load_script.gd" id="9_bbdqw"]
+[ext_resource type="PackedScene" uid="uid://s7et15s1hxux" path="res://Objects/PlayerBase/player_base_scene.tscn" id="10_xifqj"]
 
 [sub_resource type="Environment" id="Environment_a202f"]
 background_color = Color(0.5481376, 0.6183476, 0.7303044, 1)
@@ -52,7 +57,32 @@ albedo_color = Color(0.95884234, 0, 0.06946598, 1)
 material = SubResource("StandardMaterial3D_7pw70")
 size = Vector3(0.5, 0.25, 0.5)
 
-[node name="Node3D" type="Node3D"]
+[node name="Level_1" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("end_match_buttons")]
+script = ExtResource("1_u4w0x")
+end_match_buttons = [NodePath("Button")]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -152.0
+offset_top = 43.0
+offset_right = -51.0
+offset_bottom = 107.0
+grow_horizontal = 0
+text = "Level Select"
+script = ExtResource("1_ufgn4")
+metadata/_custom_type_script = "uid://bu2v6frf1ooc0"
+
+[node name="LevelManager" type="Node" parent="CanvasLayer"]
+script = ExtResource("2_qamhq")
+
+[node name="EnemySpawner" parent="." instance=ExtResource("7_bsok0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6437149, 3.764111, 1)
+Wave_Data = ExtResource("2_bp0a3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_a202f")
@@ -73,8 +103,7 @@ mesh = SubResource("BoxMesh_jka67")
 skeleton = NodePath("../Camera3D")
 
 [node name="Lever2" parent="." instance=ExtResource("1_gw31e")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -4.4973145, -1.2493057, 0.515)
-maxHeight = 1.2
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -4.4973145, 0.14009607, 0.515)
 
 [node name="Gun" parent="." node_paths=PackedStringArray("Crosshair_Obj", "ammo_mesh") instance=ExtResource("2_7nl7t")]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 1.7705522, -2.41142, 1.1975591)
@@ -85,13 +114,14 @@ ammo_mesh = NodePath("../Node3D2/MeshInstance3D4")
 Default_Power = 5.0
 
 [node name="Button" parent="." instance=ExtResource("4_o8yyk")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -2.7521732, -2.434963, 0.54927635)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3.8365848, -1.6103593, 0.54927635)
 
 [node name="Button2" parent="." instance=ExtResource("4_o8yyk")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.9198012, 2.2128778, 0.54927635)
+visible = false
 
 [node name="Wheel3" parent="." instance=ExtResource("5_ep48d")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -3.0459507, -0.9233513, 0.55373144)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -3.0459507, 0.37938237, 0.55373144)
 rotation_damp = 20.0
 min_rotations = 1.0
 
@@ -105,12 +135,9 @@ shape = SubResource("BoxShape3D_jka67")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6144075, 0.35474503, 0.5629115)
 Crosshair_Limit_Shape = NodePath("../CrosshairArea/CollisionShape3D")
 
-[node name="EnemySpawner" parent="." instance=ExtResource("7_bsok0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6437149, 3.764111, 1)
-spawn_delay = 5.0
-
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.782889, 2.2028456, 0.6361213)
+visible = false
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
 mesh = SubResource("BoxMesh_7pw70")
@@ -124,6 +151,7 @@ script = ExtResource("8_rvgdt")
 
 [node name="Node3D2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2785563, 2.2028456, 0.6361213)
+visible = false
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D2"]
 transform = Transform3D(0.84, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.109099865)
@@ -131,6 +159,12 @@ mesh = SubResource("BoxMesh_o8s7l")
 skeleton = NodePath("../..")
 script = ExtResource("9_bbdqw")
 
+[node name="Player_Base" parent="." instance=ExtResource("10_xifqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5916047, -2.8453853, 0.5588379)
+
+[connection signal="level_button_pressed" from="CanvasLayer/Button" to="CanvasLayer/LevelManager" method="load_main_menu"]
+[connection signal="match_ended" from="EnemySpawner" to="CanvasLayer" method="show_match_end_buttons"]
+[connection signal="onValueChanged" from="Lever2" to="Gun" method="Set_Power"]
 [connection signal="onValueChanged" from="Lever2" to="TargetCrosshair" method="Set_Y_Position"]
 [connection signal="onValueChanged" from="Button" to="Gun" method="Fire_Gun"]
 [connection signal="onValueChanged" from="Button2" to="Gun" method="Remove_Empty_Ammo"]

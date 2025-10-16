@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Missile Inc"
-run/main_scene="uid://ecwaimuy5r38"
+run/main_scene="uid://ylwklwjgoyux"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Scenes="*res://Globals/global_scenes.gd"
 
 [display]
 

@@ -1,8 +1,8 @@
 extends Node3D
 
-var health := 5
+@export var health := 5
 
-func take_damage(amount : int):
+func damage_base(amount : int):
 	health -= 1
 	if health == 0:
 		print("we died")
