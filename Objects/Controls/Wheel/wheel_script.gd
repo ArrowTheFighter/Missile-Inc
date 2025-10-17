@@ -10,6 +10,7 @@ var target_rotation := 0.0
 @export var min_rotations := 0.0
 var min_rotation := 0.0
 var max_rotation := 0.0  # TAU == 2 * PI (360 degrees)
+@onready var target_object = $pipe_end_green2
 
 
 func _ready() -> void:
@@ -27,7 +28,7 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if abs(target_rotation - current_rotation) > 0.0001:
 		current_rotation = lerp_angle(current_rotation, target_rotation, rotation_damp * delta)
-		rotate_object_local(Vector3(0, 0, 1), current_rotation - rotation_velocity)
+		target_object.rotate_object_local(Vector3(0, 1, 0), current_rotation - rotation_velocity)
 		rotation_velocity = current_rotation
 		var new_value = snappedf(inverse_lerp(max_rotation, min_rotation, current_rotation), 0.0001)
 		set_control_value(new_value)
