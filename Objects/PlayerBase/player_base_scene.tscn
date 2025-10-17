@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://s7et15s1hxux"]
+[gd_scene load_steps=6 format=3 uid="uid://s7et15s1hxux"]
 
 [ext_resource type="Script" uid="uid://htdycqpyihh4" path="res://Objects/PlayerBase/Player_Base_Script.gd" id="1_q5nus"]
 
@@ -8,6 +8,10 @@ albedo_color = Color(0.1089854, 0.42905715, 0.15019947, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_i04s5"]
 material = SubResource("StandardMaterial3D_f3ix4")
 size = Vector3(6.8, 0.5, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_q5nus"]
+material = SubResource("StandardMaterial3D_f3ix4")
+size = Vector3(6.75, 0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1tkv1"]
 size = Vector3(6.8, 0.5, 2)
@@ -19,7 +23,12 @@ max_health_color = Color(0, 0.7924466, 0, 1)
 min_health_color = Color(0.28166673, 2.030516e-07, 1.0829419e-07, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_i04s5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("PrismMesh_q5nus")
 
 [node name="Area3D" type="Area3D" parent="."]
 

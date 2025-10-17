@@ -28,6 +28,7 @@ metadata/_custom_type_script = "uid://bu2v6frf1ooc0"
 script = ExtResource("3_sx7rj")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
 offset_left = 530.0
 offset_top = 31.0
 offset_right = 1010.0

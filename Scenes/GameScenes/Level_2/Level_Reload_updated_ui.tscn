@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ctahtgv78v024"]
+[gd_scene load_steps=29 format=3 uid="uid://dvr8o08txaqgx"]
 
 [ext_resource type="PackedScene" uid="uid://vkee7ul42q82" path="res://Scenes/GameScenes/Level_UI/Level_UI.tscn" id="1_yf2tt"]
 [ext_resource type="PackedScene" uid="uid://be6kxn0nhuo1m" path="res://Objects/Enemies/EnemySpawner/enemy_spawner_scene.tscn" id="2_qantg"]
@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bwvxpxvfbwq6v" path="res://Objects/Controls/Lever/lever_scene.tscn" id="5_46j3s"]
 [ext_resource type="PackedScene" uid="uid://b8oi31gd4xqhb" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/platform_2x2x1_yellow.gltf" id="5_qantg"]
 [ext_resource type="PackedScene" uid="uid://1e44ftnnuyib" path="res://Objects/Gun/gun_scene.tscn" id="6_k4qng"]
-[ext_resource type="PackedScene" uid="uid://c2v2tipbfhlys" path="res://Objects/Controls/Lever/lever_knob_scene.tscn" id="6_v6flv"]
-[ext_resource type="PackedScene" uid="uid://s6qddpkxjec7" path="res://Objects/Controls/Lever/lever_grip_scene.tscn" id="7_70cor"]
+[ext_resource type="PackedScene" path="res://Objects/Controls/Lever/lever_knob_scene.tscn" id="6_v6flv"]
+[ext_resource type="PackedScene" path="res://Objects/Controls/Lever/lever_grip_scene.tscn" id="7_70cor"]
 [ext_resource type="PackedScene" uid="uid://dx0qam1hilnr6" path="res://Objects/Bullets/ExplodingBullet/exploding_bullet.tscn" id="7_m8d76"]
 [ext_resource type="PackedScene" uid="uid://b6ln4quk1xu4g" path="res://Objects/Controls/Button/button_scene.tscn" id="8_6gp7l"]
 [ext_resource type="PackedScene" uid="uid://cimng1naje5s6" path="res://Objects/Controls/Wheel/wheel_scene.tscn" id="9_bhgkd"]

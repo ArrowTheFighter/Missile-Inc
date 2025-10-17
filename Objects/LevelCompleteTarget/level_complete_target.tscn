@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://dtw2euqnxwh7a"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_chknp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hjnf2"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ex510"]
+material = SubResource("StandardMaterial3D_hjnf2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t76ns"]
+albedo_color = Color(0.72178125, 0.15371141, 0.031468462, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ct313"]
+material = SubResource("StandardMaterial3D_t76ns")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_le83m"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_0coc6"]
+material = SubResource("StandardMaterial3D_le83m")
+
+[node name="LevelCompleteTarget" type="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_chknp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_ex510")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7332429, 0, 0, 0, 0.7332429, 0, 0, 0, 0.7332429, 0, 0, 0.32974434)
+mesh = SubResource("SphereMesh_ct313")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.42838496, 0, 0, 0, 0.42838496, 0, 0, 0, 0.42838496, 0, 0, 0.61997104)
+mesh = SubResource("SphereMesh_0coc6")

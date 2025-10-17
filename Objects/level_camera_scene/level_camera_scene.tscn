@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://wiyextbvbq1t" path="res://Objects/level_camera_scene/level_camera_script.gd" id="1_hiake"]
 
-[node name="Camera3D" type="Camera3D" groups=["Camera"]]
+[node name="Camera3D" type="Camera3D"]
 projection = 1
 size = 6.0
 script = ExtResource("1_hiake")

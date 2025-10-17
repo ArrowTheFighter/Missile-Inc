@@ -16,17 +16,11 @@ var enemies_spawned := 0
 
 signal match_ended
 
-func _enter_tree() -> void:
+func start_wave() -> void:
 	print("Match started")
 	timer.timeout.connect(set_wave_timeout)
 	if Wave_Data != null:
 		timer.wait_time = Wave_Data.initial_delay
-
-func _ready() -> void:
-	#print("Match started")
-	#timer.timeout.connect(set_wave_timeout)
-	#if Wave_Data != null:
-		#timer.wait_time = Wave_Data.initial_delay
 	pass
 
 func set_wave_timeout():
@@ -59,7 +53,7 @@ func spawn_enemy():
 		
 		var enemy_scene = Wave_Data.Wave_Section[current_wave].EnemyScene
 		var enemy_instance = enemy_scene.instantiate()
-		get_tree().root.add_child(enemy_instance)
+		add_child(enemy_instance)
 		
 		
 		if enemy_instance is EnemyScript:
