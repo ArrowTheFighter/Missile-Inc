@@ -1,6 +1,7 @@
 extends Base_Control
 
-@export var maxHeight := 0.0
+@export var maxHeight := 1.0
+@export var minHeight := 0.0
 
 
 func _input(event: InputEvent) -> void:
@@ -10,8 +11,8 @@ func _input(event: InputEvent) -> void:
 		if(selected):
 			Input_Area.position += Vector3(0,-event.relative.y * 0.0075,0)
 			
-			Input_Area.position = Vector3(Input_Area.position.x,clampf(Input_Area.position.y,0,maxHeight),Input_Area.position.z)
-			var new_value = snappedf(inverse_lerp(0,maxHeight,Input_Area.position.y),0.01)
+			Input_Area.position = Vector3(Input_Area.position.x,clampf(Input_Area.position.y,minHeight,maxHeight),Input_Area.position.z)
+			var new_value = snappedf(inverse_lerp(minHeight,maxHeight,Input_Area.position.y),0.01)
 			set_control_value(new_value)
 
 
