@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://becs2nxjvitxd"]
+[gd_scene load_steps=35 format=3 uid="uid://becs2nxjvitxd"]
 
 [ext_resource type="PackedScene" uid="uid://vkee7ul42q82" path="res://Scenes/GameScenes/Level_UI/Level_UI.tscn" id="1_7wnsk"]
 [ext_resource type="Script" uid="uid://blal3vwpqrqok" path="res://Objects/MenuUI/HideSelf.gd" id="2_2gtie"]
 [ext_resource type="PackedScene" uid="uid://cig3gg5uklxr7" path="res://Objects/level_camera_scene/level_camera_scene.tscn" id="2_dykdg"]
 [ext_resource type="PackedScene" uid="uid://bwvxpxvfbwq6v" path="res://Objects/Controls/Lever/lever_scene.tscn" id="3_sj3gm"]
 [ext_resource type="PackedScene" uid="uid://b6ln4quk1xu4g" path="res://Objects/Controls/Button/button_scene.tscn" id="4_a5fyb"]
+[ext_resource type="PackedScene" uid="uid://c2v2tipbfhlys" path="res://Objects/Controls/Lever/lever_knob_scene.tscn" id="4_ki6nt"]
 [ext_resource type="PackedScene" uid="uid://cimng1naje5s6" path="res://Objects/Controls/Wheel/wheel_scene.tscn" id="5_panaw"]
 [ext_resource type="Script" uid="uid://dhm6nex37emjt" path="res://Objects/Gun/AmmoCover/ammo_cover_script.gd" id="6_ylad5"]
 [ext_resource type="Script" uid="uid://b8qdrqu7nmj5w" path="res://Objects/Gun/AmmoCover/ammo_load_script.gd" id="7_x0wa2"]
@@ -123,8 +124,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.264412)
 projection = 0
 fov = 18.3
 
+[node name="LeverKnob" parent="." instance=ExtResource("4_ki6nt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4973145, 0.45605874, 0.515)
+
 [node name="Lever2" parent="." instance=ExtResource("3_sj3gm")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -4.4973145, 0.14009607, 0.515)
+visible = false
 
 [node name="Button" parent="." instance=ExtResource("4_a5fyb")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3.8365848, -1.6103593, 0.54927635)
@@ -197,7 +202,7 @@ script = ExtResource("11_xqb21")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6255703, 0, 3.6549354)
 
 [node name="TV_Background" type="MeshInstance3D" parent="SubViewport/GamePlayArea"]
-transform = Transform3D(7.9516563, 0, 0, 0, 6.2014265, 0, 0, 0, 1, 1.629, 0, 1)
+transform = Transform3D(7.9516563, 0, 0, 0, 6.2014265, 0, 0, 0, 1, 1.6290016, 0, 1)
 mesh = SubResource("BoxMesh_a0tk4")
 skeleton = NodePath("../../../Camera3D")
 script = ExtResource("10_4goo8")
@@ -234,6 +239,7 @@ texture = SubResource("ViewportTexture_ncgx6")
 [connection signal="pressed" from="LevelUI/Button2" to="LevelUI/Button2" method="HideSelf"]
 [connection signal="pressed" from="LevelUI/Button2" to="SubViewport/GamePlayArea/TV_Background" method="HideBackground"]
 [connection signal="pressed" from="LevelUI/Button2" to="SubViewport/GamePlayArea/EnemySpawner" method="start_wave"]
+[connection signal="onValueChanged" from="LeverKnob" to="SubViewport/GamePlayArea/TargetCrosshair" method="Set_Y_Position"]
 [connection signal="onValueChanged" from="Lever2" to="SubViewport/GamePlayArea/Gun" method="Set_Power"]
 [connection signal="onValueChanged" from="Lever2" to="SubViewport/GamePlayArea/TargetCrosshair" method="Set_Y_Position"]
 [connection signal="onValueChanged" from="Button" to="SubViewport/GamePlayArea/Gun" method="Fire_Gun"]

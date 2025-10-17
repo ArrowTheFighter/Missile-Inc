@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://1e44ftnnuyib"]
+[gd_scene load_steps=10 format=3 uid="uid://1e44ftnnuyib"]
 
 [ext_resource type="Script" uid="uid://dl2mid72wii7w" path="res://Objects/Gun/gun_script.gd" id="1_lpc8u"]
+[ext_resource type="PackedScene" uid="uid://lm3e6odhavs4" path="res://Meshes/crossbow_1handed.fbx" id="2_l26cd"]
 [ext_resource type="PackedScene" uid="uid://c5w6hfbm4me5x" path="res://Meshes/crossbow_2handed.fbx" id="2_m4tng"]
+[ext_resource type="PackedScene" uid="uid://bi2p87hwekr1f" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/green/cannon_base_green.gltf" id="3_003w1"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_ob047"]
 radius = 0.4
@@ -69,5 +71,13 @@ transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0
 visible = false
 mesh = SubResource("CapsuleMesh_4foi7")
 
+[node name="crossbow_1handed" parent="." instance=ExtResource("2_l26cd")]
+transform = Transform3D(-2, 3.019916e-07, 1.3200472e-14, 0, -8.742278e-08, 2, 3.019916e-07, 2, 8.742278e-08, 0, -0.75, 0)
+visible = false
+
+[node name="cannon_base_green2" parent="." instance=ExtResource("3_003w1")]
+transform = Transform3D(-0.75, 1.13246855e-07, 5.9402124e-15, 0, -3.278354e-08, 0.9, 1.13246855e-07, 0.75, 3.934025e-08, 0, 0.016082764, -2.2855988)
+
 [node name="crossbow_2handed" parent="." instance=ExtResource("2_m4tng")]
 transform = Transform3D(-2, 3.019916e-07, 1.3200472e-14, 0, -8.742278e-08, 2, 3.019916e-07, 2, 8.742278e-08, 0, -0.75, 0)
+visible = false

@@ -11,7 +11,7 @@ material = SubResource("StandardMaterial3D_qipcl")
 size = Vector3(0.2, 0.5, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wc5p8"]
-size = Vector3(0.203125, 0.49414063, 1)
+size = Vector3(0.3623047, 0.43945313, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w12be"]
 
@@ -37,7 +37,7 @@ left_to_right = 0.0
 
 [node name="Enemy" type="Node3D" node_paths=PackedStringArray("Area")]
 script = ExtResource("1_horm3")
-speed = 0.5
+speed = 0.35
 Area = NodePath("Area3D")
 death_particle = ExtResource("2_w12be")
 
@@ -51,25 +51,25 @@ mesh = SubResource("PrismMesh_i5arm")
 shape = SubResource("BoxShape3D_wc5p8")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.41181493, 0, 0, 0, 0.41181493, 0, 0, 0, 0.41181493, -0.0022429768, 0.07175125, 0.16417673)
+transform = Transform3D(0.2707979, 0, 0, 0, 0.2707979, 0, 0, 0, 0.2707979, -0.002780729, 0.039714582, -0.01374094)
 mesh = SubResource("SphereMesh_8sh44")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.10398833, 0, 0, 0, 0.10398833, 0, 0, 0, 0.10398833, -0.09332161, 0.13875154, 0.5090194)
+transform = Transform3D(0.0683798, 0, 0, 0, 0.0683798, 0, 0, 0, 0.0683798, -0.06267147, 0.083772086, 0.10481039)
 mesh = SubResource("SphereMesh_1okt8")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.10398833, 0, 0, 0, 0.10398833, 0, 0, 0, 0.10398833, 0.079413496, 0.13875154, 0.5090194)
+transform = Transform3D(0.0683798, 0, 0, 0, 0.0683798, 0, 0, 0, 0.0683798, 0.05091427, 0.083772086, 0.10481039)
 mesh = SubResource("SphereMesh_1okt8")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.41181493, 0, 0, 0, 0.24708897, 0, 0, 0, 0.41181493, -0.0022429768, -0.05045688, 0.16417673)
+transform = Transform3D(0.2707979, 0, 0, 0, 0.16247874, 0, 0, 0, 0.2707979, -0.002780729, -0.04064604, -0.01374094)
 mesh = SubResource("BoxMesh_mqnwr")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.18727995, -2.1601204e-08, 0, 1.6372534e-08, -0.24708897, 0, 0, 0, 0.41181493, 0.10977307, -0.21481696, 0.16417673)
+transform = Transform3D(-0.12315002, -1.42043435e-08, 0, 1.0766116e-08, -0.16247874, 0, 0, 0, 0.2707979, 0.070877865, -0.1487246, -0.01374094)
 mesh = SubResource("PrismMesh_xwi5x")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.18727995, 2.1601203e-08, 3.6002003e-08, 1.6372532e-08, -0.24708897, 0, 1.6372534e-08, 1.888437e-15, -0.41181493, -0.11425932, -0.21481696, 0.16417673)
+transform = Transform3D(0.12315002, 1.4204343e-08, 2.3673902e-08, 1.0766116e-08, -0.16247874, 0, 1.0766116e-08, 1.241783e-15, -0.2707979, -0.07643952, -0.1487246, -0.01374094)
 mesh = SubResource("PrismMesh_xwi5x")
