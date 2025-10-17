@@ -1,29 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cimng1naje5s6"]
+[gd_scene load_steps=7 format=3 uid="uid://cimng1naje5s6"]
 
 [ext_resource type="Script" uid="uid://bqlwn041ina1s" path="res://Objects/Controls/Wheel/wheel_script.gd" id="1_0bb2e"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxs0v"]
-albedo_color = Color(0.28485027, 0.28485027, 0.28485027, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_64hgq"]
-material = SubResource("StandardMaterial3D_rxs0v")
-radius = 1.0
-height = 2.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0bb2e"]
-albedo_color = Color(0.23137255, 0.75686276, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_rxs0v"]
-material = SubResource("StandardMaterial3D_0bb2e")
-radius = 0.25
-height = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_64hgq"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_7ae7t"]
-material = SubResource("StandardMaterial3D_64hgq")
-radius = 0.25
-height = 0.5
+[ext_resource type="PackedScene" uid="uid://d10yohw76p3ee" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/green/arch_wide_green.gltf" id="3_qyl3x"]
+[ext_resource type="PackedScene" uid="uid://c7yypnqfxee3k" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/green/pipe_end_green.gltf" id="3_tnlg1"]
+[ext_resource type="PackedScene" uid="uid://fbjsgpd38rn4" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/green/signage_arrow_wall_green.gltf" id="4_qyl3x"]
+[ext_resource type="PackedScene" uid="uid://ntsx5r44lwca" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/signage_arrow_wall_yellow.gltf" id="5_umsox"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bqloa"]
 radius = 1.0
@@ -32,26 +13,20 @@ radius = 1.0
 script = ExtResource("1_0bb2e")
 Input_Area = NodePath("Area3D")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_64hgq")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 1)
-mesh = SubResource("SphereMesh_rxs0v")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 1)
-mesh = SubResource("SphereMesh_7ae7t")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 1)
-mesh = SubResource("SphereMesh_7ae7t")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 1)
-mesh = SubResource("SphereMesh_7ae7t")
-
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_bqloa")
+
+[node name="pipe_end_green2" parent="." instance=ExtResource("3_tnlg1")]
+transform = Transform3D(-3.496911e-08, -1.4599604e-08, 0.79999995, 0.79999995, -5.0432593e-08, 3.4969105e-08, -1.2079664e-07, -0.334, -3.496911e-08, 0, 0, 0.255377)
+
+[node name="signage_arrow_wall_green2" parent="pipe_end_green2" instance=ExtResource("4_qyl3x")]
+transform = Transform3D(-0.37499976, -6.579566e-08, 0, 0, -1.6448919e-08, -0.8982036, 6.5567036e-08, -0.3763073, 3.926172e-08, 1.0992441, 0.51456416, 1.0667154e-08)
+
+[node name="signage_arrow_wall_yellow2" parent="." instance=ExtResource("5_umsox")]
+transform = Transform3D(-1.6173214e-08, 0.37, 0, -0.37, -1.6173214e-08, 0, 0, 0, 0.37, 0, 1.182641, 0)
+visible = false
+
+[node name="arch_wide_green2" parent="." instance=ExtResource("3_qyl3x")]
+transform = Transform3D(-1.31134135e-08, 4.8350275e-09, -0.29999992, 0.29999992, 4.2269162e-16, -1.3113414e-08, 1.0658141e-14, -0.110612586, -1.3113422e-08, -2.6645353e-15, -6.774991e-15, 0.08243571)
