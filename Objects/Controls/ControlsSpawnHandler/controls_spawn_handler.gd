@@ -3,10 +3,18 @@ extends Node3D
 @export var offset_target:Marker3D
 @export var offset_vector : Vector3
 
+@export_category("Gun settings")
+@export var use_crosshair := true
+@export var require_reloading := false
+
 @export_category("Control Assignments")
 @export var gun_fire_controls : Array[Base_Control]
 @export var move_crosshair_x_controls : Array[Base_Control]
 @export var move_crosshair_y_controls : Array[Base_Control]
+@export var open_ammo_controls : Array[Base_Control]
+@export var load_ammo_controls : Array[Base_Control]
+@export var remove_empty_ammo_controls: Array[Base_Control]
+
 
 func _ready() -> void:
 	_hide_controls()
@@ -20,6 +28,9 @@ func setup_control_signals():
 		if child is LevelReference:
 			scene_refrence_node = child as LevelReference
 			
+	scene_refrence_node.gun_node.Use_Crosshair = use_crosshair
+	scene_refrence_node.gun_node.Require_Reloading = require_reloading
+			
 	for node in gun_fire_controls:
 		node.onValueChanged.connect(scene_refrence_node.gun_node.Fire_Gun)
 		
@@ -29,6 +40,15 @@ func setup_control_signals():
 		
 	for node in move_crosshair_y_controls:
 		node.onValueChanged.connect(scene_refrence_node.crosshair_node.Set_Y_Position)
+		
+	for node in open_ammo_controls:
+		node.onValueChanged.connect(scene_refrence_node.gun_node.Open_Ammo_Chamber)
+		
+	for node in load_ammo_controls:
+		node.onValueChanged.connect(scene_refrence_node.gun_node.Load_Ammo)
+		
+	for node in remove_empty_ammo_controls:
+		node.onValueChanged.connect(scene_refrence_node.gun_node.Remove_Empty_Ammo)
 	pass
 
 func _hide_controls() -> void:

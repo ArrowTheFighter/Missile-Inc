@@ -56,6 +56,12 @@ func spawn_enemy():
 		var enemy_instance = enemy_scene.instantiate()
 		add_child(enemy_instance)
 		
+		if Wave_Data.Wave_Section[current_wave].EnemySpeed != 0.0:
+			enemy_instance.speed = Wave_Data.Wave_Section[current_wave].EnemySpeed
+			
+		if Wave_Data.Wave_Section[current_wave].EnemyHealth != 0:
+			enemy_instance.health = Wave_Data.Wave_Section[current_wave].EnemyHealth
+		
 		
 		if enemy_instance is EnemyScript:
 			enemy_instance.spawner_refrence = self

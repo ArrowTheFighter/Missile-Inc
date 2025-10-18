@@ -139,12 +139,11 @@ mesh = SubResource("BoxMesh_a0tk4")
 skeleton = NodePath("../../../Camera3D")
 script = ExtResource("10_4goo8")
 
-[node name="Gun" parent="SubViewport/GamePlayArea" node_paths=PackedStringArray("Crosshair_Obj", "ammo_mesh") instance=ExtResource("9_eiuq4")]
+[node name="Gun" parent="SubViewport/GamePlayArea" node_paths=PackedStringArray("Crosshair_Obj") instance=ExtResource("9_eiuq4")]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 1.7705522, -2.41142, 1.1975591)
 Use_Crosshair = true
 Crosshair_Obj = NodePath("../TargetCrosshair")
 Bullet_Scene = ExtResource("10_0hn51")
-ammo_mesh = NodePath("")
 Default_Power = 5.0
 
 [node name="CrosshairArea" type="Area3D" parent="SubViewport/GamePlayArea"]

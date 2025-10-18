@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://1bcpsfjv1lmw" path="res://Objects/Enemies/EnemySpawner/enemy_spawner_script.gd" id="1_ott7r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wc5p8"]
-size = Vector3(6.973633, 1, 1)
+size = Vector3(6.392334, 1, 1)
 
 [node name="EnemySpawner" type="Node3D" node_paths=PackedStringArray("Spawn_Zone", "timer")]
 script = ExtResource("1_ott7r")
