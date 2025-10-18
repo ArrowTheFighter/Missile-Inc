@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://s7et15s1hxux"]
+[gd_scene load_steps=8 format=3 uid="uid://s7et15s1hxux"]
 
 [ext_resource type="Script" uid="uid://htdycqpyihh4" path="res://Objects/PlayerBase/Player_Base_Script.gd" id="1_q5nus"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3ix4"]
-albedo_color = Color(0.1089854, 0.42905715, 0.15019947, 1)
+albedo_color = Color(0.52, 0.52, 0.52, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_i04s5"]
 material = SubResource("StandardMaterial3D_f3ix4")
@@ -11,12 +11,19 @@ size = Vector3(6.8, 0.5, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_q5nus"]
 material = SubResource("StandardMaterial3D_f3ix4")
-size = Vector3(6.75, 0.5, 0.5)
+size = Vector3(6.75, 0.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1tkv1"]
 size = Vector3(6.8, 0.5, 2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5nus"]
+albedo_color = Color(0.32, 0.32, 0.32, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_txilk"]
+material = SubResource("StandardMaterial3D_q5nus")
+
 [node name="Player_Base" type="Node3D" node_paths=PackedStringArray("mesh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33743668, 0)
 script = ExtResource("1_q5nus")
 mesh = NodePath("MeshInstance3D")
 max_health_color = Color(0, 0.7924466, 0, 1)
@@ -27,10 +34,35 @@ visible = false
 mesh = SubResource("BoxMesh_i04s5")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.1601181, 0)
 mesh = SubResource("PrismMesh_q5nus")
 
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35993195, 0)
 shape = SubResource("BoxShape3D_1tkv1")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.39518392, 0, 0.1547104, 0, 0.3, 0, -0.061884154, 0, 0.98795986, 1, 0.61, -0.354)
+mesh = SubResource("BoxMesh_txilk")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.39516985, 0, -0.15493453, 0, 0.3, 0, 0.061973806, 0, 0.9879247, -0.97212386, 0.60993195, -0.3542108)
+mesh = SubResource("BoxMesh_txilk")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.39516985, 0, -0.15493453, 0, 0.3, 0, 0.061973806, 0, 0.9879247, -1.9759572, 0.60993195, -0.52524716)
+mesh = SubResource("BoxMesh_txilk")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.39516985, 0, -0.15493453, 0, 0.3, 0, 0.061973806, 0, 0.9879247, -2.9761221, 0.60993195, -0.678036)
+mesh = SubResource("BoxMesh_txilk")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.39518392, 0, 0.1547104, 0, 0.3, 0, -0.061884154, 0, 0.98795986, 2, 0.61, -0.525)
+mesh = SubResource("BoxMesh_txilk")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.39518392, 0, 0.1547104, 0, 0.3, 0, -0.061884154, 0, 0.98795986, 3, 0.61, -0.678)
+mesh = SubResource("BoxMesh_txilk")
