@@ -20,39 +20,14 @@
 [ext_resource type="PackedScene" uid="uid://s7et15s1hxux" path="res://Objects/PlayerBase/player_base_scene.tscn" id="12_o3ven"]
 [ext_resource type="PackedScene" uid="uid://be6kxn0nhuo1m" path="res://Objects/Enemies/EnemySpawner/enemy_spawner_scene.tscn" id="13_4qvdo"]
 [ext_resource type="Resource" uid="uid://cw7vaaeb2duqo" path="res://Scenes/GameScenes/Level_1/WaveData-1.tres" id="14_7ax7i"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3fl7"]
-albedo_color = Color(0.7297452, 0.6326611, 0.4744336, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jka67"]
-material = SubResource("StandardMaterial3D_r3fl7")
+[ext_resource type="PackedScene" uid="uid://cec1eytpv2ly3" path="res://RawAssets/Tiny_Treats_Lovely_Living_Room_1.0/gltf/TV_edited.glb" id="15_2rdu0"]
+[ext_resource type="PackedScene" uid="uid://b8oi31gd4xqhb" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/platform_2x2x1_yellow.gltf" id="20_00bno"]
 
 [sub_resource type="Environment" id="Environment_a202f"]
 background_color = Color(0.5481376, 0.6183476, 0.7303044, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.9515795, 0.95157963, 0.9515795, 1)
 ambient_light_energy = 2.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esko7"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_7pw70"]
-material = SubResource("StandardMaterial3D_esko7")
-size = Vector3(0.5, 0.5, 0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o8s7l"]
-albedo_color = Color(0, 0.50106174, 0.9646916, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_44otn"]
-material = SubResource("StandardMaterial3D_o8s7l")
-size = Vector3(0.5, 0.5, 0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pw70"]
-albedo_color = Color(0.95884234, 0, 0.06946598, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_o8s7l"]
-material = SubResource("StandardMaterial3D_7pw70")
-size = Vector3(0.5, 0.25, 0.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j5w64"]
 shader = ExtResource("8_d2vs7")
@@ -90,6 +65,27 @@ size = Vector3(6.2460938, 3.9196777, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_ncgx6"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esko7"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7pw70"]
+material = SubResource("StandardMaterial3D_esko7")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o8s7l"]
+albedo_color = Color(0, 0.50106174, 0.9646916, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_44otn"]
+material = SubResource("StandardMaterial3D_o8s7l")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pw70"]
+albedo_color = Color(0.95884234, 0, 0.06946598, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o8s7l"]
+material = SubResource("StandardMaterial3D_7pw70")
+size = Vector3(0.5, 0.25, 0.5)
+
 [node name="Level_1" type="Node3D"]
 
 [node name="LevelUI" parent="." node_paths=PackedStringArray("enemy_spawner") instance=ExtResource("1_7wnsk")]
@@ -111,11 +107,6 @@ theme_override_font_sizes/font_size = 86
 text = "Start match"
 script = ExtResource("2_2gtie")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(3.629385, 0, 0, 0, 6.443572, 0, 0, 0, 1, -3.8266807, 0, 0)
-mesh = SubResource("BoxMesh_jka67")
-skeleton = NodePath("../Camera3D")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_a202f")
 
@@ -123,50 +114,6 @@ environment = SubResource("Environment_a202f")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.264412)
 projection = 0
 fov = 18.3
-
-[node name="LeverKnob" parent="." instance=ExtResource("4_ki6nt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4973145, 0.45605874, 0.515)
-
-[node name="Lever2" parent="." instance=ExtResource("3_sj3gm")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -4.4973145, 0.14009607, 0.515)
-visible = false
-
-[node name="Button" parent="." instance=ExtResource("4_a5fyb")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3.8365848, -1.6103593, 0.54927635)
-
-[node name="Button2" parent="." instance=ExtResource("4_a5fyb")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.9198012, 2.2128778, 0.54927635)
-visible = false
-
-[node name="Wheel3" parent="." instance=ExtResource("5_panaw")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -3.0459507, 0.37938237, 0.55373144)
-rotation_damp = 60.0
-current_rotation = 0.0
-min_rotations = 1.0
-
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.782889, 2.2028456, 0.6361213)
-visible = false
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
-mesh = SubResource("BoxMesh_7pw70")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.17540288)
-mesh = SubResource("BoxMesh_44otn")
-skeleton = NodePath("../..")
-script = ExtResource("6_ylad5")
-
-[node name="Node3D2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2785563, 2.2028456, 0.6361213)
-visible = false
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D2"]
-transform = Transform3D(0.84, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.109099865)
-mesh = SubResource("BoxMesh_o8s7l")
-skeleton = NodePath("../..")
-script = ExtResource("7_x0wa2")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
@@ -212,7 +159,7 @@ transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 1.7705522, -2.41142,
 Use_Crosshair = true
 Crosshair_Obj = NodePath("../TargetCrosshair")
 Bullet_Scene = ExtResource("10_0hn51")
-ammo_mesh = NodePath("../../../Node3D2/MeshInstance3D4")
+ammo_mesh = NodePath("../../../Interactables/Node3D2/MeshInstance3D4")
 Default_Power = 5.0
 
 [node name="CrosshairArea" type="Area3D" parent="SubViewport/GamePlayArea"]
@@ -233,18 +180,90 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7655678, 3.764111, 1)
 Wave_Data = ExtResource("14_7ax7i")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.864336, 0, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5090208, 0, -0.36221457)
 texture = SubResource("ViewportTexture_ncgx6")
+
+[node name="TV_edited" parent="." instance=ExtResource("15_2rdu0")]
+transform = Transform3D(8.5, 0, 0, 0, 8.5, 0, 0, 0, 8.5, 0.4060707, -4.4237785, -3.0088553)
+
+[node name="Interactables" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.997187, 2.5804923, 4.7683716e-07)
+
+[node name="Lever2" parent="Interactables" instance=ExtResource("3_sj3gm")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+visible = false
+
+[node name="Button2" parent="Interactables" instance=ExtResource("4_a5fyb")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
+
+[node name="Node3D" type="Node3D" parent="Interactables"]
+visible = false
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Interactables/Node3D"]
+mesh = SubResource("BoxMesh_7pw70")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Interactables/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.17540288)
+mesh = SubResource("BoxMesh_44otn")
+skeleton = NodePath("../../..")
+script = ExtResource("6_ylad5")
+
+[node name="Node3D2" type="Node3D" parent="Interactables"]
+visible = false
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Interactables/Node3D2"]
+transform = Transform3D(0.84, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.109099865)
+mesh = SubResource("BoxMesh_o8s7l")
+skeleton = NodePath("../../..")
+script = ExtResource("7_x0wa2")
+
+[node name="0-L" parent="Interactables" instance=ExtResource("20_00bno")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, 0, 0, -0.8734796)
+
+[node name="0-1" parent="Interactables" instance=ExtResource("20_00bno")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, 1.7, 0, -0.873)
+
+[node name="1-L" parent="Interactables" instance=ExtResource("20_00bno")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, 0, -1.7, -0.8734796)
+
+[node name="1-R" parent="Interactables" instance=ExtResource("20_00bno")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, 1.7, -1.7, -0.873)
+
+[node name="Button" parent="Interactables/1-R" instance=ExtResource("4_a5fyb")]
+transform = Transform3D(1.875, 0, 0, 0, -8.195885e-08, 1.875, 0, -1.875, -8.195885e-08, 0, 1, 0)
+
+[node name="2-L" parent="Interactables" instance=ExtResource("20_00bno")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, 0, -3.4, -0.8734796)
+
+[node name="Wheel3" parent="Interactables/2-L" instance=ExtResource("5_panaw")]
+transform = Transform3D(0.9375, 0, 0, 0, -4.0979426e-08, 0.9375, 0, -0.9375, -4.0979426e-08, 0, 1, 0)
+rotation_damp = 60.0
+current_rotation = 0.0
+min_rotations = 1.0
+
+[node name="2-R" parent="Interactables" instance=ExtResource("20_00bno")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, 1.7, -3.4, -0.873)
+
+[node name="LeverKnob" parent="Interactables/2-R" instance=ExtResource("4_ki6nt")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1, 0)
+
+[node name="3-L" parent="Interactables" instance=ExtResource("20_00bno")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, 0, -5.1, -0.8734796)
+
+[node name="3-R" parent="Interactables" instance=ExtResource("20_00bno")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, 1.7, -5.1, -0.873)
 
 [connection signal="pressed" from="LevelUI/Button2" to="LevelUI/Button2" method="HideSelf"]
 [connection signal="pressed" from="LevelUI/Button2" to="SubViewport/GamePlayArea/TV_Background" method="HideBackground"]
 [connection signal="pressed" from="LevelUI/Button2" to="SubViewport/GamePlayArea/EnemySpawner" method="start_wave"]
-[connection signal="onValueChanged" from="LeverKnob" to="SubViewport/GamePlayArea/TargetCrosshair" method="Set_Y_Position"]
-[connection signal="onValueChanged" from="Lever2" to="SubViewport/GamePlayArea/Gun" method="Set_Power"]
-[connection signal="onValueChanged" from="Lever2" to="SubViewport/GamePlayArea/TargetCrosshair" method="Set_Y_Position"]
-[connection signal="onValueChanged" from="Button" to="SubViewport/GamePlayArea/Gun" method="Fire_Gun"]
-[connection signal="onValueChanged" from="Button2" to="SubViewport/GamePlayArea/Gun" method="Remove_Empty_Ammo"]
-[connection signal="onValueChanged" from="Wheel3" to="SubViewport/GamePlayArea/TargetCrosshair" method="Set_X_Position"]
 [connection signal="TargetHit" from="SubViewport/GamePlayArea/LevelCompleteNodes/LevelCompleteTarget" to="SubViewport/GamePlayArea/LevelCompleteNodes" method="HideLevelComplete"]
 [connection signal="TargetHit" from="SubViewport/GamePlayArea/LevelCompleteNodes/LevelCompleteTarget" to="SubViewport/GamePlayArea/TV_Background" method="ShowBackground"]
 [connection signal="match_ended" from="SubViewport/GamePlayArea/EnemySpawner" to="SubViewport/GamePlayArea/LevelCompleteNodes" method="ShowLevelComplete"]
+[connection signal="onValueChanged" from="Interactables/Lever2" to="SubViewport/GamePlayArea/Gun" method="Set_Power"]
+[connection signal="onValueChanged" from="Interactables/Lever2" to="SubViewport/GamePlayArea/TargetCrosshair" method="Set_Y_Position"]
+[connection signal="onValueChanged" from="Interactables/Button2" to="SubViewport/GamePlayArea/Gun" method="Remove_Empty_Ammo"]
+[connection signal="onValueChanged" from="Interactables/1-R/Button" to="SubViewport/GamePlayArea/Gun" method="Fire_Gun"]
+[connection signal="onValueChanged" from="Interactables/2-L/Wheel3" to="SubViewport/GamePlayArea/TargetCrosshair" method="Set_X_Position"]
+[connection signal="onValueChanged" from="Interactables/2-R/LeverKnob" to="SubViewport/GamePlayArea/TargetCrosshair" method="Set_Y_Position"]

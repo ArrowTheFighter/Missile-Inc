@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ctahtgv78v024"]
+[gd_scene load_steps=31 format=3 uid="uid://ctahtgv78v024"]
 
 [ext_resource type="PackedScene" uid="uid://vkee7ul42q82" path="res://Scenes/GameScenes/Level_UI/Level_UI.tscn" id="1_yf2tt"]
 [ext_resource type="PackedScene" uid="uid://be6kxn0nhuo1m" path="res://Objects/Enemies/EnemySpawner/enemy_spawner_scene.tscn" id="2_qantg"]
@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bwvxpxvfbwq6v" path="res://Objects/Controls/Lever/lever_scene.tscn" id="5_46j3s"]
 [ext_resource type="PackedScene" uid="uid://b8oi31gd4xqhb" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/platform_2x2x1_yellow.gltf" id="5_qantg"]
 [ext_resource type="PackedScene" uid="uid://1e44ftnnuyib" path="res://Objects/Gun/gun_scene.tscn" id="6_k4qng"]
-[ext_resource type="PackedScene" path="res://Objects/Controls/Lever/lever_knob_scene.tscn" id="6_v6flv"]
-[ext_resource type="PackedScene" path="res://Objects/Controls/Lever/lever_grip_scene.tscn" id="7_70cor"]
+[ext_resource type="PackedScene" uid="uid://c2v2tipbfhlys" path="res://Objects/Controls/Lever/lever_knob_scene.tscn" id="6_v6flv"]
+[ext_resource type="PackedScene" uid="uid://s6qddpkxjec7" path="res://Objects/Controls/Lever/lever_grip_scene.tscn" id="7_70cor"]
 [ext_resource type="PackedScene" uid="uid://dx0qam1hilnr6" path="res://Objects/Bullets/ExplodingBullet/exploding_bullet.tscn" id="7_m8d76"]
 [ext_resource type="PackedScene" uid="uid://b6ln4quk1xu4g" path="res://Objects/Controls/Button/button_scene.tscn" id="8_6gp7l"]
 [ext_resource type="PackedScene" uid="uid://bvr3bvvvu02ue" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/platform_4x2x1_yellow.gltf" id="9_46j3s"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://dhm6nex37emjt" path="res://Objects/Gun/AmmoCover/ammo_cover_script.gd" id="11_ojj6j"]
 [ext_resource type="Script" uid="uid://b8qdrqu7nmj5w" path="res://Objects/Gun/AmmoCover/ammo_load_script.gd" id="12_yo6ra"]
 [ext_resource type="PackedScene" uid="uid://s7et15s1hxux" path="res://Objects/PlayerBase/player_base_scene.tscn" id="13_yp6g7"]
+[ext_resource type="PackedScene" uid="uid://cec1eytpv2ly3" path="res://RawAssets/Tiny_Treats_Lovely_Living_Room_1.0/gltf/TV_edited.glb" id="18_k4qng"]
 
 [sub_resource type="Environment" id="Environment_a202f"]
 background_color = Color(0.5481376, 0.6183476, 0.7303044, 1)
@@ -73,7 +74,7 @@ Wave_Data = ExtResource("3_v6flv")
 environment = SubResource("Environment_a202f")
 
 [node name="Camera3D" parent="." instance=ExtResource("4_70cor")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21.567755)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.744694)
 projection = 0
 fov = 18.0
 
@@ -89,7 +90,7 @@ mesh = SubResource("BoxMesh_jka67")
 skeleton = NodePath("")
 
 [node name="UI" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2026782, 0, -1.0441883)
 
 [node name="platform_2x2x1_yellow2" parent="UI" instance=ExtResource("5_qantg")]
 transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -3.1258802, 0.69257414, 0.19779032)
@@ -182,6 +183,9 @@ Crosshair_Limit_Shape = NodePath("../CrosshairArea/CollisionShape3D")
 
 [node name="Player_Base" parent="." instance=ExtResource("13_yp6g7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5916047, -2.8453853, 0.5588379)
+
+[node name="TV_edited" parent="." instance=ExtResource("18_k4qng")]
+transform = Transform3D(8.5, 0, 0, 0, 8.5, 0, 0, 0, 8.5, 0.4060707, -4.4237785, -3.0088553)
 
 [connection signal="onValueChanged" from="UI/platform_2x2x1_yellow2/Wheel2" to="UI/platform_4x2x1_yellow2/Cover/MeshInstance3D4" method="set_cover_position"]
 [connection signal="onValueChanged" from="UI/platform_2x2x1_yellow2/Wheel2" to="Gun" method="Open_Ammo_Chamber"]
