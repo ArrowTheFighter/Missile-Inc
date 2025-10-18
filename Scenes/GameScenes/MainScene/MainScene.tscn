@@ -1,9 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://becs2nxjvitxd"]
+[gd_scene load_steps=36 format=3 uid="uid://becs2nxjvitxd"]
 
 [ext_resource type="PackedScene" uid="uid://vkee7ul42q82" path="res://Scenes/GameScenes/Level_UI/Level_UI.tscn" id="1_7wnsk"]
 [ext_resource type="Script" uid="uid://blal3vwpqrqok" path="res://Objects/MenuUI/HideSelf.gd" id="2_2gtie"]
 [ext_resource type="PackedScene" uid="uid://cig3gg5uklxr7" path="res://Objects/level_camera_scene/level_camera_scene.tscn" id="2_dykdg"]
-[ext_resource type="PackedScene" uid="uid://bwvxpxvfbwq6v" path="res://Objects/Controls/Lever/lever_scene.tscn" id="3_sj3gm"]
 [ext_resource type="PackedScene" uid="uid://b6ln4quk1xu4g" path="res://Objects/Controls/Button/button_scene.tscn" id="4_a5fyb"]
 [ext_resource type="PackedScene" uid="uid://c2v2tipbfhlys" path="res://Objects/Controls/Lever/lever_knob_scene.tscn" id="4_ki6nt"]
 [ext_resource type="PackedScene" uid="uid://cimng1naje5s6" path="res://Objects/Controls/Wheel/wheel_scene.tscn" id="5_panaw"]
@@ -20,8 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://s7et15s1hxux" path="res://Objects/PlayerBase/player_base_scene.tscn" id="12_o3ven"]
 [ext_resource type="PackedScene" uid="uid://be6kxn0nhuo1m" path="res://Objects/Enemies/EnemySpawner/enemy_spawner_scene.tscn" id="13_4qvdo"]
 [ext_resource type="Resource" uid="uid://cw7vaaeb2duqo" path="res://Scenes/GameScenes/Level_1/WaveData-1.tres" id="14_7ax7i"]
-[ext_resource type="PackedScene" uid="uid://cec1eytpv2ly3" path="res://RawAssets/Tiny_Treats_Lovely_Living_Room_1.0/gltf/TV_edited.glb" id="15_2rdu0"]
+[ext_resource type="PackedScene" uid="uid://cec1eytpv2ly3" path="res://Objects/TVBackground/TV_edited.glb" id="15_2rdu0"]
+[ext_resource type="PackedScene" uid="uid://s6qddpkxjec7" path="res://Objects/Controls/Lever/lever_grip_scene.tscn" id="18_00bno"]
 [ext_resource type="PackedScene" uid="uid://b8oi31gd4xqhb" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/platform_2x2x1_yellow.gltf" id="20_00bno"]
+[ext_resource type="PackedScene" uid="uid://bvr3bvvvu02ue" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/platform_4x2x1_yellow.gltf" id="20_wu6fb"]
 
 [sub_resource type="Environment" id="Environment_a202f"]
 background_color = Color(0.5481376, 0.6183476, 0.7303044, 1)
@@ -68,21 +69,21 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esko7"]
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_7pw70"]
+[sub_resource type="BoxMesh" id="BoxMesh_1q1r1"]
 material = SubResource("StandardMaterial3D_esko7")
 size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o8s7l"]
 albedo_color = Color(0, 0.50106174, 0.9646916, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_44otn"]
+[sub_resource type="BoxMesh" id="BoxMesh_1d6go"]
 material = SubResource("StandardMaterial3D_o8s7l")
 size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pw70"]
 albedo_color = Color(0.95884234, 0, 0.06946598, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_o8s7l"]
+[sub_resource type="BoxMesh" id="BoxMesh_j34ea"]
 material = SubResource("StandardMaterial3D_7pw70")
 size = Vector3(0.5, 0.25, 0.5)
 
@@ -111,9 +112,9 @@ script = ExtResource("2_2gtie")
 environment = SubResource("Environment_a202f")
 
 [node name="Camera3D" parent="." instance=ExtResource("2_dykdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.264412)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.530838)
 projection = 0
-fov = 18.3
+fov = 25.0
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
@@ -159,7 +160,7 @@ transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 1.7705522, -2.41142,
 Use_Crosshair = true
 Crosshair_Obj = NodePath("../TargetCrosshair")
 Bullet_Scene = ExtResource("10_0hn51")
-ammo_mesh = NodePath("../../../Interactables/Node3D2/MeshInstance3D4")
+ammo_mesh = NodePath("../../../UI/platform_4x2x1_yellow2/Ammo/MeshInstance3D4")
 Default_Power = 5.0
 
 [node name="CrosshairArea" type="Area3D" parent="SubViewport/GamePlayArea"]
@@ -186,74 +187,69 @@ texture = SubResource("ViewportTexture_ncgx6")
 [node name="TV_edited" parent="." instance=ExtResource("15_2rdu0")]
 transform = Transform3D(8.5, 0, 0, 0, 8.5, 0, 0, 0, 8.5, 0.4060707, -4.4237785, -3.0088553)
 
-[node name="Interactables" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.997187, 2.5804923, 4.7683716e-07)
+[node name="UI" type="Node3D" parent="."]
+transform = Transform3D(0.82, 0, 0, 0, 0.82, 0, 0, 0, 0.82, -0.6943917, 0.7076769, -0.8830316)
 
-[node name="Lever2" parent="Interactables" instance=ExtResource("3_sj3gm")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
-visible = false
+[node name="platform_2x2x1_yellow2" parent="UI" instance=ExtResource("20_00bno")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -3.1258802, 0.69257414, 0.19779032)
 
-[node name="Button2" parent="Interactables" instance=ExtResource("4_a5fyb")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-visible = false
+[node name="Wheel2" parent="UI/platform_2x2x1_yellow2" instance=ExtResource("5_panaw")]
+transform = Transform3D(0.9375, 0, 0, 0, -4.0979426e-08, 0.9375, 0, -0.9375, -4.0979426e-08, -0.014041662, 1.2915701, 0.076470435)
+rotation_damp = 1.0
 
-[node name="Node3D" type="Node3D" parent="Interactables"]
-visible = false
+[node name="platform_2x2x1_yellow4" parent="UI" instance=ExtResource("20_00bno")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -4.744491, 0.69257414, 0.19779032)
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Interactables/Node3D"]
-mesh = SubResource("BoxMesh_7pw70")
-skeleton = NodePath("../../..")
+[node name="LeverGrip" parent="UI/platform_2x2x1_yellow4" instance=ExtResource("18_00bno")]
+transform = Transform3D(1.25, 0, 0, 0, -5.4639234e-08, 1.25, 0, -1.25, -5.4639234e-08, 0.062425613, 0.9980824, 0.05647844)
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Interactables/Node3D"]
+[node name="platform_2x2x1_yellow3" parent="UI" instance=ExtResource("20_00bno")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -3.1258802, -0.95257795, 0.19779032)
+
+[node name="LeverKnob" parent="UI/platform_2x2x1_yellow3" instance=ExtResource("4_ki6nt")]
+transform = Transform3D(1.25, 0, 0, 0, -5.4639234e-08, 1.25, 0, -1.25, -5.4639234e-08, -0.01744914, 0.9980824, 0.04902327)
+
+[node name="platform_4x2x1_yellow2" parent="UI" instance=ExtResource("20_wu6fb")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -3.9370182, 2.3248978, 0.19627261)
+
+[node name="Cover" type="Node3D" parent="UI/platform_4x2x1_yellow2"]
+transform = Transform3D(1.25, 0, 0, 0, -5.4639234e-08, 1.25, 0, -1.25, -5.4639234e-08, 0.66748285, 1.1748109, 0.15256524)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="UI/platform_4x2x1_yellow2/Cover"]
+mesh = SubResource("BoxMesh_1q1r1")
+skeleton = NodePath("../../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="UI/platform_4x2x1_yellow2/Cover"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.17540288)
-mesh = SubResource("BoxMesh_44otn")
-skeleton = NodePath("../../..")
+mesh = SubResource("BoxMesh_1d6go")
+skeleton = NodePath("../../../..")
 script = ExtResource("6_ylad5")
 
-[node name="Node3D2" type="Node3D" parent="Interactables"]
-visible = false
+[node name="Ammo" type="Node3D" parent="UI/platform_4x2x1_yellow2"]
+transform = Transform3D(1.25, 0, 0, 0, -5.4639234e-08, 1.25, 0, -1.25, -5.4639234e-08, 0.04789877, 1.1748109, 0.15256524)
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Interactables/Node3D2"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="UI/platform_4x2x1_yellow2/Ammo"]
 transform = Transform3D(0.84, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.109099865)
-mesh = SubResource("BoxMesh_o8s7l")
-skeleton = NodePath("../../..")
+mesh = SubResource("BoxMesh_j34ea")
+skeleton = NodePath("../../../..")
 script = ExtResource("7_x0wa2")
 
-[node name="0-L" parent="Interactables" instance=ExtResource("20_00bno")]
-transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, 0, 0, -0.8734796)
+[node name="Button2" parent="UI/platform_4x2x1_yellow2" instance=ExtResource("4_a5fyb")]
+transform = Transform3D(0.625, 0, 0, 0, -2.7319617e-08, 0.625, 0, -0.625, -2.7319617e-08, -0.75365734, 1.0662546, 0.14002538)
 
-[node name="0-1" parent="Interactables" instance=ExtResource("20_00bno")]
-transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, 1.7, 0, -0.873)
+[node name="platform_2x2x1_yellow5" parent="UI" instance=ExtResource("20_00bno")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -3.1172867, -2.5922506, 0.19779032)
 
-[node name="1-L" parent="Interactables" instance=ExtResource("20_00bno")]
-transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, 0, -1.7, -0.8734796)
+[node name="Button" parent="UI/platform_2x2x1_yellow5" instance=ExtResource("4_a5fyb")]
+transform = Transform3D(0.9375, 0, 0, 0, -4.0979426e-08, 0.9375, 0, -0.9375, -4.0979426e-08, 0.06633139, 1.0643575, 0.056684017)
 
-[node name="1-R" parent="Interactables" instance=ExtResource("20_00bno")]
-transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, 1.7, -1.7, -0.873)
+[node name="platform_2x2x1_yellow6" parent="UI" instance=ExtResource("20_00bno")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -4.744491, -0.9513023, 0.19779032)
 
-[node name="Button" parent="Interactables/1-R" instance=ExtResource("4_a5fyb")]
-transform = Transform3D(1.875, 0, 0, 0, -8.195885e-08, 1.875, 0, -1.875, -8.195885e-08, 0, 1, 0)
-
-[node name="2-L" parent="Interactables" instance=ExtResource("20_00bno")]
-transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, 0, -3.4, -0.8734796)
-
-[node name="Wheel3" parent="Interactables/2-L" instance=ExtResource("5_panaw")]
-transform = Transform3D(0.9375, 0, 0, 0, -4.0979426e-08, 0.9375, 0, -0.9375, -4.0979426e-08, 0, 1, 0)
+[node name="Wheel3" parent="UI/platform_2x2x1_yellow6" instance=ExtResource("5_panaw")]
+transform = Transform3D(0.9375, 0, 0, 0, -4.0979426e-08, 0.9375, 0, -0.9375, -4.0979426e-08, -0.016162872, 1.305187, -0.0041446686)
 rotation_damp = 60.0
-current_rotation = 0.0
 min_rotations = 1.0
-
-[node name="2-R" parent="Interactables" instance=ExtResource("20_00bno")]
-transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, 1.7, -3.4, -0.873)
-
-[node name="LeverKnob" parent="Interactables/2-R" instance=ExtResource("4_ki6nt")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1, 0)
-
-[node name="3-L" parent="Interactables" instance=ExtResource("20_00bno")]
-transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, 0, -5.1, -0.8734796)
-
-[node name="3-R" parent="Interactables" instance=ExtResource("20_00bno")]
-transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, 1.7, -5.1, -0.873)
 
 [connection signal="pressed" from="LevelUI/Button2" to="LevelUI/Button2" method="HideSelf"]
 [connection signal="pressed" from="LevelUI/Button2" to="SubViewport/GamePlayArea/TV_Background" method="HideBackground"]
@@ -261,9 +257,8 @@ transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-
 [connection signal="TargetHit" from="SubViewport/GamePlayArea/LevelCompleteNodes/LevelCompleteTarget" to="SubViewport/GamePlayArea/LevelCompleteNodes" method="HideLevelComplete"]
 [connection signal="TargetHit" from="SubViewport/GamePlayArea/LevelCompleteNodes/LevelCompleteTarget" to="SubViewport/GamePlayArea/TV_Background" method="ShowBackground"]
 [connection signal="match_ended" from="SubViewport/GamePlayArea/EnemySpawner" to="SubViewport/GamePlayArea/LevelCompleteNodes" method="ShowLevelComplete"]
-[connection signal="onValueChanged" from="Interactables/Lever2" to="SubViewport/GamePlayArea/Gun" method="Set_Power"]
-[connection signal="onValueChanged" from="Interactables/Lever2" to="SubViewport/GamePlayArea/TargetCrosshair" method="Set_Y_Position"]
-[connection signal="onValueChanged" from="Interactables/Button2" to="SubViewport/GamePlayArea/Gun" method="Remove_Empty_Ammo"]
-[connection signal="onValueChanged" from="Interactables/1-R/Button" to="SubViewport/GamePlayArea/Gun" method="Fire_Gun"]
-[connection signal="onValueChanged" from="Interactables/2-L/Wheel3" to="SubViewport/GamePlayArea/TargetCrosshair" method="Set_X_Position"]
-[connection signal="onValueChanged" from="Interactables/2-R/LeverKnob" to="SubViewport/GamePlayArea/TargetCrosshair" method="Set_Y_Position"]
+[connection signal="onValueChanged" from="UI/platform_2x2x1_yellow2/Wheel2" to="UI/platform_4x2x1_yellow2/Cover/MeshInstance3D4" method="set_cover_position"]
+[connection signal="onValueChanged" from="UI/platform_2x2x1_yellow4/LeverGrip" to="UI/platform_4x2x1_yellow2/Ammo/MeshInstance3D4" method="set_cover_position"]
+[connection signal="onValueChanged" from="UI/platform_2x2x1_yellow3/LeverKnob" to="SubViewport/GamePlayArea/TargetCrosshair" method="Set_Y_Position"]
+[connection signal="onValueChanged" from="UI/platform_2x2x1_yellow5/Button" to="SubViewport/GamePlayArea/Gun" method="Fire_Gun"]
+[connection signal="onValueChanged" from="UI/platform_2x2x1_yellow6/Wheel3" to="SubViewport/GamePlayArea/TargetCrosshair" method="Set_X_Position"]

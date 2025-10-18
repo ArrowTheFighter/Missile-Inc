@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://dhm6nex37emjt" path="res://Objects/Gun/AmmoCover/ammo_cover_script.gd" id="11_ojj6j"]
 [ext_resource type="Script" uid="uid://b8qdrqu7nmj5w" path="res://Objects/Gun/AmmoCover/ammo_load_script.gd" id="12_yo6ra"]
 [ext_resource type="PackedScene" uid="uid://s7et15s1hxux" path="res://Objects/PlayerBase/player_base_scene.tscn" id="13_yp6g7"]
-[ext_resource type="PackedScene" uid="uid://cec1eytpv2ly3" path="res://RawAssets/Tiny_Treats_Lovely_Living_Room_1.0/gltf/TV_edited.glb" id="18_k4qng"]
+[ext_resource type="PackedScene" uid="uid://cec1eytpv2ly3" path="res://Objects/TVBackground/TV_edited.glb" id="18_k4qng"]
 
 [sub_resource type="Environment" id="Environment_a202f"]
 background_color = Color(0.5481376, 0.6183476, 0.7303044, 1)
