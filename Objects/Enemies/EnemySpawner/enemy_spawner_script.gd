@@ -19,6 +19,7 @@ signal match_ended
 func start_wave() -> void:
 	print("Match started")
 	timer.timeout.connect(set_wave_timeout)
+	current_wave = 0
 	if Wave_Data != null:
 		timer.wait_time = Wave_Data.initial_delay
 	pass

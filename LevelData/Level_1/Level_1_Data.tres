@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://duh7uduo2fyfi"]
+
+[ext_resource type="Script" uid="uid://bdxifyfw4sj21" path="res://LevelData/level_data.gd" id="1_m03k3"]
+[ext_resource type="Resource" uid="uid://cn4tvupjj3gkd" path="res://LevelData/Level_1/WaveData-1.tres" id="2_iuutc"]
+
+[resource]
+script = ExtResource("1_m03k3")
+wave_data = ExtResource("2_iuutc")
+metadata/_custom_type_script = "uid://bdxifyfw4sj21"
