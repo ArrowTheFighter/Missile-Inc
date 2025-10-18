@@ -46,17 +46,18 @@ func Fire_Gun(value : float):
 			if !Ammo_Loaded or Ammo_Shot or Ammo_Chamber_Open: return
 		Fired = true
 		Ammo_Shot = true
-		var mat = readyToFireMat.get_active_material(0)
-		if mat is StandardMaterial3D:
-			mat = mat.duplicate()
-			mat.albedo_color = Color.RED
-			readyToFireMat.set_surface_override_material(0,mat)
-			
-		var ammo_mat = ammo_mesh.get_active_material(0)
-		if ammo_mat is StandardMaterial3D:
-			ammo_mat = ammo_mat.duplicate()
-			ammo_mat.albedo_color = Color.DARK_GRAY
-			ammo_mesh.set_surface_override_material(0,ammo_mat)
+		if readyToFireMat != null:
+			var mat = readyToFireMat.get_active_material(0)
+			if mat is StandardMaterial3D:
+				mat = mat.duplicate()
+				mat.albedo_color = Color.RED
+				readyToFireMat.set_surface_override_material(0,mat)
+		if ammo_mesh != null:
+			var ammo_mat = ammo_mesh.get_active_material(0)
+			if ammo_mat is StandardMaterial3D:
+				ammo_mat = ammo_mat.duplicate()
+				ammo_mat.albedo_color = Color.DARK_GRAY
+				ammo_mesh.set_surface_override_material(0,ammo_mat)
 		
 		if Bullet_Scene != null:
 			var spawnedBulletScene = Bullet_Scene.instantiate()

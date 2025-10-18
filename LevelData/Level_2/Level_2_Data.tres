@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=7 format=3 uid="uid://bigiomqckdkem"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=8 format=3 uid="uid://bigiomqckdkem"]
 
 [ext_resource type="Script" uid="uid://bdxifyfw4sj21" path="res://LevelData/level_data.gd" id="1_is0yb"]
+[ext_resource type="PackedScene" uid="uid://cc4rc1xdmr8kj" path="res://Scenes/Control_Scenes/Template_Scene/template_controls_scene.tscn" id="1_v604p"]
 [ext_resource type="Script" uid="uid://b130qkugcsawo" path="res://Objects/Enemies/EnemySpawner/Wave_Enemy_Data.gd" id="2_7fq24"]
 [ext_resource type="PackedScene" uid="uid://dat61ko2q16a" path="res://Objects/Enemies/BasicEnemy/enemy_scene.tscn" id="3_v604p"]
 [ext_resource type="Script" uid="uid://c5y2s5btshlsd" path="res://Objects/Enemies/EnemySpawner/Wave_Data.gd" id="4_6g6qn"]
@@ -21,4 +22,5 @@ metadata/_custom_type_script = "uid://c5y2s5btshlsd"
 [resource]
 script = ExtResource("1_is0yb")
 wave_data = SubResource("Resource_ow8pl")
+controls_scene = ExtResource("1_v604p")
 metadata/_custom_type_script = "uid://bdxifyfw4sj21"

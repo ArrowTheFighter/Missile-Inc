@@ -7,6 +7,7 @@ var control_value := 0.0
 
 @export_category("Control Settings")
 @export var Input_Area : Area3D
+#changes wether setting locked to true locks the control or vise versa
 @export var invert_locked := false
 
 signal onValueChanged(float)
