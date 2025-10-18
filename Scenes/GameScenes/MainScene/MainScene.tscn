@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://becs2nxjvitxd"]
+[gd_scene load_steps=29 format=3 uid="uid://becs2nxjvitxd"]
 
 [ext_resource type="PackedScene" uid="uid://vkee7ul42q82" path="res://Scenes/GameScenes/Level_UI/Level_UI.tscn" id="1_7wnsk"]
 [ext_resource type="Script" uid="uid://crgbw42ye0wxi" path="res://Scenes/GameScenes/MainScene/level_reference_script.gd" id="1_wfosk"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://bdxifyfw4sj21" path="res://LevelData/level_data.gd" id="2_j34ea"]
 [ext_resource type="Resource" uid="uid://duh7uduo2fyfi" path="res://LevelData/Level_1/Level_1_Data.tres" id="3_wejqe"]
 [ext_resource type="Resource" uid="uid://bigiomqckdkem" path="res://LevelData/Level_2/Level_2_Data.tres" id="4_wfosk"]
+[ext_resource type="Resource" uid="uid://br24evcf1kx30" path="res://LevelData/Level_Bats/Level_Bats.tres" id="6_lfvce"]
+[ext_resource type="Resource" uid="uid://bdyxq8gve4nc3" path="res://LevelData/Level_Bats/Level_Ghosts.tres" id="7_2rdu0"]
 [ext_resource type="Shader" uid="uid://i0pw7q1dpgvb" path="res://Shaders/CRTV_Shader.gdshader" id="8_d2vs7"]
 [ext_resource type="PackedScene" uid="uid://1e44ftnnuyib" path="res://Objects/Gun/gun_scene.tscn" id="9_eiuq4"]
 [ext_resource type="PackedScene" uid="uid://de4nhm0c47le1" path="res://Objects/Bullets/BasicBullet/bullet.tscn" id="10_0hn51"]
@@ -70,7 +72,8 @@ crosshair_node = NodePath("SubViewport/GamePlayArea/TargetCrosshair")
 
 [node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("spawner")]
 script = ExtResource("1_wu6fb")
-Levels = Array[ExtResource("2_j34ea")]([ExtResource("3_wejqe"), ExtResource("4_wfosk")])
+starting_level = 3
+Levels = Array[ExtResource("2_j34ea")]([ExtResource("3_wejqe"), ExtResource("4_wfosk"), ExtResource("6_lfvce"), ExtResource("7_2rdu0")])
 spawner = NodePath("../SubViewport/GamePlayArea/EnemySpawner")
 
 [node name="LevelUI" parent="." node_paths=PackedStringArray("enemy_spawner") instance=ExtResource("1_7wnsk")]
@@ -139,12 +142,11 @@ mesh = SubResource("BoxMesh_a0tk4")
 skeleton = NodePath("../../../Camera3D")
 script = ExtResource("10_4goo8")
 
-[node name="Gun" parent="SubViewport/GamePlayArea" node_paths=PackedStringArray("Crosshair_Obj", "ammo_mesh") instance=ExtResource("9_eiuq4")]
+[node name="Gun" parent="SubViewport/GamePlayArea" node_paths=PackedStringArray("Crosshair_Obj") instance=ExtResource("9_eiuq4")]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 1.7705522, -2.41142, 1.1975591)
 Use_Crosshair = true
 Crosshair_Obj = NodePath("../TargetCrosshair")
 Bullet_Scene = ExtResource("10_0hn51")
-ammo_mesh = NodePath("")
 Default_Power = 5.0
 
 [node name="CrosshairArea" type="Area3D" parent="SubViewport/GamePlayArea"]
