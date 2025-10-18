@@ -72,7 +72,6 @@ crosshair_node = NodePath("SubViewport/GamePlayArea/TargetCrosshair")
 
 [node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("spawner")]
 script = ExtResource("1_wu6fb")
-starting_level = 3
 Levels = Array[ExtResource("2_j34ea")]([ExtResource("3_wejqe"), ExtResource("4_wfosk"), ExtResource("6_lfvce"), ExtResource("7_2rdu0")])
 spawner = NodePath("../SubViewport/GamePlayArea/EnemySpawner")
 

@@ -10,7 +10,7 @@
 script = ExtResource("2_7fq24")
 EnemyScene = ExtResource("3_v604p")
 SpawnCount = 2
-SpawnDelay = 1.0
+SpawnDelay = 4.0
 metadata/_custom_type_script = "uid://b130qkugcsawo"
 
 [sub_resource type="Resource" id="Resource_ow8pl"]
