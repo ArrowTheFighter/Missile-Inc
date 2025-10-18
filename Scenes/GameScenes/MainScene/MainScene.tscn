@@ -1,10 +1,14 @@
-[gd_scene load_steps=37 format=3 uid="uid://becs2nxjvitxd"]
+[gd_scene load_steps=41 format=3 uid="uid://becs2nxjvitxd"]
 
 [ext_resource type="PackedScene" uid="uid://vkee7ul42q82" path="res://Scenes/GameScenes/Level_UI/Level_UI.tscn" id="1_7wnsk"]
+[ext_resource type="Script" uid="uid://cxaf0h1aawk2v" path="res://Scenes/GameScenes/MainScene/level_manager_script.gd" id="1_wu6fb"]
 [ext_resource type="Script" uid="uid://blal3vwpqrqok" path="res://Objects/MenuUI/HideSelf.gd" id="2_2gtie"]
 [ext_resource type="PackedScene" uid="uid://cig3gg5uklxr7" path="res://Objects/level_camera_scene/level_camera_scene.tscn" id="2_dykdg"]
+[ext_resource type="Script" uid="uid://bdxifyfw4sj21" path="res://LevelData/level_data.gd" id="2_j34ea"]
+[ext_resource type="Resource" uid="uid://duh7uduo2fyfi" path="res://LevelData/Level_1/Level_1_Data.tres" id="3_wejqe"]
 [ext_resource type="PackedScene" uid="uid://b6ln4quk1xu4g" path="res://Objects/Controls/Button/button_scene.tscn" id="4_a5fyb"]
 [ext_resource type="PackedScene" uid="uid://c2v2tipbfhlys" path="res://Objects/Controls/Lever/lever_knob_scene.tscn" id="4_ki6nt"]
+[ext_resource type="Resource" uid="uid://bigiomqckdkem" path="res://LevelData/Level_2/Level_2_Data.tres" id="4_wfosk"]
 [ext_resource type="PackedScene" uid="uid://cimng1naje5s6" path="res://Objects/Controls/Wheel/wheel_scene.tscn" id="5_panaw"]
 [ext_resource type="Script" uid="uid://dhm6nex37emjt" path="res://Objects/Gun/AmmoCover/ammo_cover_script.gd" id="6_ylad5"]
 [ext_resource type="Script" uid="uid://b8qdrqu7nmj5w" path="res://Objects/Gun/AmmoCover/ammo_load_script.gd" id="7_x0wa2"]
@@ -20,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://be6kxn0nhuo1m" path="res://Objects/Enemies/EnemySpawner/enemy_spawner_scene.tscn" id="13_4qvdo"]
 [ext_resource type="Resource" uid="uid://cw7vaaeb2duqo" path="res://Scenes/GameScenes/Level_1/WaveData-1.tres" id="14_7ax7i"]
 [ext_resource type="PackedScene" uid="uid://cec1eytpv2ly3" path="res://Objects/TVBackground/TV_edited.glb" id="15_2rdu0"]
-[ext_resource type="Script" uid="uid://bwcbq017qshbv" path="res://Objects/Controls/control_parent.gd" id="16_wu6fb"]
+[ext_resource type="Script" path="res://Objects/Controls/control_parent.gd" id="16_wu6fb"]
 [ext_resource type="PackedScene" uid="uid://s6qddpkxjec7" path="res://Objects/Controls/Lever/lever_grip_scene.tscn" id="18_00bno"]
 [ext_resource type="PackedScene" uid="uid://b8oi31gd4xqhb" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/platform_2x2x1_yellow.gltf" id="20_00bno"]
 [ext_resource type="PackedScene" uid="uid://bvr3bvvvu02ue" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/platform_4x2x1_yellow.gltf" id="20_wu6fb"]
@@ -89,6 +93,11 @@ material = SubResource("StandardMaterial3D_7pw70")
 size = Vector3(0.5, 0.25, 0.5)
 
 [node name="Level_1" type="Node3D"]
+
+[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("spawner")]
+script = ExtResource("1_wu6fb")
+Levels = Array[ExtResource("2_j34ea")]([ExtResource("3_wejqe"), ExtResource("4_wfosk")])
+spawner = NodePath("../SubViewport/GamePlayArea/EnemySpawner")
 
 [node name="LevelUI" parent="." node_paths=PackedStringArray("enemy_spawner") instance=ExtResource("1_7wnsk")]
 enemy_spawner = NodePath("../SubViewport/GamePlayArea/EnemySpawner")
