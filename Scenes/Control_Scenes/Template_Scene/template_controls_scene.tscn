@@ -117,3 +117,6 @@ transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-
 transform = Transform3D(0.9375, 0, 0, 0, -4.0979426e-08, 0.9375, 0, -0.9375, -4.0979426e-08, -0.016162872, 1.305187, -0.0041446686)
 rotation_damp = 60.0
 min_rotations = 1.0
+
+[connection signal="onValueChanged" from="platform_2x2x1_yellow10/Wheel2" to="platform_4x2x1_yellow3/Cover/MeshInstance3D4" method="set_cover_position"]
+[connection signal="onValueChanged" from="platform_2x2x1_yellow11/LeverGrip" to="platform_4x2x1_yellow3/Ammo/MeshInstance3D4" method="set_cover_position"]

@@ -80,11 +80,12 @@ func Load_Ammo(value : float):
 	if !Ammo_Loaded and !Ammo_Shot and value > 0.9:
 		if Ammo_Chamber_Open:
 			Ammo_Loaded = true
-			var ammo_mat = ammo_mesh.get_active_material(0)
-			if ammo_mat is StandardMaterial3D:
-				ammo_mat = ammo_mat.duplicate()
-				ammo_mat.albedo_color = Color.DARK_GREEN
-				ammo_mesh.set_surface_override_material(0,ammo_mat)
+			if ammo_mesh != null:
+				var ammo_mat = ammo_mesh.get_active_material(0)
+				if ammo_mat is StandardMaterial3D:
+					ammo_mat = ammo_mat.duplicate()
+					ammo_mat.albedo_color = Color.DARK_GREEN
+					ammo_mesh.set_surface_override_material(0,ammo_mat)
 	elif Ammo_Loaded and value < 0.1:
 		Ammo_Loaded = false
 	pass
@@ -100,8 +101,9 @@ func Open_Ammo_Chamber(value : float):
 func Remove_Empty_Ammo(value : float):
 	if !Ammo_Loaded and Ammo_Shot:
 		Ammo_Shot = false
-		var ammo_mat = ammo_mesh.get_active_material(0)
-		if ammo_mat is StandardMaterial3D:
-			ammo_mat = ammo_mat.duplicate()
-			ammo_mat.albedo_color = Color.DARK_RED
-			ammo_mesh.set_surface_override_material(0,ammo_mat)
+		if ammo_mesh != null:
+			var ammo_mat = ammo_mesh.get_active_material(0)
+			if ammo_mat is StandardMaterial3D:
+				ammo_mat = ammo_mat.duplicate()
+				ammo_mat.albedo_color = Color.DARK_RED
+				ammo_mesh.set_surface_override_material(0,ammo_mat)
