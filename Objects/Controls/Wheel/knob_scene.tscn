@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://tg5sti1ajbd"]
+
+[ext_resource type="Script" uid="uid://bqlwn041ina1s" path="res://Objects/Controls/Wheel/wheel_script.gd" id="1_j8qlq"]
+[ext_resource type="AudioStream" uid="uid://jlk3btimejci" path="res://RawAssets/Audio/Sounds/click_001.ogg" id="6_akhp6"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bqloa"]
+radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njvf0"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4jx1g"]
+material = SubResource("StandardMaterial3D_njvf0")
+bottom_radius = 0.85
+radial_segments = 24
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_njvf0"]
+material = SubResource("StandardMaterial3D_njvf0")
+top_radius = 0.9
+bottom_radius = 1.0
+height = 0.5
+radial_segments = 24
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_86dkx"]
+albedo_color = Color(0.57, 0.57, 0.57, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hclwa"]
+material = SubResource("StandardMaterial3D_86dkx")
+size = Vector3(0.2, 2, 0.5)
+
+[node name="Wheel" type="Node3D" node_paths=PackedStringArray("target_object", "Input_Area")]
+script = ExtResource("1_j8qlq")
+target_object = NodePath("MeshInstance3D")
+Input_Area = NodePath("Area3D")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_bqloa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.14494875)
+mesh = SubResource("CylinderMesh_4jx1g")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.78983605, 3.4524838e-08)
+mesh = SubResource("CylinderMesh_njvf0")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.040234685, -0.62327945)
+mesh = SubResource("BoxMesh_hclwa")
+skeleton = NodePath("../..")
+
+[node name="WheelSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_akhp6")
+volume_db = -10.0

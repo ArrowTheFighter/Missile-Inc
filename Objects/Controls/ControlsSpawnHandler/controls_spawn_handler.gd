@@ -1,4 +1,8 @@
+class_name ControlsSpawnHandler
 extends Node3D
+
+signal controls_moved_in
+signal controls_moved_out
 
 @export var offset_target:Marker3D
 @export var offset_vector : Vector3
@@ -61,6 +65,16 @@ func _move_in_controls() -> void:
 	var tween = get_tree().create_tween()
 	for child in get_children():
 		tween.tween_property(child, "global_position", child.global_position - offset, .5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	await tween.finished
+	controls_moved_in.emit()
+
+func move_out_controls() -> void:
+	var offset = offset_vector
+	var tween = get_tree().create_tween()
+	for child in get_children():
+		tween.tween_property(child, "global_position", child.global_position + offset, .5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	await tween.finished
+	controls_moved_out.emit()
 
 func _on_start_pressed() -> void:
 	_move_in_controls()

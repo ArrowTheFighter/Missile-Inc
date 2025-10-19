@@ -10,7 +10,7 @@ var target_rotation := 0.0
 @export var min_rotations := 0.0
 var min_rotation := 0.0
 var max_rotation := 0.0  # TAU == 2 * PI (360 degrees)
-@onready var target_object = $pipe_end_green2
+@export var target_object:Node3D
 
 @export var sound_interval := 1.0
 var sound_angle := 0.0
