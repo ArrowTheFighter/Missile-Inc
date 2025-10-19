@@ -24,7 +24,7 @@ func _prepare_death_sound()->void:
 	death_sound = AudioStreamPlayer.new()
 	death_sound.stream = death_sound_stream
 	death_sound.name = "DeathSound"
-	death_sound.volume_db = -15
+	death_sound.volume_db = -20
 	get_tree().root.call_deferred("add_child", death_sound)
 
 func take_damage(amount : int):

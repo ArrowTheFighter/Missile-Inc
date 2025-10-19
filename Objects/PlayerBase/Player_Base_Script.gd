@@ -7,6 +7,8 @@ var start_health : int
 @export var max_health_color : Color
 @export var min_health_color : Color
 
+signal base_destroyed
+
 func _ready() -> void:
 	start_health = health
 	
@@ -21,6 +23,6 @@ func damage_base(amount : int):
 			mesh.set_surface_override_material(0,mat)
 			
 	if health == 0:
-		print("we died")
+		base_destroyed.emit()
 		queue_free()
 	pass
