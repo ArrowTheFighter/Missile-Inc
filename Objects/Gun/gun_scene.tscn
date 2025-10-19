@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dl2mid72wii7w" path="res://Objects/Gun/gun_script.gd" id="1_lpc8u"]
 [ext_resource type="PackedScene" uid="uid://lm3e6odhavs4" path="res://Meshes/crossbow_1handed.fbx" id="2_l26cd"]
 [ext_resource type="PackedScene" uid="uid://c5w6hfbm4me5x" path="res://Meshes/crossbow_2handed.fbx" id="2_m4tng"]
-[ext_resource type="PackedScene" uid="uid://bi2p87hwekr1f" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/green/cannon_base_green.gltf" id="3_003w1"]
+[ext_resource type="PackedScene" uid="uid://bi2p87hwekr1f" path="res://RawAssets/OLD/KayKit_Platformer_Pack_1.0_EXTRA/Assets/green/cannon_base_green.gltf" id="3_003w1"]
 [ext_resource type="PackedScene" uid="uid://cc1sxhjodky7t" path="res://Meshes/Cannon.glb" id="4_g6pjg"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_ob047"]
