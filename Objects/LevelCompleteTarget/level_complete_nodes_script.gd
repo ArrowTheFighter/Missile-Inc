@@ -17,6 +17,7 @@ func ToggleLevelComplete(show : bool):
 		var tween = create_tween()
 		var hidden_pos = Vector3(position.x,position.y,0)
 		tween.tween_property(self,"position",hidden_pos,1.5)
+		$WinSound.play()
 	else:
 		var tween = create_tween()
 		var visible_pos = Vector3(position.x,position.y,-3)

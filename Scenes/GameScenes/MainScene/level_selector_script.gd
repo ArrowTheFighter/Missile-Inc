@@ -16,6 +16,7 @@ func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Ve
 			level_selected.emit(level_index)
 
 func _on_area_3d_mouse_entered() -> void:
+	$PickupSound.play()
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "global_position", global_position + offset_dir, .1).set_ease(Tween.EASE_OUT)
 

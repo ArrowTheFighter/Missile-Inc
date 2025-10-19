@@ -9,7 +9,7 @@ func _on_level_selected(level:int = 0)->void:
 	$LevelUI/Button2.HideSelf()
 	camera.move_to_tv()
 	await camera.move_tv_finished
-	$LevelManager.starting_level = level
+	$LevelManager.current_level = level
 	$LevelManager.start_level()
 	$SubViewport/GamePlayArea/TV_Background.HideBackground()
 

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://xti541t514ba"]
+
+[ext_resource type="Script" uid="uid://cbmu78axig5rp" path="res://Scenes/GameScenes/MainScene/level_selector_script.gd" id="1_8igxi"]
+[ext_resource type="PackedScene" uid="uid://c3l5yht54dqeg" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/pictureframe_medium.gltf" id="2_eeeta"]
+[ext_resource type="AudioStream" uid="uid://b2bty8mbl138k" path="res://RawAssets/Audio/Sounds/bookFlip3.ogg" id="3_eeeta"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1eq8u"]
+size = Vector3(3.4595337, 1, 4.393982)
+
+[node name="Level1" type="Node3D"]
+transform = Transform3D(0.85837847, 0, 0.513017, 0, 1, 0, -0.513017, 0, 0.85837847, 0, 0, 0)
+script = ExtResource("1_8igxi")
+
+[node name="visual" parent="." instance=ExtResource("2_eeeta")]
+transform = Transform3D(5, 0, 0, 0, -2.1855695e-07, 2, 0, -5, -8.742278e-08, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016447067, 0, 0.009921074)
+shape = SubResource("BoxShape3D_1eq8u")
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_eeeta")
+volume_db = -15.0
+
+[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
+[connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Area3D" to="." method="_on_area_3d_mouse_exited"]
