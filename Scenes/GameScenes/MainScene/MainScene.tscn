@@ -34,7 +34,7 @@
 [ext_resource type="Script" uid="uid://bdgs6d1yuyi5b" path="res://Objects/level_camera_scene/outside_camera_scene.gd" id="30_1eq8u"]
 [ext_resource type="PackedScene" uid="uid://duuht53vc3e6" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/table_medium_long.gltf" id="30_t6tf6"]
 [ext_resource type="PackedScene" uid="uid://tg5sti1ajbd" path="res://Objects/Controls/Wheel/knob_scene.tscn" id="33_llj7c"]
-[ext_resource type="PackedScene" uid="uid://xti541t514ba" path="res://LevelData/level_select_scene.tscn" id="34_i81jv"]
+[ext_resource type="PackedScene" path="res://LevelData/level_select_scene.tscn" id="34_i81jv"]
 
 [sub_resource type="Environment" id="Environment_a202f"]
 background_color = Color(0.5481376, 0.6183476, 0.7303044, 1)

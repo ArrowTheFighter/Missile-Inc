@@ -8,8 +8,8 @@
 [sub_resource type="Resource" id="Resource_j750k"]
 script = ExtResource("1_1kw5u")
 EnemyScene = ExtResource("2_hfdeg")
-SpawnCount = 2
-SpawnDelay = 5.0
+SpawnCount = 4
+SpawnDelay = 4.5
 metadata/_custom_type_script = "uid://b130qkugcsawo"
 
 [sub_resource type="Resource" id="Resource_dna02"]
@@ -22,8 +22,8 @@ metadata/_custom_type_script = "uid://b130qkugcsawo"
 [sub_resource type="Resource" id="Resource_6l3ao"]
 script = ExtResource("1_1kw5u")
 EnemyScene = ExtResource("2_hfdeg")
-SpawnCount = 3
-SpawnDelay = 6.0
+SpawnCount = 5
+SpawnDelay = 4.0
 EnemySpeed = 0.75
 metadata/_custom_type_script = "uid://b130qkugcsawo"
 
@@ -32,6 +32,7 @@ script = ExtResource("1_1kw5u")
 EnemyScene = ExtResource("3_svijf")
 SpawnCount = 1
 SpawnDelay = 4.0
+EnemyHealth = 10
 metadata/_custom_type_script = "uid://b130qkugcsawo"
 
 [resource]

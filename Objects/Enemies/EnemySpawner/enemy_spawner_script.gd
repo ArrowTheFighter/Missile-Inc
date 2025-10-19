@@ -13,6 +13,7 @@ var tracked_enemies := 0
 
 var current_wave := 0
 var enemies_spawned := 0
+var last_spawn_pos
 
 signal match_ended
 
@@ -30,7 +31,8 @@ func set_wave_timeout():
 		timer.wait_time = Wave_Data.Wave_Section[current_wave].SpawnDelay
 		if timer.timeout.is_connected(set_wave_timeout):
 			timer.timeout.disconnect(set_wave_timeout)
-		timer.timeout.connect(spawn_enemy)
+		if !timer.timeout.is_connected(spawn_enemy):
+			timer.timeout.connect(spawn_enemy)
 	#wave ended
 	else:
 		wait_for_enemies_to_die()
@@ -48,9 +50,7 @@ func spawn_enemy():
 	
 	var shape = Spawn_Zone.shape
 	if(shape is BoxShape3D):
-		var half_size = shape.size.x / 2.0
-		var random_spawn_offset = randf_range(-half_size,half_size)
-		var spawn_pos = Spawn_Zone.global_position + Vector3.RIGHT * random_spawn_offset
+		var spawn_pos = get_random_spawn_pos()
 		
 		var enemy_scene = Wave_Data.Wave_Section[current_wave].EnemyScene
 		var enemy_instance = enemy_scene.instantiate()
@@ -76,3 +76,17 @@ func spawn_enemy():
 			timer.timeout.disconnect(spawn_enemy)
 			set_wave_timeout()
 		
+func get_random_spawn_pos():
+	var i = 0
+	var spawn_pos
+	while i < 20:
+		var shape = Spawn_Zone.shape
+		var half_size = shape.size.x / 2.0
+		var random_spawn_offset = randf_range(-half_size,half_size)
+		spawn_pos = Spawn_Zone.global_position + Vector3.RIGHT * random_spawn_offset
+		if(last_spawn_pos == null):
+			last_spawn_pos = spawn_pos
+		elif last_spawn_pos.y - spawn_pos.y < 0.2:
+			last_spawn_pos = spawn_pos
+			break
+	return spawn_pos

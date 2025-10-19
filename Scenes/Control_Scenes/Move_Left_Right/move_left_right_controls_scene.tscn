@@ -14,7 +14,7 @@ gun_fire_controls = [NodePath("platform_2x2x1_yellow13/Button")]
 move_gun_left_right = [NodePath("platform_2x2x1_yellow17/Wheel3")]
 
 [node name="platform_2x2x1_yellow13" parent="." instance=ExtResource("2_7kj0c")]
-transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -3.1172867, -0.96988666, 0.19779027)
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -3.1172867, -0.9441546, 0.19779027)
 
 [node name="Button" parent="platform_2x2x1_yellow13" instance=ExtResource("9_ca0n3")]
 transform = Transform3D(0.9375, 0, 0, 0, -4.0979426e-08, 0.9375, 0, -0.9375, -4.0979426e-08, 0.06633139, 1.0643575, 0.056684017)
