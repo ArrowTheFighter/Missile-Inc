@@ -162,6 +162,16 @@ font_size = 142
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5859032, 0.63436127, 0.60366297)
 script = ExtResource("11_xqb21")
 
+[node name="LevelFailedNodes" type="Node3D" parent="SubViewport/GamePlayArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+script = ExtResource("10_xqb21")
+delay = 5.0
+
+[node name="LevelCompleteText" type="Label3D" parent="SubViewport/GamePlayArea/LevelFailedNodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57127, 1.7745972, 0.87035346)
+text = "Level Failed"
+font_size = 142
+
 [node name="Camera3D2" parent="SubViewport/GamePlayArea" groups=["Camera"] instance=ExtResource("2_dykdg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6255703, 0, 3.6549354)
 
@@ -303,6 +313,8 @@ shape = SubResource("BoxShape3D_1eq8u")
 [connection signal="pressed" from="LevelUI/Button2" to="." method="_on_level_selected"]
 [connection signal="TargetHit" from="SubViewport/GamePlayArea/LevelCompleteNodes/LevelCompleteTarget" to="LevelManager" method="start_level"]
 [connection signal="TargetHit" from="SubViewport/GamePlayArea/LevelCompleteNodes/LevelCompleteTarget" to="SubViewport/GamePlayArea/LevelCompleteNodes" method="HideLevelComplete"]
+[connection signal="base_destroyed" from="SubViewport/GamePlayArea/Player_Base" to="SubViewport/GamePlayArea/LevelFailedNodes" method="ShowLevelComplete"]
+[connection signal="base_destroyed" from="SubViewport/GamePlayArea/Player_Base" to="SubViewport/GamePlayArea/LevelFailedNodes" method="HideLevelCompleteAfterDelay"]
 [connection signal="match_ended" from="SubViewport/GamePlayArea/EnemySpawner" to="LevelManager" method="increase_level"]
 [connection signal="match_ended" from="SubViewport/GamePlayArea/EnemySpawner" to="SubViewport/GamePlayArea/LevelCompleteNodes" method="ShowLevelComplete"]
 [connection signal="onValueChanged" from="TV_edited/Button" to="." method="_on_off_button_pressed"]

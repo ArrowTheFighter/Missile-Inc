@@ -62,7 +62,7 @@ func Fire_Gun(value : float):
 		if Bullet_Scene != null:
 			var spawnedBulletScene = Bullet_Scene.instantiate()
 			spawnedBulletScene.rotation_degrees = rotation_degrees
-			spawnedBulletScene.position = global_position
+			spawnedBulletScene.position = global_position + Vector3(0,0,-0.2)
 			spawnedBulletScene.speed = Power
 			spawnedBulletScene.target_pos = Target_Pos
 			get_tree().root.add_child(spawnedBulletScene)

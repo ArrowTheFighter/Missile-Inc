@@ -1,10 +1,15 @@
 extends Node3D
 
+@export var delay : float
 
 func ShowLevelComplete():
 	ToggleLevelComplete(true)
 	
 func HideLevelComplete():
+	ToggleLevelComplete(false)
+	
+func HideLevelCompleteAfterDelay():
+	await  get_tree().create_timer(delay).timeout
 	ToggleLevelComplete(false)
 
 func ToggleLevelComplete(show : bool):
