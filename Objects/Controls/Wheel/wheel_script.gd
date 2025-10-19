@@ -43,7 +43,7 @@ func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, n
 			var obj_screen_pos = camera.unproject_position(global_transform.origin)
 			var mouse_pos = get_viewport().get_mouse_position()
 			var mouse_vec = (mouse_pos - obj_screen_pos).normalized()
-
+			
 			last_drag_angle = atan2(mouse_vec.y, mouse_vec.x)
 			selected = true
 			
@@ -53,13 +53,12 @@ func calculate_new_mouse_angle():
 	var obj_screen_pos = camera.unproject_position(global_transform.origin)
 	var mouse_pos = get_viewport().get_mouse_position()
 	var mouse_vec = (mouse_pos - obj_screen_pos).normalized()
-
+	
 	var current_angle = atan2(mouse_vec.y, mouse_vec.x)
 	var delta_angle = current_angle - last_drag_angle
 	last_drag_angle = current_angle
 	sound_angle += abs(delta_angle)
-	print(sound_angle)
-
+	
 	delta_angle = -wrapf(delta_angle, -PI, PI)
 	
 	target_rotation = clamp(current_rotation + delta_angle, min_rotation, max_rotation)

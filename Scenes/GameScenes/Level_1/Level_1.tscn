@@ -107,10 +107,15 @@ fov = 18.3
 
 [node name="LeverKnob" parent="." instance=ExtResource("3_j5w64")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4973145, 0.3957399, 0.515)
+sound_interval = null
+invert_locked = null
 
 [node name="Lever2" parent="." instance=ExtResource("1_gw31e")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -4.4973145, 0.14009607, 0.515)
 visible = false
+minHeight = null
+sound_interval = null
+invert_locked = null
 
 [node name="Button" parent="." instance=ExtResource("4_o8yyk")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3.8365848, -1.6103593, 0.54927635)

@@ -109,6 +109,8 @@ script = ExtResource("1_wu6fb")
 Levels = Array[ExtResource("2_j34ea")]([ExtResource("3_wejqe"), ExtResource("4_wfosk"), ExtResource("6_lfvce"), ExtResource("7_2rdu0")])
 spawner = NodePath("../SubViewport/GamePlayArea/EnemySpawner")
 
+[node name="LevelBackgroundMusic" type="AudioStreamPlayer" parent="LevelManager"]
+
 [node name="LevelUI" parent="." node_paths=PackedStringArray("enemy_spawner") instance=ExtResource("1_7wnsk")]
 visible = false
 enemy_spawner = NodePath("../SubViewport/GamePlayArea/EnemySpawner")
@@ -213,7 +215,10 @@ texture = SubResource("ViewportTexture_ncgx6")
 transform = Transform3D(8.5, 0, 0, 0, 8.5, 0, 0, 0, 8.5, 0.4060707, -4.4237785, -3.0088553)
 
 [node name="VolumeKnob" parent="TV_edited" instance=ExtResource("33_llj7c")]
-transform = Transform3D(0.029411765, 0, 0, 0, 0.029411765, 0, 0, 0, 0.029411765, -0.5233969, 0.9678162, 0.36352172)
+transform = Transform3D(-0.029411765, 2.571258e-09, 0, -2.571258e-09, -0.029411765, 0, 0, 0, 0.029411765, -0.5233969, 0.9678162, 0.36352172)
+rotation_damp = 50.0
+current_rotation = 6.283
+sound_interval = 0.3
 
 [node name="Button" parent="TV_edited" instance=ExtResource("24_i81jv")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.61686456, 0.96770847, 0.3519681)
@@ -313,10 +318,11 @@ shape = SubResource("BoxShape3D_1eq8u")
 [connection signal="pressed" from="LevelUI/Button2" to="." method="_on_level_selected"]
 [connection signal="TargetHit" from="SubViewport/GamePlayArea/LevelCompleteNodes/LevelCompleteTarget" to="LevelManager" method="start_level"]
 [connection signal="TargetHit" from="SubViewport/GamePlayArea/LevelCompleteNodes/LevelCompleteTarget" to="SubViewport/GamePlayArea/LevelCompleteNodes" method="HideLevelComplete"]
-[connection signal="base_destroyed" from="SubViewport/GamePlayArea/Player_Base" to="SubViewport/GamePlayArea/LevelFailedNodes" method="ShowLevelComplete"]
 [connection signal="base_destroyed" from="SubViewport/GamePlayArea/Player_Base" to="SubViewport/GamePlayArea/LevelFailedNodes" method="HideLevelCompleteAfterDelay"]
+[connection signal="base_destroyed" from="SubViewport/GamePlayArea/Player_Base" to="SubViewport/GamePlayArea/LevelFailedNodes" method="ShowLevelComplete"]
 [connection signal="match_ended" from="SubViewport/GamePlayArea/EnemySpawner" to="LevelManager" method="increase_level"]
 [connection signal="match_ended" from="SubViewport/GamePlayArea/EnemySpawner" to="SubViewport/GamePlayArea/LevelCompleteNodes" method="ShowLevelComplete"]
+[connection signal="onValueChanged" from="TV_edited/VolumeKnob" to="." method="_on_volume_knob_on_value_changed"]
 [connection signal="onValueChanged" from="TV_edited/Button" to="." method="_on_off_button_pressed"]
 [connection signal="level_selected" from="Levels/Level1" to="." method="_on_level_selected"]
 [connection signal="input_event" from="Levels/Level1/Area3D" to="Levels/Level1" method="_on_area_3d_input_event"]

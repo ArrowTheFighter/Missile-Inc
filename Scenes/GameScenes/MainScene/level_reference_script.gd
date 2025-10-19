@@ -25,3 +25,8 @@ func _on_turn_off_tv()->void:
 func _on_off_button_pressed(value:float) -> void:
 	if value > .5:
 		_on_turn_off_tv()
+
+
+func _on_volume_knob_on_value_changed(value: float) -> void:
+	var index= AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_volume_linear(index, value)

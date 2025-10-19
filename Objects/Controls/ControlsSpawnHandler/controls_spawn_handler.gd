@@ -18,6 +18,7 @@ signal controls_moved_out
 @export var open_ammo_controls : Array[Base_Control]
 @export var load_ammo_controls : Array[Base_Control]
 @export var remove_empty_ammo_controls: Array[Base_Control]
+@export var move_gun_left_right : Array[Base_Control]
 
 
 func _ready() -> void:
@@ -39,7 +40,6 @@ func setup_control_signals():
 		node.onValueChanged.connect(scene_refrence_node.gun_node.Fire_Gun)
 		
 	for node in move_crosshair_x_controls:
-		print("conecting x crosshair controls signals")
 		node.onValueChanged.connect(scene_refrence_node.crosshair_node.Set_X_Position)
 		
 	for node in move_crosshair_y_controls:
@@ -53,6 +53,9 @@ func setup_control_signals():
 		
 	for node in remove_empty_ammo_controls:
 		node.onValueChanged.connect(scene_refrence_node.gun_node.Remove_Empty_Ammo)
+		
+	for node in move_gun_left_right:
+		node.onValueChanged.connect(scene_refrence_node.gun_node.Move_Gun)
 	pass
 
 func _hide_controls() -> void:

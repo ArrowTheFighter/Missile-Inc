@@ -29,7 +29,11 @@ func _ready() -> void:
 func Rotate_Gun(value : float):
 	rotation_degrees.z = lerp(45,-45,value)
 	pass
-	
+
+func Move_Gun(value : float):
+	var new_position_x = lerpf(-2.5, 5.75, value)
+	position.x = new_position_x
+
 func Aim_At_Target_Position(target_position : Vector3):
 	Target_Pos = target_position
 	var direction = (target_position - global_position).normalized()

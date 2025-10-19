@@ -32,6 +32,7 @@ size = Vector3(0.2, 2, 0.5)
 
 [node name="Wheel" type="Node3D" node_paths=PackedStringArray("target_object", "Input_Area")]
 script = ExtResource("1_j8qlq")
+current_rotation = 3.142
 target_object = NodePath("MeshInstance3D")
 Input_Area = NodePath("Area3D")
 
