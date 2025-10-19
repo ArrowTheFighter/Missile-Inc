@@ -102,10 +102,11 @@ script = ExtResource("1_wfosk")
 gun_node = NodePath("SubViewport/GamePlayArea/Gun")
 crosshair_node = NodePath("SubViewport/GamePlayArea/TargetCrosshair")
 
-[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("spawner")]
+[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("spawner", "player_base")]
 script = ExtResource("1_wu6fb")
 Levels = Array[ExtResource("2_j34ea")]([ExtResource("3_wejqe"), ExtResource("4_wfosk"), ExtResource("6_lfvce"), ExtResource("7_2rdu0")])
 spawner = NodePath("../SubViewport/GamePlayArea/EnemySpawner")
+player_base = NodePath("../SubViewport/GamePlayArea/Player_Base")
 
 [node name="LevelUI" parent="." node_paths=PackedStringArray("enemy_spawner") instance=ExtResource("1_7wnsk")]
 visible = false

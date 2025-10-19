@@ -24,5 +24,17 @@ func damage_base(amount : int):
 			
 	if health == 0:
 		base_destroyed.emit()
+		mesh.visible = false
 		queue_free()
 	pass
+	
+func respawn_base():
+	mesh.visible = true
+	if mesh != null:
+		health = start_health
+		var mat = mesh.get_active_material(0)
+		if mat is StandardMaterial3D:
+			mat = mat.duplicate()
+			mat.albedo_color = max_health_color
+			mesh.set_surface_override_material(0,mat)
+			print("setting color back to default")

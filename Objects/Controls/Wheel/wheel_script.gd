@@ -58,8 +58,8 @@ func calculate_new_mouse_angle():
 	var delta_angle = current_angle - last_drag_angle
 	last_drag_angle = current_angle
 	sound_angle += abs(delta_angle)
-	print(sound_angle)
 
 	delta_angle = -wrapf(delta_angle, -PI, PI)
 	
 	target_rotation = clamp(current_rotation + delta_angle, min_rotation, max_rotation)
+	print(target_rotation)
