@@ -15,7 +15,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if(selected):
 			var old_value := control_value
-			Input_Area.position += Vector3(0,-event.relative.y * relativ_to_3D ,0)
+			Input_Area.position += Vector3(0,-event.relative.y * 0.75 * relativ_to_3D ,0)
 			var new_position_y := clampf(Input_Area.position.y,minHeight,maxHeight)
 			Input_Area.position = Vector3(Input_Area.position.x, new_position_y,Input_Area.position.z)
 			var new_value = snappedf(inverse_lerp(minHeight,maxHeight,Input_Area.position.y),0.01)

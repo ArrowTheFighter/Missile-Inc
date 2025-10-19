@@ -104,6 +104,7 @@ crosshair_node = NodePath("SubViewport/GamePlayArea/TargetCrosshair")
 
 [node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("spawner")]
 script = ExtResource("1_wu6fb")
+starting_level = 1
 Levels = Array[ExtResource("2_j34ea")]([ExtResource("3_wejqe"), ExtResource("4_wfosk"), ExtResource("7_2rdu0"), ExtResource("6_lfvce")])
 spawner = NodePath("../SubViewport/GamePlayArea/EnemySpawner")
 
@@ -175,6 +176,10 @@ delay = 5.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57127, 1.7745972, 0.87035346)
 text = "Level Failed"
 font_size = 142
+
+[node name="WinSound" type="AudioStreamPlayer" parent="SubViewport/GamePlayArea/LevelFailedNodes"]
+stream = ExtResource("22_06qis")
+volume_db = -10.0
 
 [node name="Camera3D2" parent="SubViewport/GamePlayArea" groups=["Camera"] instance=ExtResource("2_dykdg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6255703, 0, 3.6549354)
@@ -307,6 +312,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.119136, 16.086765)
 [node name="Level1" parent="Levels" instance=ExtResource("34_i81jv")]
 transform = Transform3D(0.85837847, 0, 0.513017, 0, 1, 0, -0.513017, 0, 0.85837847, -5.233559, -0.6456189, 1.620882)
 
+[node name="Level2" parent="Levels" instance=ExtResource("34_i81jv")]
+transform = Transform3D(0.98280996, 0, 0.18462038, 0, 1, 0, -0.18462038, 0, 0.98280996, -1.1242833, -0.6456189, 0.18338013)
+level_index = 1
+
+[node name="Level3" parent="Levels" instance=ExtResource("34_i81jv")]
+transform = Transform3D(0.99899346, 0, -0.044857353, 0, 1, 0, 0.044857353, 0, 0.99899346, 3.1705256, -0.6456189, -0.08094597)
+level_index = 2
+
+[node name="Level4" parent="Levels" instance=ExtResource("34_i81jv")]
+transform = Transform3D(0.8208004, 0, -0.5712151, 0, 1, 0, 0.5712151, 0, 0.8208004, 7.1611257, -0.6456189, 1.9825249)
+level_index = 3
+
 [connection signal="pressed" from="LevelUI/Button2" to="." method="_on_level_selected"]
 [connection signal="TargetHit" from="SubViewport/GamePlayArea/LevelCompleteNodes/LevelCompleteTarget" to="LevelManager" method="start_level"]
 [connection signal="TargetHit" from="SubViewport/GamePlayArea/LevelCompleteNodes/LevelCompleteTarget" to="SubViewport/GamePlayArea/LevelCompleteNodes" method="HideLevelComplete"]
@@ -317,3 +334,6 @@ transform = Transform3D(0.85837847, 0, 0.513017, 0, 1, 0, -0.513017, 0, 0.858378
 [connection signal="onValueChanged" from="TV_edited/VolumeKnob" to="." method="_on_volume_knob_on_value_changed"]
 [connection signal="onValueChanged" from="TV_edited/Button" to="." method="_on_off_button_pressed"]
 [connection signal="level_selected" from="Levels/Level1" to="." method="_on_level_selected"]
+[connection signal="level_selected" from="Levels/Level2" to="." method="_on_level_selected"]
+[connection signal="level_selected" from="Levels/Level3" to="." method="_on_level_selected"]
+[connection signal="level_selected" from="Levels/Level4" to="." method="_on_level_selected"]

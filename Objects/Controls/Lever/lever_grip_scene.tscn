@@ -5,8 +5,9 @@
 [ext_resource type="Script" uid="uid://dymdl8qekvao0" path="res://Objects/Controls/Lever/LeverAngleControl.gd" id="3_gn6k0"]
 [ext_resource type="AudioStream" uid="uid://dcngxnkmuak5y" path="res://RawAssets/Audio/Sounds/click_005.ogg" id="4_f4ykp"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_i5arm"]
-radius = 0.2770956
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f4ykp"]
+radius = 0.25
+height = 0.89160156
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2b3h"]
 resource_name = "platformer"
@@ -83,16 +84,17 @@ shadow_mesh = SubResource("ArrayMesh_aqhaf")
 
 [node name="LeverGrip" type="Node3D" node_paths=PackedStringArray("Input_Area")]
 script = ExtResource("1_d8ww1")
-maxHeight = 0.6
-minHeight = -0.6
+maxHeight = 0.4
+minHeight = -0.4
 sound_interval = 0.3
 Input_Area = NodePath("Area3D2")
 
 [node name="Area3D2" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0.912)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0.912)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
-shape = SubResource("SphereShape3D_i5arm")
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_f4ykp")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Area3D2"]
 visible = false

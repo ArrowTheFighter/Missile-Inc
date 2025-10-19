@@ -86,7 +86,9 @@ func get_random_spawn_pos():
 		spawn_pos = Spawn_Zone.global_position + Vector3.RIGHT * random_spawn_offset
 		if(last_spawn_pos == null):
 			last_spawn_pos = spawn_pos
-		elif last_spawn_pos.y - spawn_pos.y < 0.2:
+			break
+		elif abs(last_spawn_pos.x - spawn_pos.x) > 0.5:
 			last_spawn_pos = spawn_pos
 			break
+		i += 1
 	return spawn_pos

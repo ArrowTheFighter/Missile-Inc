@@ -12,9 +12,9 @@ func _ready() -> void:
 	original_transform = global_transform
 
 func _process(delta: float) -> void:
-	return
 	if shake_strength > 0.0:
 		# Random small offset and rotation
+		print("shaking")
 		var offset = Vector3(
 			randf_range(-1, 1),
 			randf_range(-1, 1),
