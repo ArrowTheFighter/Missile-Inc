@@ -215,10 +215,8 @@ texture = SubResource("ViewportTexture_ncgx6")
 transform = Transform3D(8.5, 0, 0, 0, 8.5, 0, 0, 0, 8.5, 0.4060707, -4.4237785, -3.0088553)
 
 [node name="VolumeKnob" parent="TV_edited" instance=ExtResource("33_llj7c")]
-transform = Transform3D(-0.029411765, 2.571258e-09, 0, -2.571258e-09, -0.029411765, 0, 0, 0, 0.029411765, -0.5233969, 0.9678162, 0.36352172)
-rotation_damp = 50.0
-current_rotation = 6.283
-sound_interval = 0.3
+transform = Transform3D(0.029411765, 2.0898316e-16, 0, -2.0898316e-16, 0.029411765, 0, 0, 0, 0.029411765, -0.5233969, 0.9678162, 0.36352172)
+current_rotation = 3.12
 
 [node name="Button" parent="TV_edited" instance=ExtResource("24_i81jv")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.61686456, 0.96770847, 0.3519681)

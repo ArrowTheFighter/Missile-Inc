@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://cimng1naje5s6"]
 
 [ext_resource type="Script" uid="uid://bqlwn041ina1s" path="res://Objects/Controls/Wheel/wheel_script.gd" id="1_0bb2e"]
-[ext_resource type="PackedScene" uid="uid://d10yohw76p3ee" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/green/arch_wide_green.gltf" id="3_qyl3x"]
-[ext_resource type="PackedScene" uid="uid://c7yypnqfxee3k" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/green/pipe_end_green.gltf" id="3_tnlg1"]
-[ext_resource type="PackedScene" uid="uid://fbjsgpd38rn4" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/green/signage_arrow_wall_green.gltf" id="4_qyl3x"]
-[ext_resource type="PackedScene" uid="uid://ntsx5r44lwca" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/signage_arrow_wall_yellow.gltf" id="5_umsox"]
+[ext_resource type="PackedScene" uid="uid://d10yohw76p3ee" path="res://RawAssets/OLD/KayKit_Platformer_Pack_1.0_EXTRA/Assets/green/arch_wide_green.gltf" id="3_qyl3x"]
+[ext_resource type="PackedScene" uid="uid://c7yypnqfxee3k" path="res://RawAssets/OLD/KayKit_Platformer_Pack_1.0_EXTRA/Assets/green/pipe_end_green.gltf" id="3_tnlg1"]
+[ext_resource type="PackedScene" uid="uid://fbjsgpd38rn4" path="res://RawAssets/OLD/KayKit_Platformer_Pack_1.0_EXTRA/Assets/green/signage_arrow_wall_green.gltf" id="4_qyl3x"]
+[ext_resource type="PackedScene" uid="uid://ntsx5r44lwca" path="res://RawAssets/OLD/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/signage_arrow_wall_yellow.gltf" id="5_umsox"]
 [ext_resource type="AudioStream" uid="uid://jlk3btimejci" path="res://RawAssets/Audio/Sounds/click_001.ogg" id="6_vact6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bqloa"]
@@ -22,6 +22,7 @@ albedo_color = Color(0.26657522, 0.2665752, 0.2665752, 1)
 
 [node name="Wheel" type="Node3D" node_paths=PackedStringArray("target_object", "Input_Area")]
 script = ExtResource("1_0bb2e")
+current_rotation = 0.0
 target_object = NodePath("pipe_end_green2")
 Input_Area = NodePath("Area3D")
 
