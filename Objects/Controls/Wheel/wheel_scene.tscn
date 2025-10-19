@@ -22,7 +22,7 @@ albedo_color = Color(0.26657522, 0.2665752, 0.2665752, 1)
 
 [node name="Wheel" type="Node3D" node_paths=PackedStringArray("target_object", "Input_Area")]
 script = ExtResource("1_0bb2e")
-current_rotation = -6.283
+current_rotation = 0.0
 target_object = NodePath("pipe_end_green2")
 Input_Area = NodePath("Area3D")
 
