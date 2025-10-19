@@ -1,11 +1,13 @@
 extends Node
 
+signal level_deloaded
+
 @export var starting_level := 0
 var current_level = 0
 @export var Levels : Array[LevelData]
 
 @export var spawner : EnemySpawnerScript
-var current_controls
+var current_controls:ControlsSpawnHandler
 
 func _ready() -> void:
 	current_level = starting_level
@@ -13,7 +15,6 @@ func _ready() -> void:
 func start_level():
 	if Levels.size() > current_level:
 		spawner.Wave_Data = Levels[current_level].wave_data
-		spawner.start_wave()
 		if(current_controls != null):
 			current_controls.queue_free()
 			
@@ -21,7 +22,13 @@ func start_level():
 		var instanced_controls = Levels[current_level].controls_scene.instantiate()
 		get_tree().root.add_child(instanced_controls)
 		current_controls = instanced_controls
-	
-	
+		await current_controls.controls_moved_in
+		spawner.start_wave()
+
+func deload_level()->void:
+	current_controls.move_out_controls()
+	await current_controls.controls_moved_out
+	level_deloaded.emit()
+
 func increase_level():
 	current_level += 1

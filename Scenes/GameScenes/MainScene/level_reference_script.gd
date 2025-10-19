@@ -12,3 +12,16 @@ func _on_level_selected(level:int = 0)->void:
 	$LevelManager.starting_level = level
 	$LevelManager.start_level()
 	$SubViewport/GamePlayArea/TV_Background.HideBackground()
+
+func _on_turn_off_tv()->void:
+	var timer = get_tree().create_timer(1)
+	$SubViewport/GamePlayArea/TV_Background.ShowBackground()
+	await timer.timeout
+	$LevelManager.deload_level()
+	await $LevelManager.level_deloaded
+	camera.move_to_levels()
+
+
+func _on_off_button_pressed(value:float) -> void:
+	if value > .5:
+		_on_turn_off_tv()

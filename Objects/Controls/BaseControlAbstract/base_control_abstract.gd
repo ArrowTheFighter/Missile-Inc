@@ -10,7 +10,7 @@ var control_value := 0.0
 #changes wether setting locked to true locks the control or vise versa
 @export var invert_locked := false
 
-signal onValueChanged(float)
+signal onValueChanged(value:float)
 
 func _ready() -> void:
 	if Input_Area != null:

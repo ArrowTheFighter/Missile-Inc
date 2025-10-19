@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://becs2nxjvitxd"]
+[gd_scene load_steps=46 format=3 uid="uid://becs2nxjvitxd"]
 
 [ext_resource type="PackedScene" uid="uid://vkee7ul42q82" path="res://Scenes/GameScenes/Level_UI/Level_UI.tscn" id="1_7wnsk"]
 [ext_resource type="Script" uid="uid://crgbw42ye0wxi" path="res://Scenes/GameScenes/MainScene/level_reference_script.gd" id="1_wfosk"]
@@ -23,6 +23,7 @@
 [ext_resource type="Resource" uid="uid://cw7vaaeb2duqo" path="res://Scenes/GameScenes/Level_1/WaveData-1.tres" id="14_7ax7i"]
 [ext_resource type="PackedScene" uid="uid://cec1eytpv2ly3" path="res://Objects/TVBackground/TV_edited.glb" id="15_2rdu0"]
 [ext_resource type="PackedScene" uid="uid://c2nej4bvtmhaj" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/cabinet_medium.gltf" id="23_wejqe"]
+[ext_resource type="PackedScene" uid="uid://dxf5jjt2365yb" path="res://Objects/Controls/Button/on_off_button_scene.tscn" id="24_i81jv"]
 [ext_resource type="PackedScene" uid="uid://chfxkjn5wdny2" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/book_single.gltf" id="24_wfosk"]
 [ext_resource type="PackedScene" uid="uid://c3l5yht54dqeg" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/pictureframe_medium.gltf" id="25_t6tf6"]
 [ext_resource type="PackedScene" uid="uid://djbp5y4fhskt3" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/rug_rectangle_B.gltf" id="26_1eq8u"]
@@ -32,6 +33,7 @@
 [ext_resource type="Script" uid="uid://bdgs6d1yuyi5b" path="res://Objects/level_camera_scene/outside_camera_scene.gd" id="30_1eq8u"]
 [ext_resource type="PackedScene" uid="uid://duuht53vc3e6" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/table_medium_long.gltf" id="30_t6tf6"]
 [ext_resource type="Script" uid="uid://cbmu78axig5rp" path="res://Scenes/GameScenes/MainScene/level_selector_script.gd" id="32_w04gn"]
+[ext_resource type="PackedScene" uid="uid://tg5sti1ajbd" path="res://Objects/Controls/Wheel/knob_scene.tscn" id="33_llj7c"]
 
 [sub_resource type="Environment" id="Environment_a202f"]
 background_color = Color(0.5481376, 0.6183476, 0.7303044, 1)
@@ -200,6 +202,12 @@ texture = SubResource("ViewportTexture_ncgx6")
 [node name="TV_edited" parent="." instance=ExtResource("15_2rdu0")]
 transform = Transform3D(8.5, 0, 0, 0, 8.5, 0, 0, 0, 8.5, 0.4060707, -4.4237785, -3.0088553)
 
+[node name="VolumeKnob" parent="TV_edited" instance=ExtResource("33_llj7c")]
+transform = Transform3D(0.029411765, 0, 0, 0, 0.029411765, 0, 0, 0, 0.029411765, -0.5233969, 0.9678162, 0.36352172)
+
+[node name="Button" parent="TV_edited" instance=ExtResource("24_i81jv")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.61686456, 0.96770847, 0.3519681)
+
 [node name="ControlSpawnTarget" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.245106, 0, 21.847252)
 
@@ -297,6 +305,7 @@ shape = SubResource("BoxShape3D_1eq8u")
 [connection signal="TargetHit" from="SubViewport/GamePlayArea/LevelCompleteNodes/LevelCompleteTarget" to="SubViewport/GamePlayArea/LevelCompleteNodes" method="HideLevelComplete"]
 [connection signal="match_ended" from="SubViewport/GamePlayArea/EnemySpawner" to="LevelManager" method="increase_level"]
 [connection signal="match_ended" from="SubViewport/GamePlayArea/EnemySpawner" to="SubViewport/GamePlayArea/LevelCompleteNodes" method="ShowLevelComplete"]
+[connection signal="onValueChanged" from="TV_edited/Button" to="." method="_on_off_button_pressed"]
 [connection signal="level_selected" from="Levels/Level1" to="." method="_on_level_selected"]
 [connection signal="input_event" from="Levels/Level1/Area3D" to="Levels/Level1" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Levels/Level1/Area3D" to="Levels/Level1" method="_on_area_3d_mouse_entered"]
