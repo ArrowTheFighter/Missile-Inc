@@ -12,7 +12,8 @@ var current_controls:ControlsSpawnHandler
 func _ready() -> void:
 	current_level = starting_level
 
-func start_level():
+func start_level(level_in:int = -1):
+	if level_in > -1: current_level = level_in
 	if Levels.size() > current_level:
 		spawner.Wave_Data = Levels[current_level].wave_data
 		$LevelBackgroundMusic.stop()

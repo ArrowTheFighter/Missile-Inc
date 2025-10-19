@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://becs2nxjvitxd"]
+[gd_scene load_steps=46 format=3 uid="uid://becs2nxjvitxd"]
 
 [ext_resource type="PackedScene" uid="uid://vkee7ul42q82" path="res://Scenes/GameScenes/Level_UI/Level_UI.tscn" id="1_7wnsk"]
 [ext_resource type="Script" uid="uid://crgbw42ye0wxi" path="res://Scenes/GameScenes/MainScene/level_reference_script.gd" id="1_wfosk"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://be6kxn0nhuo1m" path="res://Objects/Enemies/EnemySpawner/enemy_spawner_scene.tscn" id="13_4qvdo"]
 [ext_resource type="Resource" uid="uid://cw7vaaeb2duqo" path="res://Scenes/GameScenes/Level_1/WaveData-1.tres" id="14_7ax7i"]
 [ext_resource type="PackedScene" uid="uid://cec1eytpv2ly3" path="res://Objects/TVBackground/TV_edited.glb" id="15_2rdu0"]
+[ext_resource type="AudioStream" uid="uid://btujmtb2doysm" path="res://RawAssets/Audio/Sounds/secret5.ogg" id="22_06qis"]
 [ext_resource type="PackedScene" uid="uid://c2nej4bvtmhaj" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/cabinet_medium.gltf" id="23_wejqe"]
 [ext_resource type="PackedScene" uid="uid://dxf5jjt2365yb" path="res://Objects/Controls/Button/on_off_button_scene.tscn" id="24_i81jv"]
 [ext_resource type="PackedScene" uid="uid://chfxkjn5wdny2" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/book_single.gltf" id="24_wfosk"]
@@ -160,6 +161,10 @@ font_size = 142
 [node name="LevelCompleteTarget" parent="SubViewport/GamePlayArea/LevelCompleteNodes" instance=ExtResource("10_5px6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5859032, 0.63436127, 0.60366297)
 script = ExtResource("11_xqb21")
+
+[node name="WinSound" type="AudioStreamPlayer" parent="SubViewport/GamePlayArea/LevelCompleteNodes"]
+stream = ExtResource("22_06qis")
+volume_db = -10.0
 
 [node name="LevelFailedNodes" type="Node3D" parent="SubViewport/GamePlayArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
