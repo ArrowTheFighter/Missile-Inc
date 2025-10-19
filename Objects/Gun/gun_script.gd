@@ -31,7 +31,7 @@ func Rotate_Gun(value : float):
 	pass
 
 func Move_Gun(value : float):
-	var new_position_x = lerpf(-2.5, 5.75, value)
+	var new_position_x = lerpf(-1.5, 4.75, value)
 	position.x = new_position_x
 
 func Aim_At_Target_Position(target_position : Vector3):
