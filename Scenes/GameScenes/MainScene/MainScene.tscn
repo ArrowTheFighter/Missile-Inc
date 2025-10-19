@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://becs2nxjvitxd"]
+[gd_scene load_steps=45 format=3 uid="uid://becs2nxjvitxd"]
 
 [ext_resource type="PackedScene" uid="uid://vkee7ul42q82" path="res://Scenes/GameScenes/Level_UI/Level_UI.tscn" id="1_7wnsk"]
 [ext_resource type="Script" uid="uid://crgbw42ye0wxi" path="res://Scenes/GameScenes/MainScene/level_reference_script.gd" id="1_wfosk"]
@@ -32,8 +32,8 @@
 [ext_resource type="PackedScene" uid="uid://yhmusg7buga7" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/lamp_standing.gltf" id="29_wfosk"]
 [ext_resource type="Script" uid="uid://bdgs6d1yuyi5b" path="res://Objects/level_camera_scene/outside_camera_scene.gd" id="30_1eq8u"]
 [ext_resource type="PackedScene" uid="uid://duuht53vc3e6" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/table_medium_long.gltf" id="30_t6tf6"]
-[ext_resource type="Script" uid="uid://cbmu78axig5rp" path="res://Scenes/GameScenes/MainScene/level_selector_script.gd" id="32_w04gn"]
 [ext_resource type="PackedScene" uid="uid://tg5sti1ajbd" path="res://Objects/Controls/Wheel/knob_scene.tscn" id="33_llj7c"]
+[ext_resource type="PackedScene" uid="uid://xti541t514ba" path="res://LevelData/level_select_scene.tscn" id="34_i81jv"]
 
 [sub_resource type="Environment" id="Environment_a202f"]
 background_color = Color(0.5481376, 0.6183476, 0.7303044, 1)
@@ -95,9 +95,6 @@ flip_faces = true
 size = Vector2(200, 200)
 subdivide_width = 10
 subdivide_depth = 10
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_1eq8u"]
-size = Vector3(3.4595337, 1, 4.393982)
 
 [node name="Level_1" type="Node3D" node_paths=PackedStringArray("gun_node", "crosshair_node")]
 script = ExtResource("1_wfosk")
@@ -216,7 +213,9 @@ transform = Transform3D(8.5, 0, 0, 0, 8.5, 0, 0, 0, 8.5, 0.4060707, -4.4237785, 
 
 [node name="VolumeKnob" parent="TV_edited" instance=ExtResource("33_llj7c")]
 transform = Transform3D(0.029411765, 2.0898316e-16, 0, -2.0898316e-16, 0.029411765, 0, 0, 0, 0.029411765, -0.5233969, 0.9678162, 0.36352172)
+rotation_damp = 50.0
 current_rotation = 3.12
+sound_interval = 0.3
 
 [node name="Button" parent="TV_edited" instance=ExtResource("24_i81jv")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.61686456, 0.96770847, 0.3519681)
@@ -300,18 +299,8 @@ transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -0.00037145615, -13.744136, 1
 [node name="Levels" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.119136, 16.086765)
 
-[node name="Level1" type="Node3D" parent="Levels"]
+[node name="Level1" parent="Levels" instance=ExtResource("34_i81jv")]
 transform = Transform3D(0.85837847, 0, 0.513017, 0, 1, 0, -0.513017, 0, 0.85837847, -5.233559, -0.6456189, 1.620882)
-script = ExtResource("32_w04gn")
-
-[node name="visual" parent="Levels/Level1" instance=ExtResource("25_t6tf6")]
-transform = Transform3D(5, 0, 0, 0, -2.1855695e-07, 2, 0, -5, -8.742278e-08, 0, 0, 0)
-
-[node name="Area3D" type="Area3D" parent="Levels/Level1"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Levels/Level1/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016447067, 0, 0.009921074)
-shape = SubResource("BoxShape3D_1eq8u")
 
 [connection signal="pressed" from="LevelUI/Button2" to="." method="_on_level_selected"]
 [connection signal="TargetHit" from="SubViewport/GamePlayArea/LevelCompleteNodes/LevelCompleteTarget" to="LevelManager" method="start_level"]
@@ -323,6 +312,3 @@ shape = SubResource("BoxShape3D_1eq8u")
 [connection signal="onValueChanged" from="TV_edited/VolumeKnob" to="." method="_on_volume_knob_on_value_changed"]
 [connection signal="onValueChanged" from="TV_edited/Button" to="." method="_on_off_button_pressed"]
 [connection signal="level_selected" from="Levels/Level1" to="." method="_on_level_selected"]
-[connection signal="input_event" from="Levels/Level1/Area3D" to="Levels/Level1" method="_on_area_3d_input_event"]
-[connection signal="mouse_entered" from="Levels/Level1/Area3D" to="Levels/Level1" method="_on_area_3d_mouse_entered"]
-[connection signal="mouse_exited" from="Levels/Level1/Area3D" to="Levels/Level1" method="_on_area_3d_mouse_exited"]

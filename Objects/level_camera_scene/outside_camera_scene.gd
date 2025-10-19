@@ -18,7 +18,7 @@ signal move_levels_finished
 func _ready() -> void:
 	# Save original transform so we can return to it cleanly
 	global_transform = camera_start_transform
-	move_to_levels()
+	get_tree().create_timer(1.7).timeout.connect(move_to_levels)
 
 func move_to_levels()->void:
 	var tween := get_tree().create_tween()
