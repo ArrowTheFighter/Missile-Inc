@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://de4nhm0c47le1"]
+[gd_scene load_steps=10 format=3 uid="uid://de4nhm0c47le1"]
 
 [ext_resource type="Script" uid="uid://bxkqdt33jpi37" path="res://Objects/Bullets/BasicBullet/bullet_script.gd" id="1_v7oki"]
 [ext_resource type="PackedScene" uid="uid://c5nyk0ucame22" path="res://Objects/Particles/BulletHitParticle/bullet_hit_particle.tscn" id="2_brw2b"]
@@ -14,17 +14,44 @@ height = 0.5
 [sub_resource type="BoxShape3D" id="BoxShape3D_v7oki"]
 size = Vector3(0.23608398, 0.546875, 2.7497559)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brw2b"]
+albedo_color = Color(1, 0.43266666, 0.07999998, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qkgqg"]
+material = SubResource("StandardMaterial3D_brw2b")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpdbi"]
+albedo_color = Color(1, 0.43266666, 0.07999998, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ha7m0"]
+material = SubResource("StandardMaterial3D_cpdbi")
+top_radius = 0.01
+bottom_radius = 0.1
+height = 0.25
+
 [node name="Bullet" type="Node3D" node_paths=PackedStringArray("CollisionArea")]
 script = ExtResource("1_v7oki")
 CollisionArea = NodePath("Area3D")
 hit_particle = ExtResource("2_brw2b")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_rtl8c")
 
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_v7oki")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12312491, 0)
+mesh = SubResource("CylinderMesh_qkgqg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12673135, 0)
+mesh = SubResource("CylinderMesh_ha7m0")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
