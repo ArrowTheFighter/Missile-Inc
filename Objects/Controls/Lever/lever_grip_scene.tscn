@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://s6qddpkxjec7"]
+[gd_scene load_steps=11 format=4 uid="uid://s6qddpkxjec7"]
 
 [ext_resource type="Script" uid="uid://xdcalobonf0t" path="res://Objects/Controls/Lever/LeverControl.gd" id="1_d8ww1"]
 [ext_resource type="Texture2D" uid="uid://udi7utc2ukpg" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/green/platformer_texture.png" id="2_d8ww1"]
 [ext_resource type="Script" uid="uid://dymdl8qekvao0" path="res://Objects/Controls/Lever/LeverAngleControl.gd" id="3_gn6k0"]
+[ext_resource type="AudioStream" uid="uid://dcngxnkmuak5y" path="res://RawAssets/Audio/Sounds/click_005.ogg" id="4_f4ykp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i5arm"]
 radius = 0.2770956
@@ -84,6 +85,7 @@ shadow_mesh = SubResource("ArrayMesh_aqhaf")
 script = ExtResource("1_d8ww1")
 maxHeight = 0.6
 minHeight = -0.6
+sound_interval = 0.3
 Input_Area = NodePath("Area3D2")
 
 [node name="Area3D2" type="Area3D" parent="."]
@@ -107,3 +109,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.24999976)
 mesh = SubResource("ArrayMesh_iym0q")
 skeleton = NodePath("")
 script = ExtResource("3_gn6k0")
+
+[node name="LeverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_f4ykp")

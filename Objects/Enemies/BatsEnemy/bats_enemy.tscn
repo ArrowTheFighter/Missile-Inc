@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bklf1o02v1is7"]
+[gd_scene load_steps=15 format=3 uid="uid://bklf1o02v1is7"]
 
 [ext_resource type="Script" uid="uid://6bcs57laxa6j" path="res://Objects/Enemies/BatsEnemy/bats_enemy.gd" id="1_enjil"]
+[ext_resource type="AudioStream" uid="uid://b8jhjankfj3nl" path="res://RawAssets/Audio/Sounds/creature3.ogg" id="2_p7qxe"]
 [ext_resource type="PackedScene" uid="uid://ervowdcakywf" path="res://Objects/Particles/EnemyDeathParticle/enemy_death_particle.tscn" id="2_vj8gj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qipcl"]
@@ -42,6 +43,7 @@ left_to_right = 0.0
 script = ExtResource("1_enjil")
 speed = 1.5
 Area = NodePath("Area3D")
+death_sound_stream = ExtResource("2_p7qxe")
 death_particle = ExtResource("2_vj8gj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

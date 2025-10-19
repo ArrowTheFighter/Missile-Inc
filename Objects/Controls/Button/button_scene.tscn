@@ -1,14 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6ln4quk1xu4g"]
+[gd_scene load_steps=8 format=3 uid="uid://b6ln4quk1xu4g"]
 
 [ext_resource type="Script" uid="uid://cb6eqs84hsxkx" path="res://Objects/Controls/Button/button_script.gd" id="1_c8lqy"]
+[ext_resource type="PackedScene" uid="uid://c7yypnqfxee3k" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/green/pipe_end_green.gltf" id="2_wlhaf"]
+[ext_resource type="PackedScene" uid="uid://divpyn6epyunc" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/red/spring_pad_red.gltf" id="3_nkrhd"]
+[ext_resource type="AudioStream" uid="uid://hj4sg4ihvd0m" path="res://RawAssets/Audio/Sounds/click_003.ogg" id="4_nkrhd"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jka67"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c8lqy"]
-albedo_color = Color(0, 0.5294118, 0.33333334, 1)
+[sub_resource type="CylinderMesh" id="CylinderMesh_nkrhd"]
+top_radius = 0.6
+bottom_radius = 0.6
+height = 0.2
+radial_segments = 6
+rings = 1
 
-[sub_resource type="SphereMesh" id="SphereMesh_v703d"]
-material = SubResource("StandardMaterial3D_c8lqy")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_agsgh"]
+albedo_color = Color(0.26657522, 0.2665752, 0.2665752, 1)
 
 [node name="Button" type="Node3D" node_paths=PackedStringArray("mesh", "Input_Area")]
 script = ExtResource("1_c8lqy")
@@ -21,4 +28,15 @@ Input_Area = NodePath("Area3D")
 shape = SubResource("SphereShape3D_jka67")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_v703d")
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.000988245)
+mesh = SubResource("CylinderMesh_nkrhd")
+surface_material_override/0 = SubResource("StandardMaterial3D_agsgh")
+
+[node name="pipe_end_green2" parent="." instance=ExtResource("2_wlhaf")]
+transform = Transform3D(0.6, 0, 0, 0, -2.6226834e-08, -0.6, 0, 0.6, -2.6226834e-08, 0, 0, -0.38405186)
+
+[node name="ButtonPad" parent="." instance=ExtResource("3_nkrhd")]
+transform = Transform3D(0.6, 0, 0, 0, -2.6226834e-08, -0.6, 0, 0.6, -2.6226834e-08, 0, 0, -0.25901097)
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nkrhd")

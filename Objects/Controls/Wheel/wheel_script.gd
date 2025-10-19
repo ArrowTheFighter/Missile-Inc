@@ -12,12 +12,13 @@ var min_rotation := 0.0
 var max_rotation := 0.0  # TAU == 2 * PI (360 degrees)
 @onready var target_object = $pipe_end_green2
 
+@export var sound_interval := 1.0
+var sound_angle := 0.0
 
 func _ready() -> void:
 	super()
 	min_rotation = -TAU * min_rotations
 	max_rotation = TAU * max_rotations
-	pass
 
 func _input(event: InputEvent) -> void:
 	super(event)
@@ -32,6 +33,9 @@ func _process(delta: float) -> void:
 		rotation_velocity = current_rotation
 		var new_value = snappedf(inverse_lerp(max_rotation, min_rotation, current_rotation), 0.0001)
 		set_control_value(new_value)
+		if sound_angle >= sound_interval:
+			sound_angle = 0.0
+			$WheelSound.play()
 
 func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
@@ -53,6 +57,8 @@ func calculate_new_mouse_angle():
 	var current_angle = atan2(mouse_vec.y, mouse_vec.x)
 	var delta_angle = current_angle - last_drag_angle
 	last_drag_angle = current_angle
+	sound_angle += abs(delta_angle)
+	print(sound_angle)
 
 	delta_angle = -wrapf(delta_angle, -PI, PI)
 	

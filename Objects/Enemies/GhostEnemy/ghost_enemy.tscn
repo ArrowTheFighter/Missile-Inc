@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://ds0pjo1fl13d0"]
+[gd_scene load_steps=15 format=3 uid="uid://ds0pjo1fl13d0"]
 
 [ext_resource type="Script" uid="uid://osea0san7dox" path="res://Objects/Enemies/GhostEnemy/ghost_enemy.gd" id="1_3uspt"]
 [ext_resource type="PackedScene" uid="uid://ervowdcakywf" path="res://Objects/Particles/EnemyDeathParticle/enemy_death_particle.tscn" id="2_g3v2c"]
+[ext_resource type="AudioStream" uid="uid://doibwe3sv8vgb" path="res://RawAssets/Audio/Sounds/creature3_slowed.ogg" id="2_hwk02"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qipcl"]
 albedo_color = Color(0.8840818, 0.13950244, 0, 1)
@@ -39,6 +40,7 @@ left_to_right = 0.0
 script = ExtResource("1_3uspt")
 speed = 0.35
 Area = NodePath("Area3D")
+death_sound_stream = ExtResource("2_hwk02")
 death_particle = ExtResource("2_g3v2c")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://becs2nxjvitxd"]
+[gd_scene load_steps=44 format=3 uid="uid://becs2nxjvitxd"]
 
 [ext_resource type="PackedScene" uid="uid://vkee7ul42q82" path="res://Scenes/GameScenes/Level_UI/Level_UI.tscn" id="1_7wnsk"]
 [ext_resource type="Script" uid="uid://crgbw42ye0wxi" path="res://Scenes/GameScenes/MainScene/level_reference_script.gd" id="1_wfosk"]
@@ -22,12 +22,21 @@
 [ext_resource type="PackedScene" uid="uid://be6kxn0nhuo1m" path="res://Objects/Enemies/EnemySpawner/enemy_spawner_scene.tscn" id="13_4qvdo"]
 [ext_resource type="Resource" uid="uid://cw7vaaeb2duqo" path="res://Scenes/GameScenes/Level_1/WaveData-1.tres" id="14_7ax7i"]
 [ext_resource type="PackedScene" uid="uid://cec1eytpv2ly3" path="res://Objects/TVBackground/TV_edited.glb" id="15_2rdu0"]
+[ext_resource type="PackedScene" uid="uid://c2nej4bvtmhaj" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/cabinet_medium.gltf" id="23_wejqe"]
+[ext_resource type="PackedScene" uid="uid://chfxkjn5wdny2" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/book_single.gltf" id="24_wfosk"]
+[ext_resource type="PackedScene" uid="uid://c3l5yht54dqeg" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/pictureframe_medium.gltf" id="25_t6tf6"]
+[ext_resource type="PackedScene" uid="uid://djbp5y4fhskt3" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/rug_rectangle_B.gltf" id="26_1eq8u"]
+[ext_resource type="PackedScene" uid="uid://muyxgldt0kl4" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/couch_pillows.gltf" id="27_w04gn"]
+[ext_resource type="PackedScene" uid="uid://qwacwf2fatxb" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/armchair_pillows.gltf" id="28_llj7c"]
+[ext_resource type="PackedScene" uid="uid://yhmusg7buga7" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/lamp_standing.gltf" id="29_wfosk"]
+[ext_resource type="Script" uid="uid://bdgs6d1yuyi5b" path="res://Objects/level_camera_scene/outside_camera_scene.gd" id="30_1eq8u"]
+[ext_resource type="PackedScene" uid="uid://duuht53vc3e6" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/table_medium_long.gltf" id="30_t6tf6"]
+[ext_resource type="Script" uid="uid://cbmu78axig5rp" path="res://Scenes/GameScenes/MainScene/level_selector_script.gd" id="32_w04gn"]
 
 [sub_resource type="Environment" id="Environment_a202f"]
 background_color = Color(0.5481376, 0.6183476, 0.7303044, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.84, 0.75684, 0.56279993, 1)
-ambient_light_energy = 2.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j5w64"]
 shader = ExtResource("8_d2vs7")
@@ -65,6 +74,29 @@ size = Vector3(6.2460938, 3.9196777, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_ncgx6"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i81jv"]
+albedo_color = Color(0.26, 0.25063998, 0.22879998, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_06qis"]
+material = SubResource("StandardMaterial3D_i81jv")
+flip_faces = true
+size = Vector2(200, 200)
+subdivide_width = 10
+subdivide_depth = 10
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gtdbg"]
+albedo_color = Color(0.1479801, 0.2774206, 0.27334276, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_2kbtd"]
+material = SubResource("StandardMaterial3D_gtdbg")
+flip_faces = true
+size = Vector2(200, 200)
+subdivide_width = 10
+subdivide_depth = 10
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1eq8u"]
+size = Vector3(3.4595337, 1, 4.393982)
+
 [node name="Level_1" type="Node3D" node_paths=PackedStringArray("gun_node", "crosshair_node")]
 script = ExtResource("1_wfosk")
 gun_node = NodePath("SubViewport/GamePlayArea/Gun")
@@ -76,6 +108,7 @@ Levels = Array[ExtResource("2_j34ea")]([ExtResource("3_wejqe"), ExtResource("4_w
 spawner = NodePath("../SubViewport/GamePlayArea/EnemySpawner")
 
 [node name="LevelUI" parent="." node_paths=PackedStringArray("enemy_spawner") instance=ExtResource("1_7wnsk")]
+visible = false
 enemy_spawner = NodePath("../SubViewport/GamePlayArea/EnemySpawner")
 
 [node name="Button2" type="Button" parent="LevelUI"]
@@ -97,11 +130,6 @@ script = ExtResource("2_2gtie")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_a202f")
 
-[node name="Camera3D" parent="." instance=ExtResource("2_dykdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.530838)
-projection = 0
-fov = 25.0
-
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
 handle_input_locally = false
@@ -117,7 +145,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GamePlayArea" type="Node3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.377426, 17.670425, -0.10837555)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.394638, 15.003887, 0)
 
 [node name="LevelCompleteNodes" type="Node3D" parent="SubViewport/GamePlayArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
@@ -138,7 +166,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6255703, 0, 3.6549354)
 [node name="TV_Background" type="MeshInstance3D" parent="SubViewport/GamePlayArea"]
 transform = Transform3D(7.9516563, 0, 0, 0, 6.2014265, 0, 0, 0, 1, 1.6290016, 0, 1)
 mesh = SubResource("BoxMesh_a0tk4")
-skeleton = NodePath("../../../Camera3D")
+skeleton = NodePath("../../../CameraStuff/RoomCamera")
 script = ExtResource("10_4goo8")
 
 [node name="Gun" parent="SubViewport/GamePlayArea" node_paths=PackedStringArray("Crosshair_Obj") instance=ExtResource("9_eiuq4")]
@@ -175,10 +203,101 @@ transform = Transform3D(8.5, 0, 0, 0, 8.5, 0, 0, 0, 8.5, 0.4060707, -4.4237785, 
 [node name="ControlSpawnTarget" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.245106, 0, 21.847252)
 
-[connection signal="pressed" from="LevelUI/Button2" to="LevelManager" method="start_level"]
-[connection signal="pressed" from="LevelUI/Button2" to="LevelUI/Button2" method="HideSelf"]
-[connection signal="pressed" from="LevelUI/Button2" to="SubViewport/GamePlayArea/TV_Background" method="HideBackground"]
+[node name="Room" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5434933, 0, 2.5658693)
+
+[node name="cabinet_medium2" parent="Room" instance=ExtResource("23_wejqe")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.5434933, -14.664288, -6.5180845)
+
+[node name="book_single2" parent="Room" instance=ExtResource("24_wfosk")]
+transform = Transform3D(1.4931629e-07, -3.4159586, -7.2340326, -8, -3.496911e-07, 0, -3.1620962e-07, 7.2340326, -3.4159586, -7.63482, -3.6237473, -7.552697)
+
+[node name="pictureframe_medium2" parent="Room" instance=ExtResource("25_t6tf6")]
+transform = Transform3D(3.094609, -1.03283, 2.3144453, -5.362282e-08, 3.652789, 1.630071, -2.5344424, -1.2611084, 2.8259888, 8.5838785, -3.0973241, -5.622821)
+
+[node name="rug_rectangle_B2" parent="Room" instance=ExtResource("26_1eq8u")]
+transform = Transform3D(13, 0, 0, 0, 10, 0, 0, 0, 13, 0.052315235, -14.742, 14.279777)
+
+[node name="floor" type="MeshInstance3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -14.254598, 0)
+mesh = SubResource("QuadMesh_06qis")
+
+[node name="TVWall" type="MeshInstance3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -14.254598, -13.849232)
+mesh = SubResource("QuadMesh_2kbtd")
+
+[node name="floor3" type="MeshInstance3D" parent="Room"]
+transform = Transform3D(-4.371139e-08, -8.742278e-08, -1, 0, -1, 8.742278e-08, -1, 3.821371e-15, 4.371139e-08, -40.176933, -14.254598, -13.849232)
+mesh = SubResource("QuadMesh_2kbtd")
+
+[node name="couch_pillows2" parent="Room" instance=ExtResource("27_w04gn")]
+transform = Transform3D(-8.660254, 0, -5.0000005, 0, 10, 0, 5.0000005, 0, -8.660254, 15.911307, -14.298895, 32.605362)
+
+[node name="armchair_pillows2" parent="Room" instance=ExtResource("28_llj7c")]
+transform = Transform3D(-8.660254, 0, 5, 0, 10, 0, -5, 0, -8.660254, -19.213207, -14.324459, 32.183754)
+
+[node name="lamp_standing2" parent="Room" instance=ExtResource("29_wfosk")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -30.450075, -14.364716, 10.89931)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Room/lamp_standing2"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.006070137, 1.9350468, 0)
+light_color = Color(0.97, 0.9168117, 0.5141, 1)
+light_energy = 10.0
+omni_range = 200.0
+
+[node name="CeilingLight" type="DirectionalLight3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 0.45097098, 0.89253867, 0, -0.89253867, 0.45097098, 1.8353856, 4.7683716e-07, 21.077538)
+light_color = Color(1, 0.968, 0.84000003, 1)
+light_energy = 0.2
+light_indirect_energy = 0.5
+
+[node name="CameraStuff" type="Node3D" parent="."]
+
+[node name="RoomCamera" parent="CameraStuff" instance=ExtResource("2_dykdg")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.62185884, 0.78312933, 0, -0.78312933, 0.62185884, 0.3991468, 19.243883, 35.24764)
+cull_mask = 1048063
+projection = 0
+fov = 25.0
+script = ExtResource("30_1eq8u")
+
+[node name="CameraStart" type="Marker3D" parent="CameraStuff"]
+unique_name_in_owner = true
+transform = Transform3D(0.91043836, -0.11937678, 0.39604443, 0, 0.95745057, 0.28859735, -0.41364476, -0.2627501, 0.87169975, 26.648382, 19.243883, 85.52797)
+
+[node name="CameraTV" type="Marker3D" parent="CameraStuff"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.530838)
+
+[node name="CameraLevels" type="Marker3D" parent="CameraStuff"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.62185884, 0.78312933, 0, -0.78312933, 0.62185884, 0.3991468, 19.243883, 35.24764)
+
+[node name="table_medium_long2" parent="." instance=ExtResource("30_t6tf6")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -0.00037145615, -13.744136, 15.611769)
+
+[node name="Levels" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.119136, 16.086765)
+
+[node name="Level1" type="Node3D" parent="Levels"]
+transform = Transform3D(0.85837847, 0, 0.513017, 0, 1, 0, -0.513017, 0, 0.85837847, -5.233559, -0.6456189, 1.620882)
+script = ExtResource("32_w04gn")
+
+[node name="visual" parent="Levels/Level1" instance=ExtResource("25_t6tf6")]
+transform = Transform3D(5, 0, 0, 0, -2.1855695e-07, 2, 0, -5, -8.742278e-08, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="Levels/Level1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Levels/Level1/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016447067, 0, 0.009921074)
+shape = SubResource("BoxShape3D_1eq8u")
+
+[connection signal="pressed" from="LevelUI/Button2" to="." method="_on_level_selected"]
 [connection signal="TargetHit" from="SubViewport/GamePlayArea/LevelCompleteNodes/LevelCompleteTarget" to="LevelManager" method="start_level"]
 [connection signal="TargetHit" from="SubViewport/GamePlayArea/LevelCompleteNodes/LevelCompleteTarget" to="SubViewport/GamePlayArea/LevelCompleteNodes" method="HideLevelComplete"]
 [connection signal="match_ended" from="SubViewport/GamePlayArea/EnemySpawner" to="LevelManager" method="increase_level"]
 [connection signal="match_ended" from="SubViewport/GamePlayArea/EnemySpawner" to="SubViewport/GamePlayArea/LevelCompleteNodes" method="ShowLevelComplete"]
+[connection signal="level_selected" from="Levels/Level1" to="." method="_on_level_selected"]
+[connection signal="input_event" from="Levels/Level1/Area3D" to="Levels/Level1" method="_on_area_3d_input_event"]
+[connection signal="mouse_entered" from="Levels/Level1/Area3D" to="Levels/Level1" method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Levels/Level1/Area3D" to="Levels/Level1" method="_on_area_3d_mouse_exited"]

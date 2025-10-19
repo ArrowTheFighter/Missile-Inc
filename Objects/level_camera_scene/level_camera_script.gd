@@ -5,13 +5,14 @@ extends Camera3D
 @export var max_rotation := 2.0        # Max rotation offset (in degrees)
 
 var shake_strength := 0.0              # Current shake intensity
-var original_transform: Transform3D    # Store camera's base transform
+@onready var original_transform: Transform3D   # Store camera's base transform
 
 func _ready() -> void:
 	# Save original transform so we can return to it cleanly
 	original_transform = global_transform
 
 func _process(delta: float) -> void:
+	return
 	if shake_strength > 0.0:
 		# Random small offset and rotation
 		var offset = Vector3(
