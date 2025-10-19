@@ -9,6 +9,7 @@ var offset_dir := Vector3(0,.5,0)
 
 func _ready() -> void:
 	orig_transform = global_transform
+	$Cartridge/Label3D.text = "Level " + str(level_index + 1)
 
 func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
