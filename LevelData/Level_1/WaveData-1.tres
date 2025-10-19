@@ -15,15 +15,15 @@ metadata/_custom_type_script = "uid://b130qkugcsawo"
 [sub_resource type="Resource" id="Resource_dna02"]
 script = ExtResource("1_1kw5u")
 EnemyScene = ExtResource("2_hfdeg")
-SpawnCount = 3
+SpawnCount = 5
 SpawnDelay = 3.5
 metadata/_custom_type_script = "uid://b130qkugcsawo"
 
 [sub_resource type="Resource" id="Resource_6l3ao"]
 script = ExtResource("1_1kw5u")
 EnemyScene = ExtResource("2_hfdeg")
-SpawnCount = 1
-SpawnDelay = 4.0
+SpawnCount = 3
+SpawnDelay = 6.0
 EnemySpeed = 0.75
 metadata/_custom_type_script = "uid://b130qkugcsawo"
 

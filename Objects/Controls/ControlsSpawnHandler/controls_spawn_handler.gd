@@ -34,7 +34,14 @@ func setup_control_signals():
 			scene_refrence_node = child as LevelReference
 			
 	scene_refrence_node.gun_node.Use_Crosshair = use_crosshair
+	if !use_crosshair:
+		scene_refrence_node.crosshair_node.visible = false
+		scene_refrence_node.gun_node.Rotate_Gun(0.5)
+	else:
+		scene_refrence_node.crosshair_node.visible = true
+		scene_refrence_node.gun_node.Move_Gun(0.5)
 	scene_refrence_node.gun_node.Require_Reloading = require_reloading
+			
 			
 	for node in gun_fire_controls:
 		node.onValueChanged.connect(scene_refrence_node.gun_node.Fire_Gun)

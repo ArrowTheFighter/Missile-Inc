@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="LevelData" load_steps=9 format=3 uid="uid://bdyxq8gve4nc3"]
 
-[ext_resource type="PackedScene" uid="uid://b8snx0s4myc8e" path="res://Scenes/Control_Scenes/Basic_Controls/basic_controls_scene.tscn" id="1_fud36"]
+[ext_resource type="PackedScene" uid="uid://lahkmk775ke8" path="res://Scenes/Control_Scenes/PumpAction/pump_action_controls_scene.tscn" id="1_fud36"]
 [ext_resource type="Script" uid="uid://bdxifyfw4sj21" path="res://LevelData/level_data.gd" id="2_te544"]
 [ext_resource type="Script" uid="uid://b130qkugcsawo" path="res://Objects/Enemies/EnemySpawner/Wave_Enemy_Data.gd" id="3_c0ps1"]
 [ext_resource type="PackedScene" uid="uid://ds0pjo1fl13d0" path="res://Objects/Enemies/GhostEnemy/ghost_enemy.tscn" id="4_fud36"]
