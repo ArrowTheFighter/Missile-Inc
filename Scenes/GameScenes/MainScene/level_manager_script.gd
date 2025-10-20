@@ -7,7 +7,7 @@ var current_level = 0
 @export var Levels : Array[LevelData]
 
 @export var spawner : EnemySpawnerScript
-@export var level_cartridges : Array[Node3D]
+@export var level_cartridges : Array[LevelSelector]
 
 var current_controls: ControlsSpawnHandler
 
@@ -46,7 +46,7 @@ func deload_level()->void:
 func increase_level():
 	current_level += 1
 	if current_level < level_cartridges.size():
-		level_cartridges[current_level].visible = true
+		level_cartridges[current_level].move_to_spawn()
 	if current_level >= Levels.size():
 		$"../SubViewport/GamePlayArea/GameWinNodes".ShowLevelComplete()
 		await get_tree().create_timer(0.01).timeout

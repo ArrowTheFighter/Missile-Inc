@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cbmu78axig5rp" path="res://Scenes/GameScenes/MainScene/level_selector_script.gd" id="1_8igxi"]
 [ext_resource type="PackedScene" uid="uid://c3l5yht54dqeg" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/pictureframe_medium.gltf" id="2_eeeta"]
-[ext_resource type="AudioStream" uid="uid://b2bty8mbl138k" path="res://RawAssets/OLD/Audio/Sounds/bookFlip3.ogg" id="3_eeeta"]
+[ext_resource type="AudioStream" uid="uid://b2bty8mbl138k" path="res://RawAssets/Audio/Sounds/bookFlip3.ogg" id="3_eeeta"]
 [ext_resource type="PackedScene" uid="uid://bun1nwy8j8qp5" path="res://Meshes/Cartridge.glb" id="3_n214n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n214n"]
