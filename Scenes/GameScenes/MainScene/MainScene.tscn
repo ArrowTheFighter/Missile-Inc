@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://vkee7ul42q82" path="res://Scenes/GameScenes/Level_UI/Level_UI.tscn" id="1_7wnsk"]
 [ext_resource type="Script" uid="uid://crgbw42ye0wxi" path="res://Scenes/GameScenes/MainScene/level_reference_script.gd" id="1_wfosk"]
 [ext_resource type="Script" uid="uid://cxaf0h1aawk2v" path="res://Scenes/GameScenes/MainScene/level_manager_script.gd" id="1_wu6fb"]
-[ext_resource type="Script" uid="uid://blal3vwpqrqok" path="res://Objects/MenuUI/HideSelf.gd" id="2_2gtie"]
 [ext_resource type="PackedScene" uid="uid://cig3gg5uklxr7" path="res://Objects/level_camera_scene/level_camera_scene.tscn" id="2_dykdg"]
 [ext_resource type="Script" uid="uid://bdxifyfw4sj21" path="res://LevelData/level_data.gd" id="2_j34ea"]
 [ext_resource type="Resource" uid="uid://duh7uduo2fyfi" path="res://LevelData/Level_1/Level_1_Data.tres" id="3_wejqe"]
@@ -19,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dtw2euqnxwh7a" path="res://Objects/LevelCompleteTarget/level_complete_target.tscn" id="10_5px6u"]
 [ext_resource type="Script" uid="uid://dojjjy2k3yc6k" path="res://Objects/LevelCompleteTarget/level_complete_nodes_script.gd" id="10_xqb21"]
 [ext_resource type="PackedScene" uid="uid://bxtk8t48rc7k5" path="res://Objects/Crosshair/target_crosshair_scene.tscn" id="11_exsey"]
+[ext_resource type="Texture2D" uid="uid://637nlf32wny6" path="res://Scenes/MainMenu/Splash.png" id="11_o1882"]
 [ext_resource type="Script" uid="uid://iv003qo4haw3" path="res://Objects/LevelCompleteTarget/level_complete_target_script.gd" id="11_xqb21"]
 [ext_resource type="PackedScene" uid="uid://s7et15s1hxux" path="res://Objects/PlayerBase/player_base_scene.tscn" id="12_o3ven"]
 [ext_resource type="PackedScene" uid="uid://be6kxn0nhuo1m" path="res://Objects/Enemies/EnemySpawner/enemy_spawner_scene.tscn" id="13_4qvdo"]
@@ -124,25 +124,34 @@ level_cartridges = [NodePath("../Levels/Level1"), NodePath("../Levels/Level2"), 
 
 [node name="LevelBackgroundMusic" type="AudioStreamPlayer" parent="LevelManager"]
 
-[node name="LevelUI" parent="." node_paths=PackedStringArray("enemy_spawner") instance=ExtResource("1_7wnsk")]
-visible = false
+[node name="LevelUI" parent="." node_paths=PackedStringArray("end_match_buttons", "enemy_spawner") instance=ExtResource("1_7wnsk")]
+end_match_buttons = []
 enemy_spawner = NodePath("../SubViewport/GamePlayArea/EnemySpawner")
 
-[node name="Button2" type="Button" parent="LevelUI"]
+[node name="MarginContainer" type="MarginContainer" parent="LevelUI"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -117.0
-offset_top = -89.0
-offset_right = 378.0
-offset_bottom = 74.0
+offset_left = -577.0
+offset_top = -334.5
+offset_right = 577.0
+offset_bottom = 334.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 86
-text = "Start match"
-script = ExtResource("2_2gtie")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 70
+
+[node name="TextureRect" type="TextureRect" parent="LevelUI/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("11_o1882")
+expand_mode = 3
+stretch_mode = 4
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_a202f")
@@ -339,67 +348,67 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.119136, 16.086765)
 script = ExtResource("38_o1882")
 
 [node name="Level1" parent="Levels" node_paths=PackedStringArray("target_location") instance=ExtResource("34_i81jv")]
-transform = Transform3D(0.85837847, 0, 0.513017, 0, 1, 0, -0.513017, 0, 0.85837847, -6.4242363, -0.6456189, -2.4388943)
+transform = Transform3D(0.85837847, 0, 0.513017, 0, 1, 0, -0.513017, 0, 0.85837847, -6.4242363, -0.6456189, -1.2969704)
 target_location = NodePath("../Marker_Level1")
 
 [node name="Level2" parent="Levels" node_paths=PackedStringArray("target_location") instance=ExtResource("34_i81jv")]
-transform = Transform3D(0.9358444, 0, 0.3524134, 0, 1, 0, -0.3524134, 0, 0.9358444, 7.396239, 2.4938326, -3.8199806)
+transform = Transform3D(0.9358444, 0, 0.3524134, 0, 1, 0, -0.3524134, 0, 0.9358444, 7.396239, 2.4938326, -5.0247707)
 level_index = 1
 target_location = NodePath("../Marker_Level2")
 
 [node name="Level3" parent="Levels" node_paths=PackedStringArray("target_location") instance=ExtResource("34_i81jv")]
-transform = Transform3D(0.9969597, 0, 0.07791971, 0, 1, 0, -0.07791971, 0, 0.9969597, 6.7090683, 1.893332, -3.7137928)
+transform = Transform3D(0.9969597, 0, 0.07791971, 0, 1, 0, -0.07791971, 0, 0.9969597, 6.7090683, 1.893332, -4.918583)
 level_index = 2
 target_location = NodePath("../Marker_Level3")
 
 [node name="Level4" parent="Levels" node_paths=PackedStringArray("target_location") instance=ExtResource("34_i81jv")]
-transform = Transform3D(0.9601426, 0, -0.2795107, 0, 1, 0, 0.2795107, 0, 0.9601426, 7.2061033, 1.4071283, -4.1896896)
+transform = Transform3D(0.9601426, 0, -0.2795107, 0, 1, 0, 0.2795107, 0, 0.9601426, 7.2061033, 1.4071283, -5.3944798)
 level_index = 3
 target_location = NodePath("../Marker_Level4")
 
 [node name="Level5" parent="Levels" node_paths=PackedStringArray("target_location") instance=ExtResource("34_i81jv")]
-transform = Transform3D(0.8736873, 0, -0.48648793, 0, 1, 0, 0.48648793, 0, 0.8736873, 7.082159, 0.9066868, -3.9859438)
+transform = Transform3D(0.8736873, 0, -0.48648793, 0, 1, 0, 0.48648793, 0, 0.8736873, 7.082159, 0.9066868, -5.190734)
 level_index = 4
 target_location = NodePath("../Marker_Level5")
 
 [node name="Level6" parent="Levels" node_paths=PackedStringArray("target_location") instance=ExtResource("34_i81jv")]
-transform = Transform3D(0.9995028, 0, 0.031532884, 0, 1, 0, -0.031532884, 0, 0.9995028, 7.082757, 0.38425875, -4.0691566)
+transform = Transform3D(0.9995028, 0, 0.031532884, 0, 1, 0, -0.031532884, 0, 0.9995028, 7.082757, 0.38425875, -5.273947)
 level_index = 5
 target_location = NodePath("../Marker_Level6")
 
 [node name="Level7" parent="Levels" node_paths=PackedStringArray("target_location") instance=ExtResource("34_i81jv")]
-transform = Transform3D(0.8865188, 0, 0.4626928, 0, 1, 0, -0.4626928, 0, 0.8865188, 7.097, -0.12, -4.364)
+transform = Transform3D(0.8865188, 0, 0.4626928, 0, 1, 0, -0.4626928, 0, 0.8865188, 7.097, -0.119999886, -5.5687904)
 level_index = 6
 target_location = NodePath("../Marker_Level7")
 
 [node name="Level8" parent="Levels" node_paths=PackedStringArray("target_location") instance=ExtResource("34_i81jv")]
-transform = Transform3D(0.9989698, 0, 0.045380414, 0, 1, 0, -0.045380414, 0, 0.9989698, 6.923569, -0.6456189, -4.1274405)
+transform = Transform3D(0.9989698, 0, 0.045380414, 0, 1, 0, -0.045380414, 0, 0.9989698, 6.923569, -0.6456189, -5.3322306)
 level_index = 7
 target_location = NodePath("../Marker_Level8")
 
 [node name="Marker_Level1" type="Marker3D" parent="Levels"]
-transform = Transform3D(0.85837847, 0, 0.513017, 0, 1, 0, -0.513017, 0, 0.85837847, -6.4242363, -0.6456189, -2.4388943)
+transform = Transform3D(0.85837847, 0, 0.513017, 0, 1, 0, -0.513017, 0, 0.85837847, -6.4242363, -0.6456189, -1.2969704)
 
 [node name="Marker_Level2" type="Marker3D" parent="Levels"]
-transform = Transform3D(0.9828099, 0, 0.18462037, 0, 1, 0, -0.18462037, 0, 0.9828099, -2.3149602, -0.6456189, -3.8763962)
+transform = Transform3D(0.9828099, 0, 0.18462037, 0, 1, 0, -0.18462037, 0, 0.9828099, -2.3149602, -0.6456189, -2.7344723)
 
 [node name="Marker_Level3" type="Marker3D" parent="Levels"]
-transform = Transform3D(0.9989934, 0, -0.04485735, 0, 1, 0, 0.04485735, 0, 0.9989934, 1.9798486, -0.6456189, -4.1407223)
+transform = Transform3D(0.9989934, 0, -0.04485735, 0, 1, 0, 0.04485735, 0, 0.9989934, 1.9798486, -0.6456189, -2.9987984)
 
 [node name="Marker_Level4" type="Marker3D" parent="Levels"]
-transform = Transform3D(0.8208004, 0, -0.5712151, 0, 1, 0, 0.5712151, 0, 0.8208004, 5.9704485, -0.6456189, -2.0772514)
+transform = Transform3D(0.8208004, 0, -0.5712151, 0, 1, 0, 0.5712151, 0, 0.8208004, 5.9704485, -0.6456189, -0.93532753)
 
 [node name="Marker_Level5" type="Marker3D" parent="Levels"]
-transform = Transform3D(0.85837847, 0, 0.513017, 0, 1, 0, -0.513017, 0, 0.85837847, -6.4242363, -0.6456189, 2.086773)
+transform = Transform3D(0.85837847, 0, 0.513017, 0, 1, 0, -0.513017, 0, 0.85837847, -6.4242363, -0.6456189, 3.2286968)
 
 [node name="Marker_Level6" type="Marker3D" parent="Levels"]
-transform = Transform3D(0.9828099, 0, 0.18462037, 0, 1, 0, -0.18462037, 0, 0.9828099, -2.3149602, -0.6456189, 0.649271)
+transform = Transform3D(0.9828099, 0, 0.18462037, 0, 1, 0, -0.18462037, 0, 0.9828099, -2.3149602, -0.6456189, 1.7911949)
 
 [node name="Marker_Level7" type="Marker3D" parent="Levels"]
-transform = Transform3D(0.9989934, 0, -0.04485735, 0, 1, 0, 0.04485735, 0, 0.9989934, 1.7102089, -0.6456189, 0.8519325)
+transform = Transform3D(0.9989934, 0, -0.04485735, 0, 1, 0, 0.04485735, 0, 0.9989934, 1.7102089, -0.6456189, 1.9938564)
 
 [node name="Marker_Level8" type="Marker3D" parent="Levels"]
-transform = Transform3D(0.8208004, 0, -0.5712151, 0, 1, 0, 0.5712151, 0, 0.8208004, 5.600491, -0.6456189, 2.5591888)
+transform = Transform3D(0.8208004, 0, -0.5712151, 0, 1, 0, 0.5712151, 0, 0.8208004, 5.600491, -0.6456189, 3.7011127)
 
 [node name="Area3D" type="Area3D" parent="Levels"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.187922, 1.5363016, -4.0027647)
@@ -424,7 +433,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.49739, 4.9711666, -5.7306
 [node name="ExplosionParticle2" parent="." instance=ExtResource("40_o1882")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.49739, 4.9711666, -5.730624)
 
-[connection signal="pressed" from="LevelUI/Button2" to="." method="_on_level_selected"]
 [connection signal="TargetHit" from="SubViewport/GamePlayArea/LevelCompleteNodes/LevelCompleteTarget" to="LevelManager" method="start_level"]
 [connection signal="TargetHit" from="SubViewport/GamePlayArea/LevelCompleteNodes/LevelCompleteTarget" to="SubViewport/GamePlayArea/LevelCompleteNodes" method="HideLevelComplete"]
 [connection signal="base_destroyed" from="SubViewport/GamePlayArea/Player_Base" to="." method="level_failed"]
@@ -435,6 +443,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.49739, 4.9711666, -5.7306
 [connection signal="onValueChanged" from="TV_edited/VolumeKnob" to="." method="_on_volume_knob_on_value_changed"]
 [connection signal="onValueChanged" from="TV_edited/Button" to="." method="_on_off_button_pressed"]
 [connection signal="onValueChanged" from="TV_edited/Button" to="SubViewport/GamePlayArea/GameWinNodes" method="HideLevelComplete"]
+[connection signal="splash_finished" from="CameraStuff/RoomCamera" to="LevelUI" method="_on_room_camera_splash_finished"]
 [connection signal="level_selected" from="Levels/Level1" to="." method="_on_level_selected"]
 [connection signal="level_selected" from="Levels/Level2" to="." method="_on_level_selected"]
 [connection signal="level_selected" from="Levels/Level3" to="." method="_on_level_selected"]

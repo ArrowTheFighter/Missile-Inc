@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="LevelData" load_steps=5 format=3 uid="uid://b85f5qmhfs4eb"]
 
-[ext_resource type="AudioStream" uid="uid://b1ecrvvy46g8l" path="res://RawAssets/Audio/Sounds/Music/Scheming Weasel slower.mp3" id="1_yos2o"]
+[ext_resource type="AudioStream" uid="uid://8qotumyt0v8w" path="res://RawAssets/Audio/Sounds/Music/Chase Pulse.mp3" id="1_340uo"]
 [ext_resource type="PackedScene" uid="uid://bxjcitl4cswqo" path="res://Scenes/Control_Scenes/AutoMove/auto_moving_gun_controls_scene.tscn" id="2_340uo"]
 [ext_resource type="Script" uid="uid://bdxifyfw4sj21" path="res://LevelData/level_data.gd" id="3_nxso4"]
 [ext_resource type="Resource" uid="uid://cn4tvupjj3gkd" path="res://LevelData/Level_1/WaveData-1.tres" id="4_lsw55"]
@@ -9,5 +9,5 @@
 script = ExtResource("3_nxso4")
 wave_data = ExtResource("4_lsw55")
 controls_scene = ExtResource("2_340uo")
-background_music = ExtResource("1_yos2o")
+background_music = ExtResource("1_340uo")
 metadata/_custom_type_script = "uid://bdxifyfw4sj21"

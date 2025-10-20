@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=5 format=3 uid="uid://cnym8vkqdlgjw"]
+
+[ext_resource type="AudioStream" uid="uid://bmscl68huyqi1" path="res://RawAssets/Audio/Sounds/Music/Slow Ska Game Loop.mp3" id="1_6j4p6"]
+[ext_resource type="PackedScene" uid="uid://blipopcgl18lc" path="res://Scenes/Control_Scenes/OnlyButtons/only_buttons_controls_scene.tscn" id="2_sd8pg"]
+[ext_resource type="Script" uid="uid://bdxifyfw4sj21" path="res://LevelData/level_data.gd" id="3_yup68"]
+[ext_resource type="Resource" uid="uid://cn4tvupjj3gkd" path="res://LevelData/Level_1/WaveData-1.tres" id="4_san3g"]
+
+[resource]
+script = ExtResource("3_yup68")
+wave_data = ExtResource("4_san3g")
+controls_scene = ExtResource("2_sd8pg")
+background_music = ExtResource("1_6j4p6")
+music_volume = -15.0
+metadata/_custom_type_script = "uid://bdxifyfw4sj21"

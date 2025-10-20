@@ -8,6 +8,7 @@ signal level_selected(index:int)
 
 var orig_transform : Transform3D
 var offset_dir := Vector3(0,.5,0)
+var is_active := false
 
 func _ready() -> void:
 	orig_transform = global_transform
@@ -19,11 +20,13 @@ func _ready() -> void:
 		move_to_spawn()
 
 func move_to_spawn() -> void:
+	if is_active: return
 	if target_location:
 		var tween = get_tree().create_tween()
 		tween.tween_property(self, "global_transform", target_location.global_transform, .3).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 		await tween.finished
 	$Area3D.input_ray_pickable = true
+	is_active = true
 
 func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton:

@@ -7,6 +7,7 @@ extends Camera3D
 #var shake_strength := 0.0              # Current shake intensity
 #@onready var original_transform: Transform3D = %CameraTV.transform    # Store camera's base transform
 
+signal splash_finished
 signal move_tv_finished
 signal move_levels_finished
 
@@ -18,11 +19,15 @@ signal move_levels_finished
 func _ready() -> void:
 	# Save original transform so we can return to it cleanly
 	global_transform = camera_start_transform
-	get_tree().create_timer(1.7).timeout.connect(move_to_levels)
+	get_tree().create_timer(1.7).timeout.connect(_after_splash)
 
-func move_to_levels()->void:
+func _after_splash()->void:
+	splash_finished.emit()
+	move_to_levels(3)
+
+func move_to_levels(time:float = 1.5)->void:
 	var tween := get_tree().create_tween()
-	tween.tween_property(self, "global_transform", camera_level_transform, 1.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)\
+	tween.tween_property(self, "global_transform", camera_level_transform, time).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)\
 		.finished.connect(func():move_levels_finished.emit())
 
 func move_to_tv()->void:

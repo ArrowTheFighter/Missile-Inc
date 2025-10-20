@@ -6,7 +6,6 @@ extends Node3D
 @onready var camera:RoomCamera = %RoomCamera
 
 func _on_level_selected(level:int = 0)->void:
-	$LevelUI/Button2.HideSelf()
 	camera.move_to_tv()
 	await camera.move_tv_finished
 	$LevelManager.current_level = level
