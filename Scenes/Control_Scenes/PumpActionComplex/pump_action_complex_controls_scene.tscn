@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6eags7s01ifa"]
+[gd_scene load_steps=6 format=3 uid="uid://b6eags7s01ifa"]
 
 [ext_resource type="Script" uid="uid://dwh0fp7bj24es" path="res://Objects/Controls/ControlsSpawnHandler/controls_spawn_handler.gd" id="1_0qds8"]
-[ext_resource type="PackedScene" uid="uid://b8oi31gd4xqhb" path="res://RawAssets/OLD/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/platform_2x2x1_yellow.gltf" id="2_cek3w"]
+[ext_resource type="PackedScene" uid="uid://b8oi31gd4xqhb" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/platform_2x2x1_yellow.gltf" id="2_cek3w"]
 [ext_resource type="PackedScene" uid="uid://dx0qam1hilnr6" path="res://Objects/Bullets/ExplodingBullet/exploding_bullet.tscn" id="2_ppycg"]
 [ext_resource type="PackedScene" uid="uid://cimng1naje5s6" path="res://Objects/Controls/Wheel/wheel_scene.tscn" id="3_uxoac"]
 [ext_resource type="PackedScene" uid="uid://s6qddpkxjec7" path="res://Objects/Controls/Lever/lever_grip_scene.tscn" id="4_0t5ps"]
-[ext_resource type="PackedScene" uid="uid://c2v2tipbfhlys" path="res://Objects/Controls/Lever/lever_knob_scene.tscn" id="5_vtnh5"]
 
 [node name="Controls_scene" type="Node3D" node_paths=PackedStringArray("gun_fire_controls", "move_crosshair_x_controls", "move_crosshair_y_controls", "move_gun_left_right")]
 transform = Transform3D(0.82, 0, 0, 0, 0.82, 0, 0, 0, 0.82, -0.6943917, 0.7076769, -0.8830316)
@@ -15,7 +14,7 @@ bullet_scene = ExtResource("2_ppycg")
 gun_fire_controls = [NodePath("platform_2x2x1_yellow11/LeverGrip")]
 move_crosshair_x_controls = [NodePath("platform_2x2x1_yellow10/Wheel2")]
 move_crosshair_y_controls = [NodePath("platform_2x2x1_yellow17/Wheel3")]
-move_gun_left_right = [NodePath("platform_2x2x1_yellow12/LeverKnob")]
+move_gun_left_right = [NodePath("")]
 
 [node name="platform_2x2x1_yellow10" parent="." instance=ExtResource("2_cek3w")]
 transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -3.1258802, 0.6925742, 0.19779027)
@@ -30,13 +29,6 @@ transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-
 [node name="LeverGrip" parent="platform_2x2x1_yellow11" instance=ExtResource("4_0t5ps")]
 transform = Transform3D(1.25, 0, 0, 0, -5.4639234e-08, 1.25, 0, -1.25, -5.4639234e-08, 0.062425613, 0.9980824, 0.05647844)
 invert = true
-
-[node name="platform_2x2x1_yellow12" parent="." instance=ExtResource("2_cek3w")]
-transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -3.1258802, -0.95257795, 0.19779027)
-visible = false
-
-[node name="LeverKnob" parent="platform_2x2x1_yellow12" instance=ExtResource("5_vtnh5")]
-transform = Transform3D(1.25, 0, 0, 0, -5.4639234e-08, 1.25, 0, -1.25, -5.4639234e-08, -0.01744914, 0.9980824, 0.04902327)
 
 [node name="platform_2x2x1_yellow17" parent="." instance=ExtResource("2_cek3w")]
 transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -4.7444906, -0.9513023, 0.19779027)
