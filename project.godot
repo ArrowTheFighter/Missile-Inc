@@ -22,7 +22,6 @@ Scenes="*res://Globals/global_scenes.gd"
 [display]
 
 window/stretch/mode="canvas_items"
-mouse_cursor/custom_image="uid://cssepf3qv48en"
 
 [global_group]
 
