@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://djfxwabnf6k6k" path="res://Objects/Bullets/ExplodingBullet/exploding_bullet_script.gd" id="1_fpbu3"]
 [ext_resource type="PackedScene" uid="uid://dqcfb008vw3tv" path="res://Objects/Particles/ExposionParticle/explosion_particle.tscn" id="2_7b1pq"]
 [ext_resource type="Texture2D" uid="uid://bst1xhlmsxkjo" path="res://Textures/Duck_14x14.png" id="2_rbg31"]
-[ext_resource type="PackedScene" uid="uid://ctj3u1robdm1u" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/red/bomb_B_red.gltf" id="4_1ovbf"]
+[ext_resource type="PackedScene" uid="uid://ctj3u1robdm1u" path="res://RawAssets/OLD/KayKit_Platformer_Pack_1.0_EXTRA/Assets/red/bomb_B_red.gltf" id="4_1ovbf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7oki"]
 albedo_color = Color(0.5529412, 0, 0, 1)

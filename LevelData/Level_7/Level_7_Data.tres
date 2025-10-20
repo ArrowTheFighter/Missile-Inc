@@ -61,6 +61,7 @@ metadata/_custom_type_script = "uid://b130qkugcsawo"
 
 [sub_resource type="Resource" id="Resource_h1vsn"]
 script = ExtResource("8_bn70o")
+initial_delay = 4.0
 Wave_Section = Array[ExtResource("4_bmpiy")]([SubResource("Resource_syf1m"), SubResource("Resource_k364c"), SubResource("Resource_gxe6f"), SubResource("Resource_avsf0"), SubResource("Resource_q46tn"), SubResource("Resource_su30e"), SubResource("Resource_r5i18")])
 metadata/_custom_type_script = "uid://c5y2s5btshlsd"
 
