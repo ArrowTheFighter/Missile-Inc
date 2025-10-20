@@ -1,0 +1,163 @@
+[gd_scene load_steps=22 format=3 uid="uid://ditqny28g635d"]
+
+[ext_resource type="Script" uid="uid://d4lqoody1kng5" path="res://Objects/Enemies/BossEnemy/boss_enemy_script.gd" id="1_rwpr8"]
+[ext_resource type="PackedScene" uid="uid://dat61ko2q16a" path="res://Objects/Enemies/BasicEnemy/enemy_scene.tscn" id="2_3kndx"]
+[ext_resource type="PackedScene" uid="uid://ervowdcakywf" path="res://Objects/Particles/EnemyDeathParticle/enemy_death_particle.tscn" id="2_7q3cr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wc5p8"]
+size = Vector3(3.1240234, 1.4138184, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w12be"]
+albedo_color = Color(1, 0.5019608, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0ybio"]
+material = SubResource("StandardMaterial3D_w12be")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ul0jf"]
+albedo_color = Color(0.5, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_j80x8"]
+material = SubResource("StandardMaterial3D_ul0jf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gf37"]
+albedo_color = Color(0.5, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_10v6m"]
+material = SubResource("StandardMaterial3D_7gf37")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1okt8"]
+albedo_color = Color(1, 0.5, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_pknvx"]
+material = SubResource("StandardMaterial3D_1okt8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o27i6"]
+albedo_color = Color(0.69, 0.44504997, 0.20010002, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_5ym6m"]
+material = SubResource("StandardMaterial3D_o27i6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8sh44"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_2jicj"]
+material = SubResource("StandardMaterial3D_8sh44")
+
+[sub_resource type="Curve" id="Curve_0ybio"]
+_data = [Vector2(0, 0.83219445), 0.0, 0.70532167, 0, 0, Vector2(1, 0), -4.5373006, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ul0jf"]
+curve = SubResource("Curve_0ybio")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j80x8"]
+direction = Vector3(0, 1, 0)
+spread = 25.0
+initial_velocity_min = 0.049999997
+initial_velocity_max = 0.099999994
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = -2.2351742e-06
+scale_min = 0.25
+scale_max = 0.25
+scale_curve = SubResource("CurveTexture_ul0jf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10v6m"]
+albedo_color = Color(0.73, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_pknvx"]
+material = SubResource("StandardMaterial3D_10v6m")
+height = 0.5
+
+[node name="Tough_Enemy" type="Node3D" node_paths=PackedStringArray("Area")]
+script = ExtResource("1_rwpr8")
+enemy_to_spawn = ExtResource("2_3kndx")
+health = 15
+speed = 0.4
+damage_strength = 500
+Area = NodePath("Area3D")
+death_particle = ExtResource("2_7q3cr")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009277344, 0.14416504, 0)
+shape = SubResource("BoxShape3D_wc5p8")
+
+[node name="visuals" type="Node3D" parent="."]
+transform = Transform3D(4.7537117, 0, 0, 0, 4.130904, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="visuals"]
+transform = Transform3D(0.7324786, 0, 0, 0, 0.52037185, 0, 0, 0, 0.42802414, -0.0044307155, -0.0047889203, -0.053840075)
+mesh = SubResource("SphereMesh_0ybio")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="visuals"]
+transform = Transform3D(0.108081356, 0, 0, 0, 0.108081356, 0, 0, 0, 0.108081356, -0.099094234, 0.08180727, 0.13354258)
+mesh = SubResource("SphereMesh_j80x8")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="visuals"]
+transform = Transform3D(0.108081356, 0, 0, 0, 0.108081356, 0, 0, 0, 0.108081356, 0.08043979, 0.08180727, 0.13354258)
+mesh = SubResource("SphereMesh_10v6m")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="visuals"]
+transform = Transform3D(-0.06989009, -0.08244364, 0, 0.08244364, -0.06989009, 0, 0, 0, 0.108081356, 0.065288566, 0.13007534, 0.12920514)
+mesh = SubResource("PrismMesh_pknvx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="visuals"]
+transform = Transform3D(-0.092460684, -0.103093065, 0, 0.05731018, -0.16632394, 0, 0, 0, 0.10808134, 0.023100134, 0.2701937, -0.052164163)
+mesh = SubResource("PrismMesh_5ym6m")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="visuals"]
+transform = Transform3D(-0.06990591, 0.08243023, 0, -0.08243023, -0.06990591, 0, 0, 0, 0.108081356, -0.064840235, 0.12958562, 0.12910047)
+mesh = SubResource("PrismMesh_pknvx")
+skeleton = NodePath("../..")
+
+[node name="mouth" type="Node3D" parent="visuals"]
+transform = Transform3D(1.5806036, 0, 0, 0, 1.5806036, 0, 0, 0, 1.5806036, -3.548512e-05, -0.07858717, -0.032121096)
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="visuals/mouth"]
+transform = Transform3D(-0.04422735, 0.05215111, 0, -0.05215111, -0.04422735, 0, 0, 0, 0.0683798, -0.04510821, -0.00278648, 0.102)
+mesh = SubResource("PrismMesh_2jicj")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="visuals/mouth"]
+transform = Transform3D(-0.061426356, 0.030043297, 0, -0.030043297, -0.061426356, 0, 0, 0, 0.068379804, -0.12655227, 0.035504002, 0.102)
+mesh = SubResource("PrismMesh_2jicj")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="visuals/mouth"]
+transform = Transform3D(-0.04422735, -0.05215111, 0, 0.05215111, -0.04422735, 0, 0, 0, 0.0683798, 0.045, -0.0030847625, 0.102)
+mesh = SubResource("PrismMesh_2jicj")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="visuals/mouth"]
+transform = Transform3D(-0.14803833, 0.00093803497, 0, -0.0020645363, -0.06726214, 0, 0, 0, 0.0683798, 0, -0.020313697, 0.102)
+mesh = SubResource("PrismMesh_2jicj")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="visuals/mouth"]
+transform = Transform3D(-0.13192767, -0.02205766, 0, 0.067191534, -0.04330927, 0, 0, 0, 0.0683798, -0.10236408, -0.009310667, 0.102)
+mesh = SubResource("PrismMesh_2jicj")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="visuals/mouth"]
+transform = Transform3D(0.061426356, -0.030043297, 5.977952e-09, -0.030043297, -0.061426356, 0, 5.370063e-09, -2.6264686e-09, -0.068379804, 0.13031481, 0.035504002, 0.102)
+mesh = SubResource("PrismMesh_2jicj")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="visuals/mouth"]
+transform = Transform3D(0.13192767, 0.02205766, 5.977952e-09, 0.06719154, -0.043309268, 0, 1.1533483e-08, 1.928342e-09, -0.0683798, 0.10612661, -0.00931067, 0.102)
+mesh = SubResource("PrismMesh_2jicj")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10257912, 0.08238983, 0.17929077)
+amount = 15
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_j80x8")
+draw_pass_1 = SubResource("SphereMesh_pknvx")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08446133, 0.08238983, 0.17929077)
+amount = 15
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_j80x8")
+draw_pass_1 = SubResource("SphereMesh_pknvx")

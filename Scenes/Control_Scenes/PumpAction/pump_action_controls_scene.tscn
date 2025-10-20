@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://lahkmk775ke8"]
+[gd_scene load_steps=7 format=3 uid="uid://lahkmk775ke8"]
 
 [ext_resource type="Script" uid="uid://dwh0fp7bj24es" path="res://Objects/Controls/ControlsSpawnHandler/controls_spawn_handler.gd" id="1_cwo5q"]
-[ext_resource type="PackedScene" uid="uid://b8oi31gd4xqhb" path="res://RawAssets/OLD/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/platform_2x2x1_yellow.gltf" id="2_ro0ql"]
+[ext_resource type="PackedScene" uid="uid://b8oi31gd4xqhb" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/platform_2x2x1_yellow.gltf" id="2_ro0ql"]
 [ext_resource type="PackedScene" uid="uid://cimng1naje5s6" path="res://Objects/Controls/Wheel/wheel_scene.tscn" id="3_6ovuj"]
+[ext_resource type="PackedScene" uid="uid://paw10f8qph5w" path="res://Objects/Controls/Button/buton_switch_scene.tscn" id="4_8ybln"]
 [ext_resource type="PackedScene" uid="uid://s6qddpkxjec7" path="res://Objects/Controls/Lever/lever_grip_scene.tscn" id="4_q5ew7"]
-[ext_resource type="PackedScene" uid="uid://c2v2tipbfhlys" path="res://Objects/Controls/Lever/lever_knob_scene.tscn" id="5_4w7ld"]
+[ext_resource type="Script" uid="uid://cfl47la8es7op" path="res://Objects/Controls/remap_value_controls.gd" id="5_vchtj"]
 
 [node name="Controls_scene" type="Node3D" node_paths=PackedStringArray("gun_fire_controls", "move_crosshair_x_controls", "move_crosshair_y_controls")]
 transform = Transform3D(0.82, 0, 0, 0, 0.82, 0, 0, 0, 0.82, -0.6943917, 0.7076769, -0.8830316)
@@ -12,7 +13,7 @@ script = ExtResource("1_cwo5q")
 offset_vector = Vector3(-12.245106, 0, 21.847252)
 gun_fire_controls = [NodePath("platform_2x2x1_yellow12/LeverGrip")]
 move_crosshair_x_controls = [NodePath("platform_2x2x1_yellow17/Wheel3")]
-move_crosshair_y_controls = [NodePath("platform_2x2x1_yellow13/LeverKnob")]
+move_crosshair_y_controls = [NodePath("")]
 
 [node name="platform_2x2x1_yellow12" parent="." instance=ExtResource("2_ro0ql")]
 transform = Transform3D(1.6, 0, 0, 0, -6.9938224e-08, -1.6, 0, 1.6, -6.9938224e-08, -3.9396718, -0.10484892, -0.56786764)
@@ -24,8 +25,14 @@ invert = true
 [node name="platform_2x2x1_yellow13" parent="." instance=ExtResource("2_ro0ql")]
 transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -3.1408155, -2.534325, 0.19779027)
 
-[node name="LeverKnob" parent="platform_2x2x1_yellow13" instance=ExtResource("5_4w7ld")]
-transform = Transform3D(1.25, 0, 0, 0, -5.4639234e-08, 1.25, 0, -1.25, -5.4639234e-08, -0.01744914, 0.9980824, 0.04902327)
+[node name="Button" parent="platform_2x2x1_yellow13" instance=ExtResource("4_8ybln")]
+transform = Transform3D(-4.371139e-08, -1, 0, -4.371139e-08, -7.9717553e-16, 1, -1, 4.371139e-08, -4.3711385e-08, 0, 1.0626138, 0)
+start_pressed = true
+
+[node name="RemapValues" type="Node3D" parent="platform_2x2x1_yellow13"]
+script = ExtResource("5_vchtj")
+remamped_low_value = 0.35
+remamped_high_value = 0.65
 
 [node name="platform_2x2x1_yellow17" parent="." instance=ExtResource("2_ro0ql")]
 transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -4.7444906, -2.534325, 0.19779027)
