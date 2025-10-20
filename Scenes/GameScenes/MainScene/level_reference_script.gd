@@ -5,6 +5,15 @@ extends Node3D
 @export var crosshair_node : Node3D
 @onready var camera:RoomCamera = %RoomCamera
 
+const HAND_OPEN = preload("res://Scenes/MainMenu/hand_open.png")
+const HAND_CLOSED = preload("res://Scenes/MainMenu/hand_closed.png")
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("MouseClick"):
+		Input.set_custom_mouse_cursor(HAND_CLOSED)
+	elif Input.is_action_just_released("MouseClick"):
+		Input.set_custom_mouse_cursor(HAND_OPEN)
+
 func _on_level_selected(level:int = 0)->void:
 	camera.move_to_tv()
 	await camera.move_tv_finished
