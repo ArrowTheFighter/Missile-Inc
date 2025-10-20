@@ -52,7 +52,7 @@ func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, n
 				
 			#var tween = get_tree().create_tween()
 			#tween.tween_property($ButtonPad, "position", pad_origin_pos + pad_push_offset, .1)
-			#$ButtonSound.play()
+			$ButtonSound.play()
 			
 			# set button color REMOVED
 			#var mat = mesh.get_active_material(0)

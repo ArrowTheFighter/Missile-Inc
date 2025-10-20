@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=13 format=3 uid="uid://bigiomqckdkem"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=14 format=3 uid="uid://bigiomqckdkem"]
 
+[ext_resource type="AudioStream" uid="uid://dcbsf2bbkpa0w" path="res://RawAssets/Audio/Sounds/Music/One-eyed Maestro.mp3" id="1_eu4v3"]
 [ext_resource type="Script" uid="uid://bdxifyfw4sj21" path="res://LevelData/level_data.gd" id="1_is0yb"]
 [ext_resource type="PackedScene" uid="uid://b8snx0s4myc8e" path="res://Scenes/Control_Scenes/Basic_Controls/basic_controls_scene.tscn" id="1_v604p"]
 [ext_resource type="Script" uid="uid://b130qkugcsawo" path="res://Objects/Enemies/EnemySpawner/Wave_Enemy_Data.gd" id="2_7fq24"]
@@ -54,4 +55,6 @@ metadata/_custom_type_script = "uid://c5y2s5btshlsd"
 script = ExtResource("1_is0yb")
 wave_data = SubResource("Resource_ow8pl")
 controls_scene = ExtResource("1_v604p")
+background_music = ExtResource("1_eu4v3")
+music_volume = -15.0
 metadata/_custom_type_script = "uid://bdxifyfw4sj21"

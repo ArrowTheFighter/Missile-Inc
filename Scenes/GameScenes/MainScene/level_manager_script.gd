@@ -7,7 +7,9 @@ var current_level = 0
 @export var Levels : Array[LevelData]
 
 @export var spawner : EnemySpawnerScript
-var current_controls:ControlsSpawnHandler
+@export var level_cartridges : Array[Node3D]
+
+var current_controls: ControlsSpawnHandler
 
 func _ready() -> void:
 	current_level = starting_level
@@ -19,10 +21,12 @@ func start_level(level_in:int = -1):
 		$LevelBackgroundMusic.stop()
 		$LevelBackgroundMusic.stream = null
 		if Levels[current_level].background_music:
+			$LevelBackgroundMusic.volume_db = Levels[current_level].music_volume
 			$LevelBackgroundMusic.stream = Levels[current_level].background_music
 		if(current_controls != null):
 			current_controls.queue_free()
 			
+		$"../SubViewport/GamePlayArea/Player_Base".respawn_base()	
 		print("Spawning controls")
 		var instanced_controls = Levels[current_level].controls_scene.instantiate()
 		get_tree().root.add_child(instanced_controls)
@@ -41,3 +45,9 @@ func deload_level()->void:
 
 func increase_level():
 	current_level += 1
+	if current_level < level_cartridges.size():
+		level_cartridges[current_level].visible = true
+	if current_level >= Levels.size():
+		$"../SubViewport/GamePlayArea/GameWinNodes".ShowLevelComplete()
+		await get_tree().create_timer(0.01).timeout
+		$"../SubViewport/GamePlayArea/LevelCompleteNodes".HideLevelComplete()

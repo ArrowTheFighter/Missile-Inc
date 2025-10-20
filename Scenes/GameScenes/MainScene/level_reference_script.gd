@@ -21,6 +21,10 @@ func _on_turn_off_tv()->void:
 	$LevelManager.deload_level()
 	await $LevelManager.level_deloaded
 	camera.move_to_levels()
+	
+func level_failed():
+	await get_tree().create_timer(4).timeout
+	_on_turn_off_tv()
 
 
 func _on_off_button_pressed(value:float) -> void:

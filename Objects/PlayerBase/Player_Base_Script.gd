@@ -25,7 +25,6 @@ func damage_base(amount : int):
 	if health == 0:
 		base_destroyed.emit()
 		mesh.visible = false
-		queue_free()
 	pass
 	
 func respawn_base():

@@ -1,13 +1,59 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=5 format=3 uid="uid://duh7uduo2fyfi"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=14 format=3 uid="uid://duh7uduo2fyfi"]
 
 [ext_resource type="AudioStream" uid="uid://b1ecrvvy46g8l" path="res://RawAssets/Audio/Sounds/Music/Scheming Weasel slower.mp3" id="1_3e22q"]
 [ext_resource type="Script" uid="uid://bdxifyfw4sj21" path="res://LevelData/level_data.gd" id="1_m03k3"]
 [ext_resource type="PackedScene" uid="uid://c0x6x56vuiwid" path="res://Scenes/Control_Scenes/Move_Left_Right/move_left_right_controls_scene.tscn" id="2_3e22q"]
-[ext_resource type="Resource" uid="uid://cn4tvupjj3gkd" path="res://LevelData/Level_1/WaveData-1.tres" id="2_iuutc"]
+[ext_resource type="Script" uid="uid://b130qkugcsawo" path="res://Objects/Enemies/EnemySpawner/Wave_Enemy_Data.gd" id="4_po6hl"]
+[ext_resource type="PackedScene" uid="uid://dat61ko2q16a" path="res://Objects/Enemies/BasicEnemy/enemy_scene.tscn" id="5_5gbdu"]
+[ext_resource type="PackedScene" uid="uid://b21us73bwyhcu" path="res://Objects/Enemies/ToughEnemy/tough_enemy_scene.tscn" id="6_t3qu8"]
+[ext_resource type="Script" uid="uid://c5y2s5btshlsd" path="res://Objects/Enemies/EnemySpawner/Wave_Data.gd" id="7_5k6av"]
+
+[sub_resource type="Resource" id="Resource_2yxp3"]
+script = ExtResource("4_po6hl")
+EnemyScene = ExtResource("5_5gbdu")
+SpawnCount = 5
+SpawnDelay = 5.0
+metadata/_custom_type_script = "uid://b130qkugcsawo"
+
+[sub_resource type="Resource" id="Resource_53eck"]
+script = ExtResource("4_po6hl")
+EnemyScene = ExtResource("5_5gbdu")
+SpawnCount = 5
+SpawnDelay = 4.0
+metadata/_custom_type_script = "uid://b130qkugcsawo"
+
+[sub_resource type="Resource" id="Resource_hanqu"]
+script = ExtResource("4_po6hl")
+EnemyScene = ExtResource("5_5gbdu")
+SpawnCount = 4
+SpawnDelay = 4.0
+EnemySpeed = 0.4
+metadata/_custom_type_script = "uid://b130qkugcsawo"
+
+[sub_resource type="Resource" id="Resource_ku85h"]
+script = ExtResource("4_po6hl")
+EnemyScene = ExtResource("5_5gbdu")
+SpawnCount = 3
+SpawnDelay = 4.5
+EnemySpeed = 0.5
+metadata/_custom_type_script = "uid://b130qkugcsawo"
+
+[sub_resource type="Resource" id="Resource_iemxd"]
+script = ExtResource("4_po6hl")
+EnemyScene = ExtResource("6_t3qu8")
+SpawnDelay = 4.0
+EnemyHealth = 10
+metadata/_custom_type_script = "uid://b130qkugcsawo"
+
+[sub_resource type="Resource" id="Resource_74xm4"]
+script = ExtResource("7_5k6av")
+initial_delay = 3.0
+Wave_Section = Array[ExtResource("4_po6hl")]([SubResource("Resource_2yxp3"), SubResource("Resource_53eck"), SubResource("Resource_hanqu"), SubResource("Resource_ku85h"), SubResource("Resource_iemxd")])
+metadata/_custom_type_script = "uid://c5y2s5btshlsd"
 
 [resource]
 script = ExtResource("1_m03k3")
-wave_data = ExtResource("2_iuutc")
+wave_data = SubResource("Resource_74xm4")
 controls_scene = ExtResource("2_3e22q")
 background_music = ExtResource("1_3e22q")
 metadata/_custom_type_script = "uid://bdxifyfw4sj21"

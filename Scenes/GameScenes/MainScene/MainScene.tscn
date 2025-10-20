@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://becs2nxjvitxd"]
+[gd_scene load_steps=53 format=3 uid="uid://becs2nxjvitxd"]
 
 [ext_resource type="PackedScene" uid="uid://vkee7ul42q82" path="res://Scenes/GameScenes/Level_UI/Level_UI.tscn" id="1_7wnsk"]
 [ext_resource type="Script" uid="uid://crgbw42ye0wxi" path="res://Scenes/GameScenes/MainScene/level_reference_script.gd" id="1_wfosk"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://be6kxn0nhuo1m" path="res://Objects/Enemies/EnemySpawner/enemy_spawner_scene.tscn" id="13_4qvdo"]
 [ext_resource type="Resource" uid="uid://cw7vaaeb2duqo" path="res://Scenes/GameScenes/Level_1/WaveData-1.tres" id="14_7ax7i"]
 [ext_resource type="PackedScene" uid="uid://cec1eytpv2ly3" path="res://Objects/TVBackground/TV_edited.glb" id="15_2rdu0"]
+[ext_resource type="AudioStream" uid="uid://prd13ihtc6av" path="res://RawAssets/Audio/Sounds/lose8.ogg" id="17_du8qa"]
 [ext_resource type="AudioStream" uid="uid://btujmtb2doysm" path="res://RawAssets/Audio/Sounds/secret5.ogg" id="22_06qis"]
 [ext_resource type="PackedScene" uid="uid://c2nej4bvtmhaj" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/cabinet_medium.gltf" id="23_wejqe"]
 [ext_resource type="PackedScene" uid="uid://dxf5jjt2365yb" path="res://Objects/Controls/Button/on_off_button_scene.tscn" id="24_i81jv"]
@@ -37,6 +38,9 @@
 [ext_resource type="PackedScene" uid="uid://duuht53vc3e6" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/table_medium_long.gltf" id="30_t6tf6"]
 [ext_resource type="PackedScene" uid="uid://tg5sti1ajbd" path="res://Objects/Controls/Wheel/knob_scene.tscn" id="33_llj7c"]
 [ext_resource type="PackedScene" uid="uid://de5nita8tdxp2" path="res://LevelData/level_select_scene.tscn" id="34_i81jv"]
+[ext_resource type="PackedScene" uid="uid://c5nyk0ucame22" path="res://Objects/Particles/BulletHitParticle/bullet_hit_particle.tscn" id="38_y538y"]
+[ext_resource type="PackedScene" uid="uid://dqcfb008vw3tv" path="res://Objects/Particles/ExposionParticle/explosion_particle.tscn" id="39_du8qa"]
+[ext_resource type="PackedScene" uid="uid://ervowdcakywf" path="res://Objects/Particles/EnemyDeathParticle/enemy_death_particle.tscn" id="40_o1882"]
 
 [sub_resource type="Environment" id="Environment_a202f"]
 background_color = Color(0.5481376, 0.6183476, 0.7303044, 1)
@@ -107,11 +111,12 @@ script = ExtResource("1_wfosk")
 gun_node = NodePath("SubViewport/GamePlayArea/Gun")
 crosshair_node = NodePath("SubViewport/GamePlayArea/TargetCrosshair")
 
-[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("spawner")]
+[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("spawner", "level_cartridges")]
 script = ExtResource("1_wu6fb")
 starting_level = 4
 Levels = Array[ExtResource("2_j34ea")]([ExtResource("3_wejqe"), ExtResource("4_wfosk"), ExtResource("7_2rdu0"), ExtResource("6_lfvce"), ExtResource("8_gtdbg"), ExtResource("9_2kbtd")])
 spawner = NodePath("../SubViewport/GamePlayArea/EnemySpawner")
+level_cartridges = [NodePath("../Levels/Level1"), NodePath("../Levels/Level2"), NodePath("../Levels/Level3"), NodePath("../Levels/Level4"), NodePath("../Levels/Level5"), NodePath("../Levels/Level6")]
 
 [node name="LevelBackgroundMusic" type="AudioStreamPlayer" parent="LevelManager"]
 
@@ -172,6 +177,19 @@ script = ExtResource("11_xqb21")
 stream = ExtResource("22_06qis")
 volume_db = -10.0
 
+[node name="GameWinNodes" type="Node3D" parent="SubViewport/GamePlayArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+script = ExtResource("10_xqb21")
+
+[node name="GameWinText" type="Label3D" parent="SubViewport/GamePlayArea/GameWinNodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57127, 1.7745972, 0.87035346)
+text = "You Win!!!"
+font_size = 142
+
+[node name="WinSound" type="AudioStreamPlayer" parent="SubViewport/GamePlayArea/GameWinNodes"]
+stream = ExtResource("22_06qis")
+volume_db = -10.0
+
 [node name="LevelFailedNodes" type="Node3D" parent="SubViewport/GamePlayArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 script = ExtResource("10_xqb21")
@@ -183,7 +201,7 @@ text = "Level Failed"
 font_size = 142
 
 [node name="WinSound" type="AudioStreamPlayer" parent="SubViewport/GamePlayArea/LevelFailedNodes"]
-stream = ExtResource("22_06qis")
+stream = ExtResource("17_du8qa")
 volume_db = -10.0
 
 [node name="Camera3D2" parent="SubViewport/GamePlayArea" groups=["Camera"] instance=ExtResource("2_dykdg")]
@@ -320,22 +338,27 @@ transform = Transform3D(0.85837847, 0, 0.513017, 0, 1, 0, -0.513017, 0, 0.858378
 
 [node name="Level2" parent="Levels" instance=ExtResource("34_i81jv")]
 transform = Transform3D(0.98280996, 0, 0.18462038, 0, 1, 0, -0.18462038, 0, 0.98280996, -2.3149602, -0.6456189, -3.8763962)
+visible = false
 level_index = 1
 
 [node name="Level3" parent="Levels" instance=ExtResource("34_i81jv")]
 transform = Transform3D(0.99899346, 0, -0.044857353, 0, 1, 0, 0.044857353, 0, 0.99899346, 1.9798486, -0.6456189, -4.1407223)
+visible = false
 level_index = 2
 
 [node name="Level4" parent="Levels" instance=ExtResource("34_i81jv")]
 transform = Transform3D(0.8208004, 0, -0.5712151, 0, 1, 0, 0.5712151, 0, 0.8208004, 5.9704485, -0.6456189, -2.0772514)
+visible = false
 level_index = 3
 
 [node name="Level5" parent="Levels" instance=ExtResource("34_i81jv")]
 transform = Transform3D(0.85837847, 0, 0.513017, 0, 1, 0, -0.513017, 0, 0.85837847, -6.4242363, -0.6456189, 2.086773)
+visible = false
 level_index = 4
 
 [node name="Level6" parent="Levels" instance=ExtResource("34_i81jv")]
 transform = Transform3D(0.98280996, 0, 0.18462038, 0, 1, 0, -0.18462038, 0, 0.98280996, -2.3149602, -0.6456189, 0.649271)
+visible = false
 level_index = 5
 
 [node name="Level7" parent="Levels" instance=ExtResource("34_i81jv")]
@@ -355,15 +378,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34845155, 16.541496, 29.987
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022902906, -15.486206, 5.338421)
 shape = SubResource("BoxShape3D_06qis")
 
+[node name="ExplosionParticle" parent="." instance=ExtResource("38_y538y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.98383, 1.5914135, -8.6746855)
+
+[node name="ExplosionParticle3" parent="." instance=ExtResource("39_du8qa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.066998, 4.9711666, -5.730624)
+
+[node name="ExplosionParticle2" parent="." instance=ExtResource("40_o1882")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.066998, 4.9711666, -5.730624)
+
 [connection signal="pressed" from="LevelUI/Button2" to="." method="_on_level_selected"]
 [connection signal="TargetHit" from="SubViewport/GamePlayArea/LevelCompleteNodes/LevelCompleteTarget" to="LevelManager" method="start_level"]
 [connection signal="TargetHit" from="SubViewport/GamePlayArea/LevelCompleteNodes/LevelCompleteTarget" to="SubViewport/GamePlayArea/LevelCompleteNodes" method="HideLevelComplete"]
+[connection signal="base_destroyed" from="SubViewport/GamePlayArea/Player_Base" to="." method="level_failed"]
 [connection signal="base_destroyed" from="SubViewport/GamePlayArea/Player_Base" to="SubViewport/GamePlayArea/LevelFailedNodes" method="HideLevelCompleteAfterDelay"]
 [connection signal="base_destroyed" from="SubViewport/GamePlayArea/Player_Base" to="SubViewport/GamePlayArea/LevelFailedNodes" method="ShowLevelComplete"]
 [connection signal="match_ended" from="SubViewport/GamePlayArea/EnemySpawner" to="LevelManager" method="increase_level"]
 [connection signal="match_ended" from="SubViewport/GamePlayArea/EnemySpawner" to="SubViewport/GamePlayArea/LevelCompleteNodes" method="ShowLevelComplete"]
 [connection signal="onValueChanged" from="TV_edited/VolumeKnob" to="." method="_on_volume_knob_on_value_changed"]
 [connection signal="onValueChanged" from="TV_edited/Button" to="." method="_on_off_button_pressed"]
+[connection signal="onValueChanged" from="TV_edited/Button" to="SubViewport/GamePlayArea/GameWinNodes" method="HideLevelComplete"]
 [connection signal="level_selected" from="Levels/Level1" to="." method="_on_level_selected"]
 [connection signal="level_selected" from="Levels/Level2" to="." method="_on_level_selected"]
 [connection signal="level_selected" from="Levels/Level3" to="." method="_on_level_selected"]
