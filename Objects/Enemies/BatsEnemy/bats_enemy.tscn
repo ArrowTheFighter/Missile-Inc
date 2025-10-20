@@ -41,7 +41,8 @@ left_to_right = 0.0
 
 [node name="Bat" type="Node3D" node_paths=PackedStringArray("Area")]
 script = ExtResource("1_enjil")
-speed = 1.5
+side_speed = 1
+speed = 0.65
 Area = NodePath("Area3D")
 death_sound_stream = ExtResource("2_p7qxe")
 death_particle = ExtResource("2_vj8gj")
@@ -104,4 +105,3 @@ mesh = SubResource("PrismMesh_xwi5x")
 skeleton = NodePath("../..")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.4

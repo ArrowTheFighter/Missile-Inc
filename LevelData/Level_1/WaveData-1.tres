@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b130qkugcsawo" path="res://Objects/Enemies/EnemySpawner/Wave_Enemy_Data.gd" id="1_1kw5u"]
 [ext_resource type="PackedScene" uid="uid://dat61ko2q16a" path="res://Objects/Enemies/BasicEnemy/enemy_scene.tscn" id="2_hfdeg"]
-[ext_resource type="PackedScene" uid="uid://b21us73bwyhcu" path="res://Objects/Enemies/ToughEnemy/tough_enemy_scene.tscn" id="3_svijf"]
+[ext_resource type="PackedScene" uid="uid://ds0pjo1fl13d0" path="res://Objects/Enemies/GhostEnemy/ghost_enemy.tscn" id="3_6l3ao"]
 [ext_resource type="Script" uid="uid://c5y2s5btshlsd" path="res://Objects/Enemies/EnemySpawner/Wave_Data.gd" id="4_0gfw3"]
+[ext_resource type="PackedScene" uid="uid://bklf1o02v1is7" path="res://Objects/Enemies/BatsEnemy/bats_enemy.tscn" id="4_nn5kk"]
 
 [sub_resource type="Resource" id="Resource_j750k"]
 script = ExtResource("1_1kw5u")
@@ -12,39 +13,30 @@ SpawnCount = 4
 SpawnDelay = 4.5
 metadata/_custom_type_script = "uid://b130qkugcsawo"
 
-[sub_resource type="Resource" id="Resource_dna02"]
-script = ExtResource("1_1kw5u")
-EnemyScene = ExtResource("2_hfdeg")
-SpawnCount = 5
-SpawnDelay = 3.5
-metadata/_custom_type_script = "uid://b130qkugcsawo"
-
-[sub_resource type="Resource" id="Resource_6l3ao"]
-script = ExtResource("1_1kw5u")
-EnemyScene = ExtResource("2_hfdeg")
-SpawnCount = 5
-SpawnDelay = 4.0
-EnemySpeed = 0.75
-metadata/_custom_type_script = "uid://b130qkugcsawo"
-
 [sub_resource type="Resource" id="Resource_nn5kk"]
 script = ExtResource("1_1kw5u")
-EnemyScene = ExtResource("2_hfdeg")
-SpawnCount = 2
-SpawnDelay = 0.1
-EnemySpeed = 0.5
+EnemyScene = ExtResource("3_6l3ao")
+SpawnCount = 5
+SpawnDelay = 5.0
 metadata/_custom_type_script = "uid://b130qkugcsawo"
 
-[sub_resource type="Resource" id="Resource_xr0t6"]
+[sub_resource type="Resource" id="Resource_cwn7o"]
 script = ExtResource("1_1kw5u")
-EnemyScene = ExtResource("3_svijf")
-SpawnCount = 1
-SpawnDelay = 4.0
-EnemyHealth = 10
+EnemyScene = ExtResource("2_hfdeg")
+SpawnCount = 4
+SpawnDelay = 5.0
+EnemySpeed = 0.6
+metadata/_custom_type_script = "uid://b130qkugcsawo"
+
+[sub_resource type="Resource" id="Resource_8fdta"]
+script = ExtResource("1_1kw5u")
+EnemyScene = ExtResource("4_nn5kk")
+SpawnCount = 2
+SpawnDelay = 6.0
 metadata/_custom_type_script = "uid://b130qkugcsawo"
 
 [resource]
 script = ExtResource("4_0gfw3")
 initial_delay = 3.0
-Wave_Section = Array[ExtResource("1_1kw5u")]([SubResource("Resource_j750k"), SubResource("Resource_dna02"), SubResource("Resource_6l3ao"), SubResource("Resource_nn5kk"), SubResource("Resource_xr0t6")])
+Wave_Section = Array[ExtResource("1_1kw5u")]([SubResource("Resource_j750k"), SubResource("Resource_nn5kk"), SubResource("Resource_cwn7o"), SubResource("Resource_8fdta")])
 metadata/_custom_type_script = "uid://c5y2s5btshlsd"

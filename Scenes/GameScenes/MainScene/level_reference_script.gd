@@ -16,6 +16,7 @@ func _on_level_selected(level:int = 0)->void:
 func _on_turn_off_tv()->void:
 	var timer = get_tree().create_timer(1)
 	$SubViewport/GamePlayArea/TV_Background.ShowBackground()
+	$SubViewport/GamePlayArea/EnemySpawner.kill_spawned_enemies()
 	await timer.timeout
 	$LevelManager.deload_level()
 	await $LevelManager.level_deloaded

@@ -10,6 +10,7 @@ signal controls_moved_out
 @export_category("Gun settings")
 @export var use_crosshair := true
 @export var require_reloading := false
+@export var bullet_scene : PackedScene
 
 @export_category("Control Assignments")
 @export var gun_fire_controls : Array[Base_Control]
@@ -19,12 +20,26 @@ signal controls_moved_out
 @export var load_ammo_controls : Array[Base_Control]
 @export var remove_empty_ammo_controls: Array[Base_Control]
 @export var move_gun_left_right : Array[Base_Control]
+@export var rotate_gun_controls: Array[Base_Control]
+
+const BASIC_BULLET = preload("uid://de4nhm0c47le1")
+
 
 
 func _ready() -> void:
 	_hide_controls()
 	setup_control_signals()
 	_move_in_controls()
+	
+	var scene_refrence_node
+	for child in get_tree().root.get_children():
+		if child is LevelReference:
+			scene_refrence_node = child as LevelReference
+			
+	if bullet_scene == null:
+		scene_refrence_node.gun_node.Bullet_Scene = BASIC_BULLET
+	else:
+		scene_refrence_node.gun_node.Bullet_Scene = bullet_scene
 
 
 func setup_control_signals():
@@ -63,6 +78,9 @@ func setup_control_signals():
 		
 	for node in move_gun_left_right:
 		node.onValueChanged.connect(scene_refrence_node.gun_node.Move_Gun)
+	
+	for node in rotate_gun_controls:
+		node.onValueChanged.connect(scene_refrence_node.gun_node.Rotate_Gun)
 	pass
 
 func _hide_controls() -> void:

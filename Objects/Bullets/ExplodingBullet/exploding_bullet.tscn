@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dx0qam1hilnr6"]
+[gd_scene load_steps=11 format=3 uid="uid://dx0qam1hilnr6"]
 
 [ext_resource type="Script" uid="uid://djfxwabnf6k6k" path="res://Objects/Bullets/ExplodingBullet/exploding_bullet_script.gd" id="1_fpbu3"]
 [ext_resource type="PackedScene" uid="uid://dqcfb008vw3tv" path="res://Objects/Particles/ExposionParticle/explosion_particle.tscn" id="2_7b1pq"]
 [ext_resource type="Texture2D" uid="uid://bst1xhlmsxkjo" path="res://Textures/Duck_14x14.png" id="2_rbg31"]
+[ext_resource type="PackedScene" uid="uid://ctj3u1robdm1u" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/red/bomb_B_red.gltf" id="4_1ovbf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7oki"]
 albedo_color = Color(0.5529412, 0, 0, 1)
@@ -60,8 +61,12 @@ mesh = SubResource("QuadMesh_1ovbf")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.029174805)
+visible = false
 pixel_size = 0.03
 texture_filter = 0
 texture = ExtResource("2_rbg31")
+
+[node name="bomb_B_red2" parent="." instance=ExtResource("4_1ovbf")]
+transform = Transform3D(0.32056412, 0.19632408, -0.32968998, -0.38371685, 0.16401279, -0.27542907, 2.9802322e-08, 0.42960057, 0.255819, 0, 0, 0)
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

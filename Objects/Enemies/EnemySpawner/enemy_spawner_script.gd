@@ -23,6 +23,7 @@ func start_wave() -> void:
 	current_wave = 0
 	if Wave_Data != null:
 		timer.wait_time = Wave_Data.initial_delay
+	timer.start()
 	pass
 
 func set_wave_timeout():
@@ -36,6 +37,7 @@ func set_wave_timeout():
 	#wave ended
 	else:
 		wait_for_enemies_to_die()
+		timer.stop()
 		if timer.timeout.is_connected(set_wave_timeout):
 			timer.timeout.disconnect(set_wave_timeout)
 
@@ -92,3 +94,14 @@ func get_random_spawn_pos():
 			break
 		i += 1
 	return spawn_pos
+
+func kill_spawned_enemies():
+	for i in Spawned_Enemies:
+		print('killing enemies')
+		i.queue_free()
+	Spawned_Enemies = []
+	timer.stop()
+	for dict in timer.timeout.get_connections():
+		timer.timeout.disconnect(dict.callable)
+	
+	

@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=9 format=3 uid="uid://br24evcf1kx30"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=11 format=3 uid="uid://br24evcf1kx30"]
 
+[ext_resource type="PackedScene" uid="uid://bpgh3r62mxb5s" path="res://Scenes/Control_Scenes/AutoShoot/auto_shoot_controls_scene.tscn" id="1_ggftl"]
 [ext_resource type="Script" uid="uid://bdxifyfw4sj21" path="res://LevelData/level_data.gd" id="1_oev55"]
-[ext_resource type="PackedScene" uid="uid://b8snx0s4myc8e" path="res://Scenes/Control_Scenes/Basic_Controls/basic_controls_scene.tscn" id="1_wlcrh"]
 [ext_resource type="Script" uid="uid://b130qkugcsawo" path="res://Objects/Enemies/EnemySpawner/Wave_Enemy_Data.gd" id="3_ggftl"]
 [ext_resource type="PackedScene" uid="uid://bklf1o02v1is7" path="res://Objects/Enemies/BatsEnemy/bats_enemy.tscn" id="4_ggftl"]
 [ext_resource type="Script" uid="uid://c5y2s5btshlsd" path="res://Objects/Enemies/EnemySpawner/Wave_Data.gd" id="4_s14bg"]
@@ -10,26 +10,41 @@
 script = ExtResource("3_ggftl")
 EnemyScene = ExtResource("4_ggftl")
 SpawnCount = 2
-SpawnDelay = 5.0
-EnemySpeed = 1.0
+SpawnDelay = 6.0
+EnemySpeed = 0.45
 metadata/_custom_type_script = "uid://b130qkugcsawo"
 
 [sub_resource type="Resource" id="Resource_yovlr"]
 script = ExtResource("3_ggftl")
 EnemyScene = ExtResource("4_ggftl")
 SpawnCount = 5
-SpawnDelay = 3.0
-EnemySpeed = 1.0
+SpawnDelay = 5.0
+EnemySpeed = 0.5
+metadata/_custom_type_script = "uid://b130qkugcsawo"
+
+[sub_resource type="Resource" id="Resource_ggftl"]
+script = ExtResource("3_ggftl")
+EnemyScene = ExtResource("4_ggftl")
+SpawnDelay = 4.0
+EnemySpeed = 0.5
+metadata/_custom_type_script = "uid://b130qkugcsawo"
+
+[sub_resource type="Resource" id="Resource_s14bg"]
+script = ExtResource("3_ggftl")
+EnemyScene = ExtResource("4_ggftl")
+SpawnCount = 1
+SpawnDelay = 5.0
+EnemySpeed = 0.65
 metadata/_custom_type_script = "uid://b130qkugcsawo"
 
 [sub_resource type="Resource" id="Resource_6tp23"]
 script = ExtResource("4_s14bg")
 initial_delay = 3.0
-Wave_Section = Array[ExtResource("3_ggftl")]([SubResource("Resource_vy7j8"), SubResource("Resource_yovlr")])
+Wave_Section = Array[ExtResource("3_ggftl")]([SubResource("Resource_vy7j8"), SubResource("Resource_yovlr"), SubResource("Resource_ggftl"), SubResource("Resource_s14bg")])
 metadata/_custom_type_script = "uid://c5y2s5btshlsd"
 
 [resource]
 script = ExtResource("1_oev55")
 wave_data = SubResource("Resource_6tp23")
-controls_scene = ExtResource("1_wlcrh")
+controls_scene = ExtResource("1_ggftl")
 metadata/_custom_type_script = "uid://bdxifyfw4sj21"

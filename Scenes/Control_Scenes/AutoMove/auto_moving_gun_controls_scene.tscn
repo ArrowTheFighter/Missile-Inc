@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxjcitl4cswqo"]
+
+[ext_resource type="Script" uid="uid://dwh0fp7bj24es" path="res://Objects/Controls/ControlsSpawnHandler/controls_spawn_handler.gd" id="1_cv03x"]
+[ext_resource type="PackedScene" uid="uid://b8oi31gd4xqhb" path="res://RawAssets/OLD/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/platform_2x2x1_yellow.gltf" id="2_pvax1"]
+[ext_resource type="Script" uid="uid://b6rvy6wtc2q2w" path="res://Objects/Controls/AutoShoot.gd" id="4_h8nui"]
+[ext_resource type="PackedScene" uid="uid://s6qddpkxjec7" path="res://Objects/Controls/Lever/lever_grip_scene.tscn" id="4_ljoui"]
+
+[node name="Controls_scene" type="Node3D" node_paths=PackedStringArray("gun_fire_controls", "move_gun_left_right")]
+transform = Transform3D(0.82, 0, 0, 0, 0.82, 0, 0, 0, 0.82, -0.6943917, 0.7076769, -0.8830316)
+script = ExtResource("1_cv03x")
+offset_vector = Vector3(-12.245106, 0, 21.847252)
+use_crosshair = false
+gun_fire_controls = [NodePath("platform_2x2x1_yellow11/LeverGrip")]
+move_gun_left_right = [NodePath("Node3D")]
+
+[node name="platform_2x2x1_yellow11" parent="." instance=ExtResource("2_pvax1")]
+transform = Transform3D(1.6, 0, 0, 0, -6.9938224e-08, -1.6, 0, 1.6, -6.9938224e-08, -3.9368932, -0.10594863, -0.60100794)
+
+[node name="LeverGrip" parent="platform_2x2x1_yellow11" instance=ExtResource("4_ljoui")]
+transform = Transform3D(1.25, 0, 0, 0, -5.4639234e-08, 1.25, 0, -1.25, -5.4639234e-08, 0.062425613, 0.9980824, 0.05647844)
+invert = true
+
+[node name="Node3D" type="Node3D" parent="."]
+script = ExtResource("4_h8nui")
+max_time = 5.0

@@ -13,6 +13,7 @@ var target_pos : Vector3
 @export_category("On Hit Particle")
 @export var hit_particle : PackedScene
 
+signal HitEnemy
 
 func _ready() -> void:
 	if CollisionArea != null:
@@ -38,3 +39,4 @@ func on_hit(area : Area3D):
 				get_tree().root.add_child(instanced_hit_particle)
 				instanced_hit_particle.global_position = global_position
 				instanced_hit_particle.global_transform.basis = global_transform.basis
+			HitEnemy.emit()

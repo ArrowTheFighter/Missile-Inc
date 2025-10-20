@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://blipopcgl18lc"]
+
+[ext_resource type="Script" uid="uid://dwh0fp7bj24es" path="res://Objects/Controls/ControlsSpawnHandler/controls_spawn_handler.gd" id="1_8gam4"]
+[ext_resource type="PackedScene" uid="uid://b8oi31gd4xqhb" path="res://RawAssets/OLD/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/platform_2x2x1_yellow.gltf" id="2_8y1nv"]
+[ext_resource type="PackedScene" uid="uid://paw10f8qph5w" path="res://Objects/Controls/Button/buton_switch_scene.tscn" id="4_dwisn"]
+[ext_resource type="Script" uid="uid://cfl47la8es7op" path="res://Objects/Controls/remap_value_controls.gd" id="6_bou6l"]
+[ext_resource type="Script" uid="uid://e7bdgej75koc" path="res://Objects/Controls/AddControls/add_controls_script.gd" id="7_dwisn"]
+[ext_resource type="Script" uid="uid://bkmhicag0ywnf" path="res://Objects/Controls/AddControls/add_controls_dampening_script.gd" id="8_3ysx7"]
+[ext_resource type="PackedScene" uid="uid://b6ln4quk1xu4g" path="res://Objects/Controls/Button/button_scene.tscn" id="9_g3qyp"]
+
+[node name="Controls_scene" type="Node3D" node_paths=PackedStringArray("gun_fire_controls", "move_gun_left_right", "rotate_gun_controls")]
+transform = Transform3D(0.82, 0, 0, 0, 0.82, 0, 0, 0, 0.82, -0.6943917, 0.7076769, -0.8830316)
+script = ExtResource("1_8gam4")
+offset_vector = Vector3(-12.245106, 0, 21.847252)
+use_crosshair = false
+gun_fire_controls = [NodePath("platform_2x2x1_yellow17/Button")]
+move_gun_left_right = [NodePath("Add3")]
+rotate_gun_controls = [NodePath("RemapValues")]
+
+[node name="platform_2x2x1_yellow13" parent="." instance=ExtResource("2_8y1nv")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -3.1172867, -2.5922506, 0.19779027)
+
+[node name="Button4" parent="platform_2x2x1_yellow13" instance=ExtResource("4_dwisn")]
+transform = Transform3D(0.9375, 0, 0, 0, -4.0979426e-08, 0.9375, 0, -0.9375, -4.0979426e-08, 0.024493694, 1.0646198, 0.03960824)
+start_pressed = true
+
+[node name="platform_2x2x1_yellow17" parent="." instance=ExtResource("2_8y1nv")]
+transform = Transform3D(1.6, 0, 0, 0, -6.9938224e-08, -1.6, 0, 1.6, -6.9938224e-08, -3.9289129, -0.18504173, -0.61906755)
+
+[node name="Button" parent="platform_2x2x1_yellow17" instance=ExtResource("9_g3qyp")]
+transform = Transform3D(0.9375, 0, 0, 0, -4.0979426e-08, 0.9375, 0, -0.9375, -4.0979426e-08, 0.06633139, 1.0643575, 0.056684017)
+
+[node name="platform_2x2x1_yellow14" parent="." instance=ExtResource("2_8y1nv")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -4.744, -2.592, 0.19800001)
+
+[node name="Button5" parent="platform_2x2x1_yellow14" instance=ExtResource("4_dwisn")]
+transform = Transform3D(0.9375, 0, 0, 0, -4.0979426e-08, 0.9375, 0, -0.9375, -4.0979426e-08, 0.019441605, 1.0643576, 0.039921522)
+start_pressed = true
+
+[node name="platform_2x2x1_yellow18" parent="." instance=ExtResource("2_8y1nv")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -3.1172867, 2.2233934, 0.19779027)
+
+[node name="Button3" parent="platform_2x2x1_yellow18" instance=ExtResource("4_dwisn")]
+transform = Transform3D(0.9375, 0, 0, 0, -4.0979426e-08, 0.9375, 0, -0.9375, -4.0979426e-08, -0.017191887, 1.0646197, 0.056370735)
+
+[node name="platform_2x2x1_yellow19" parent="." instance=ExtResource("2_8y1nv")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -4.744, 2.223644, 0.19800001)
+
+[node name="Button2" parent="platform_2x2x1_yellow19" instance=ExtResource("4_dwisn")]
+transform = Transform3D(0.9375, 0, 0, 0, -4.0979426e-08, 0.9375, 0, -0.9375, -4.0979426e-08, 0.06633139, 1.0643575, 0.056684017)
+start_pressed = true
+
+[node name="platform_2x2x1_yellow15" parent="." instance=ExtResource("2_8y1nv")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -3.1172867, -4.2437277, 0.19779027)
+
+[node name="Button5" parent="platform_2x2x1_yellow15" instance=ExtResource("4_dwisn")]
+transform = Transform3D(0.9375, 0, 0, 0, -4.0979426e-08, 0.9375, 0, -0.9375, -4.0979426e-08, 0.024493694, 1.0646198, 0.030380249)
+
+[node name="platform_2x2x1_yellow16" parent="." instance=ExtResource("2_8y1nv")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -4.744, -4.2434773, 0.19800001)
+
+[node name="Button6" parent="platform_2x2x1_yellow16" instance=ExtResource("4_dwisn")]
+transform = Transform3D(0.9375, 0, 0, 0, -4.0979426e-08, 0.9375, 0, -0.9375, -4.0979426e-08, 0.019441605, 1.0643576, 0.030693531)
+
+[node name="Add1" type="Node3D" parent="."]
+script = ExtResource("7_dwisn")
+
+[node name="Add2" type="Node3D" parent="."]
+script = ExtResource("7_dwisn")
+
+[node name="Add3" type="Node3D" parent="."]
+script = ExtResource("8_3ysx7")
+dampening = 0.025
+
+[node name="AddRotate4" type="Node3D" parent="."]
+script = ExtResource("8_3ysx7")
+
+[node name="RemapValues" type="Node3D" parent="."]
+script = ExtResource("6_bou6l")
+remamped_low_value = 0.35
+remamped_high_value = 0.65
+
+[connection signal="onValueChanged" from="platform_2x2x1_yellow13/Button4" to="Add1" method="input_control_1"]
+[connection signal="onValueChanged" from="platform_2x2x1_yellow14/Button5" to="Add1" method="input_control_2"]
+[connection signal="onValueChanged" from="platform_2x2x1_yellow18/Button3" to="AddRotate4" method="input_control_2"]
+[connection signal="onValueChanged" from="platform_2x2x1_yellow19/Button2" to="AddRotate4" method="input_control_1"]
+[connection signal="onValueChanged" from="platform_2x2x1_yellow15/Button5" to="Add2" method="input_control_1"]
+[connection signal="onValueChanged" from="platform_2x2x1_yellow16/Button6" to="Add2" method="input_control_2"]
+[connection signal="onValueChanged" from="Add1" to="Add3" method="input_control_1"]
+[connection signal="onValueChanged" from="Add2" to="Add3" method="input_control_2"]
+[connection signal="onValueChanged" from="AddRotate4" to="RemapValues" method="_on_add_rotate_4_on_value_changed"]
+[connection signal="onValueChanged" from="AddRotate4" to="RemapValues" method="control_input"]

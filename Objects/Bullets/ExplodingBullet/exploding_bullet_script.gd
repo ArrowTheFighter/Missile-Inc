@@ -7,6 +7,7 @@ func _ready() -> void:
 	super()
 	Explosion_Area.area_entered.connect(Explosion_Area_Entered)
 	Explosion_Area.area_exited.connect(Explosion_Area_Exited)
+	HitEnemy.connect(explode)
 
 func _move_bullet(delta):
 	global_translate(transform.basis.y * speed * delta)

@@ -33,7 +33,7 @@ script = ExtResource("2_7fq24")
 EnemyScene = ExtResource("3_v604p")
 SpawnCount = 3
 SpawnDelay = 2.0
-EnemySpeed = 0.75
+EnemySpeed = 0.6
 metadata/_custom_type_script = "uid://b130qkugcsawo"
 
 [sub_resource type="Resource" id="Resource_5xyg6"]
@@ -41,7 +41,7 @@ script = ExtResource("2_7fq24")
 EnemyScene = ExtResource("4_eu4v3")
 SpawnCount = 3
 SpawnDelay = 4.0
-EnemySpeed = 0.75
+EnemySpeed = 0.65
 metadata/_custom_type_script = "uid://b130qkugcsawo"
 
 [sub_resource type="Resource" id="Resource_ow8pl"]

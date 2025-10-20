@@ -10,14 +10,12 @@ func _ready() -> void:
 	vis_timer.start()
 
 func _on_vis_timer_timeout() -> void:
-	print("going invis")
 	visible = false
 	#var tween = get_tree().create_tween()
 	#tween.tween_property(self, "position", position - Vector3(0,0,2), .3)
 	invis_timer.start()
 
 func _on_invis_timer_timeout() -> void:
-	print("going vis")
 	visible = true
 	#var tween = get_tree().create_tween()
 	#tween.tween_property(self, "position", position + Vector3(0,0,2), .3)

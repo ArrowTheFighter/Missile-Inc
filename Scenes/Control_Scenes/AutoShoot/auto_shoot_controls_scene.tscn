@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpgh3r62mxb5s"]
+
+[ext_resource type="Script" uid="uid://dwh0fp7bj24es" path="res://Objects/Controls/ControlsSpawnHandler/controls_spawn_handler.gd" id="1_3ashi"]
+[ext_resource type="PackedScene" uid="uid://b8oi31gd4xqhb" path="res://RawAssets/OLD/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/platform_2x2x1_yellow.gltf" id="2_s8v4t"]
+[ext_resource type="PackedScene" uid="uid://cimng1naje5s6" path="res://Objects/Controls/Wheel/wheel_scene.tscn" id="3_cjn8v"]
+[ext_resource type="PackedScene" uid="uid://s6qddpkxjec7" path="res://Objects/Controls/Lever/lever_grip_scene.tscn" id="4_v3nys"]
+[ext_resource type="Script" uid="uid://b6rvy6wtc2q2w" path="res://Objects/Controls/AutoShoot.gd" id="5_hmau6"]
+[ext_resource type="Script" uid="uid://e7bdgej75koc" path="res://Objects/Controls/AddControls/add_controls_script.gd" id="6_gc51t"]
+
+[node name="Controls_scene" type="Node3D" node_paths=PackedStringArray("gun_fire_controls", "move_gun_left_right")]
+transform = Transform3D(0.82, 0, 0, 0, 0.82, 0, 0, 0, 0.82, -0.6943917, 0.7076769, -0.8830316)
+script = ExtResource("1_3ashi")
+offset_vector = Vector3(-12.245106, 0, 21.847252)
+use_crosshair = false
+gun_fire_controls = [NodePath("Auto_Activate")]
+move_gun_left_right = [NodePath("AddControls")]
+
+[node name="platform_2x2x1_yellow11" parent="." instance=ExtResource("2_s8v4t")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -3.1370022, -0.9494468, 0.19779027)
+
+[node name="LeverGrip" parent="platform_2x2x1_yellow11" instance=ExtResource("4_v3nys")]
+transform = Transform3D(1.25, 0, 0, 0, -5.4639234e-08, 1.25, 0, -1.25, -5.4639234e-08, 0.062425613, 0.9980824, 0.05647844)
+
+[node name="platform_2x2x1_yellow17" parent="." instance=ExtResource("2_s8v4t")]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -4.7444906, -0.9513023, 0.19779027)
+
+[node name="Wheel3" parent="platform_2x2x1_yellow17" instance=ExtResource("3_cjn8v")]
+transform = Transform3D(0.9375, 0, 0, 0, -4.0979426e-08, 0.9375, 0, -0.9375, -4.0979426e-08, -0.016162872, 1.305187, -0.0041446686)
+rotation_damp = 60.0
+
+[node name="Auto_Activate" type="Node3D" parent="."]
+script = ExtResource("5_hmau6")
+max_time = 2.0
+
+[node name="AddControls" type="Node3D" parent="."]
+script = ExtResource("6_gc51t")
+
+[connection signal="onValueChanged" from="platform_2x2x1_yellow11/LeverGrip" to="AddControls" method="input_control_2"]
+[connection signal="onValueChanged" from="platform_2x2x1_yellow17/Wheel3" to="AddControls" method="input_control_1"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://becs2nxjvitxd"]
+[gd_scene load_steps=49 format=3 uid="uid://becs2nxjvitxd"]
 
 [ext_resource type="PackedScene" uid="uid://vkee7ul42q82" path="res://Scenes/GameScenes/Level_UI/Level_UI.tscn" id="1_7wnsk"]
 [ext_resource type="Script" uid="uid://crgbw42ye0wxi" path="res://Scenes/GameScenes/MainScene/level_reference_script.gd" id="1_wfosk"]
@@ -8,9 +8,11 @@
 [ext_resource type="Script" uid="uid://bdxifyfw4sj21" path="res://LevelData/level_data.gd" id="2_j34ea"]
 [ext_resource type="Resource" uid="uid://duh7uduo2fyfi" path="res://LevelData/Level_1/Level_1_Data.tres" id="3_wejqe"]
 [ext_resource type="Resource" uid="uid://bigiomqckdkem" path="res://LevelData/Level_2/Level_2_Data.tres" id="4_wfosk"]
-[ext_resource type="Resource" uid="uid://br24evcf1kx30" path="res://LevelData/Level_Bats/Level_Bats.tres" id="6_lfvce"]
-[ext_resource type="Resource" uid="uid://bdyxq8gve4nc3" path="res://LevelData/Level_Bats/Level_Ghosts.tres" id="7_2rdu0"]
+[ext_resource type="Resource" uid="uid://br24evcf1kx30" path="res://LevelData/Level_4_Bats/Level_Bats.tres" id="6_lfvce"]
+[ext_resource type="Resource" uid="uid://bdyxq8gve4nc3" path="res://LevelData/Level_3/Level_Ghosts.tres" id="7_2rdu0"]
 [ext_resource type="Shader" uid="uid://i0pw7q1dpgvb" path="res://Shaders/CRTV_Shader.gdshader" id="8_d2vs7"]
+[ext_resource type="Resource" uid="uid://b85f5qmhfs4eb" path="res://LevelData/Level_5/Level_5_Data.tres" id="8_gtdbg"]
+[ext_resource type="Resource" uid="uid://cw2swcb84av8m" path="res://LevelData/Level_6/Level_6_Data.tres" id="9_2kbtd"]
 [ext_resource type="PackedScene" uid="uid://1e44ftnnuyib" path="res://Objects/Gun/gun_scene.tscn" id="9_eiuq4"]
 [ext_resource type="PackedScene" uid="uid://de4nhm0c47le1" path="res://Objects/Bullets/BasicBullet/bullet.tscn" id="10_0hn51"]
 [ext_resource type="Script" uid="uid://bu627qc1w1r8i" path="res://Objects/TVBackground/tv_background_script.gd" id="10_4goo8"]
@@ -34,7 +36,7 @@
 [ext_resource type="Script" uid="uid://bdgs6d1yuyi5b" path="res://Objects/level_camera_scene/outside_camera_scene.gd" id="30_1eq8u"]
 [ext_resource type="PackedScene" uid="uid://duuht53vc3e6" path="res://RawAssets/KayKit_Furniture_Bits_1.0_FREE/Assets/gltf/table_medium_long.gltf" id="30_t6tf6"]
 [ext_resource type="PackedScene" uid="uid://tg5sti1ajbd" path="res://Objects/Controls/Wheel/knob_scene.tscn" id="33_llj7c"]
-[ext_resource type="PackedScene" path="res://LevelData/level_select_scene.tscn" id="34_i81jv"]
+[ext_resource type="PackedScene" uid="uid://de5nita8tdxp2" path="res://LevelData/level_select_scene.tscn" id="34_i81jv"]
 
 [sub_resource type="Environment" id="Environment_a202f"]
 background_color = Color(0.5481376, 0.6183476, 0.7303044, 1)
@@ -97,6 +99,9 @@ size = Vector2(200, 200)
 subdivide_width = 10
 subdivide_depth = 10
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_06qis"]
+size = Vector3(48.359375, 22.298828, 1)
+
 [node name="Level_1" type="Node3D" node_paths=PackedStringArray("gun_node", "crosshair_node")]
 script = ExtResource("1_wfosk")
 gun_node = NodePath("SubViewport/GamePlayArea/Gun")
@@ -104,8 +109,8 @@ crosshair_node = NodePath("SubViewport/GamePlayArea/TargetCrosshair")
 
 [node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("spawner")]
 script = ExtResource("1_wu6fb")
-starting_level = 1
-Levels = Array[ExtResource("2_j34ea")]([ExtResource("3_wejqe"), ExtResource("4_wfosk"), ExtResource("7_2rdu0"), ExtResource("6_lfvce")])
+starting_level = 4
+Levels = Array[ExtResource("2_j34ea")]([ExtResource("3_wejqe"), ExtResource("4_wfosk"), ExtResource("7_2rdu0"), ExtResource("6_lfvce"), ExtResource("8_gtdbg"), ExtResource("9_2kbtd")])
 spawner = NodePath("../SubViewport/GamePlayArea/EnemySpawner")
 
 [node name="LevelBackgroundMusic" type="AudioStreamPlayer" parent="LevelManager"]
@@ -209,6 +214,7 @@ Crosshair_Limit_Shape = NodePath("../CrosshairArea/CollisionShape3D")
 
 [node name="Player_Base" parent="SubViewport/GamePlayArea" instance=ExtResource("12_o3ven")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5916061, -2.8453856, 0.7621515)
+health = 3
 
 [node name="EnemySpawner" parent="SubViewport/GamePlayArea" instance=ExtResource("13_4qvdo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7655678, 3.764111, 1)
@@ -310,19 +316,44 @@ transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -0.00037145615, -13.744136, 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.119136, 16.086765)
 
 [node name="Level1" parent="Levels" instance=ExtResource("34_i81jv")]
-transform = Transform3D(0.85837847, 0, 0.513017, 0, 1, 0, -0.513017, 0, 0.85837847, -5.233559, -0.6456189, 1.620882)
+transform = Transform3D(0.85837847, 0, 0.513017, 0, 1, 0, -0.513017, 0, 0.85837847, -6.4242363, -0.6456189, -2.4388943)
 
 [node name="Level2" parent="Levels" instance=ExtResource("34_i81jv")]
-transform = Transform3D(0.98280996, 0, 0.18462038, 0, 1, 0, -0.18462038, 0, 0.98280996, -1.1242833, -0.6456189, 0.18338013)
+transform = Transform3D(0.98280996, 0, 0.18462038, 0, 1, 0, -0.18462038, 0, 0.98280996, -2.3149602, -0.6456189, -3.8763962)
 level_index = 1
 
 [node name="Level3" parent="Levels" instance=ExtResource("34_i81jv")]
-transform = Transform3D(0.99899346, 0, -0.044857353, 0, 1, 0, 0.044857353, 0, 0.99899346, 3.1705256, -0.6456189, -0.08094597)
+transform = Transform3D(0.99899346, 0, -0.044857353, 0, 1, 0, 0.044857353, 0, 0.99899346, 1.9798486, -0.6456189, -4.1407223)
 level_index = 2
 
 [node name="Level4" parent="Levels" instance=ExtResource("34_i81jv")]
-transform = Transform3D(0.8208004, 0, -0.5712151, 0, 1, 0, 0.5712151, 0, 0.8208004, 7.1611257, -0.6456189, 1.9825249)
+transform = Transform3D(0.8208004, 0, -0.5712151, 0, 1, 0, 0.5712151, 0, 0.8208004, 5.9704485, -0.6456189, -2.0772514)
 level_index = 3
+
+[node name="Level5" parent="Levels" instance=ExtResource("34_i81jv")]
+transform = Transform3D(0.85837847, 0, 0.513017, 0, 1, 0, -0.513017, 0, 0.85837847, -6.4242363, -0.6456189, 2.086773)
+level_index = 4
+
+[node name="Level6" parent="Levels" instance=ExtResource("34_i81jv")]
+transform = Transform3D(0.98280996, 0, 0.18462038, 0, 1, 0, -0.18462038, 0, 0.98280996, -2.3149602, -0.6456189, 0.649271)
+level_index = 5
+
+[node name="Level7" parent="Levels" instance=ExtResource("34_i81jv")]
+transform = Transform3D(0.99899346, 0, -0.044857353, 0, 1, 0, 0.044857353, 0, 0.99899346, 1.7102089, -0.6456189, 0.8519325)
+visible = false
+level_index = 6
+
+[node name="Level8" parent="Levels" instance=ExtResource("34_i81jv")]
+transform = Transform3D(0.8208004, 0, -0.5712151, 0, 1, 0, 0.5712151, 0, 0.8208004, 5.600491, -0.6456189, 2.5591888)
+visible = false
+level_index = 7
+
+[node name="Area3D2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34845155, 16.541496, 29.987709)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022902906, -15.486206, 5.338421)
+shape = SubResource("BoxShape3D_06qis")
 
 [connection signal="pressed" from="LevelUI/Button2" to="." method="_on_level_selected"]
 [connection signal="TargetHit" from="SubViewport/GamePlayArea/LevelCompleteNodes/LevelCompleteTarget" to="LevelManager" method="start_level"]
@@ -337,3 +368,7 @@ level_index = 3
 [connection signal="level_selected" from="Levels/Level2" to="." method="_on_level_selected"]
 [connection signal="level_selected" from="Levels/Level3" to="." method="_on_level_selected"]
 [connection signal="level_selected" from="Levels/Level4" to="." method="_on_level_selected"]
+[connection signal="level_selected" from="Levels/Level5" to="." method="_on_level_selected"]
+[connection signal="level_selected" from="Levels/Level6" to="." method="_on_level_selected"]
+[connection signal="level_selected" from="Levels/Level7" to="." method="_on_level_selected"]
+[connection signal="level_selected" from="Levels/Level8" to="." method="_on_level_selected"]
