@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0u04mtokjqin"]
+[gd_scene load_steps=7 format=3 uid="uid://b0u04mtokjqin"]
 
 [ext_resource type="Script" uid="uid://dwh0fp7bj24es" path="res://Objects/Controls/ControlsSpawnHandler/controls_spawn_handler.gd" id="1_57jxv"]
+[ext_resource type="PackedScene" uid="uid://dx0qam1hilnr6" path="res://Objects/Bullets/ExplodingBullet/exploding_bullet.tscn" id="2_83jmh"]
 [ext_resource type="PackedScene" uid="uid://b8oi31gd4xqhb" path="res://RawAssets/OLD/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/platform_2x2x1_yellow.gltf" id="2_g54ao"]
 [ext_resource type="PackedScene" uid="uid://c2v2tipbfhlys" path="res://Objects/Controls/Lever/lever_knob_scene.tscn" id="3_orscj"]
 [ext_resource type="PackedScene" uid="uid://b6ln4quk1xu4g" path="res://Objects/Controls/Button/button_scene.tscn" id="4_53t26"]
@@ -10,6 +11,7 @@
 transform = Transform3D(0.82, 0, 0, 0, 0.82, 0, 0, 0, 0.82, -0.6943917, 0.7076769, -0.8830316)
 script = ExtResource("1_57jxv")
 offset_vector = Vector3(-12.245106, 0, 21.847252)
+bullet_scene = ExtResource("2_83jmh")
 gun_fire_controls = [NodePath("platform_2x2x1_yellow13/Button")]
 move_crosshair_x_controls = [NodePath("platform_2x2x1_yellow17/Wheel3")]
 move_crosshair_y_controls = [NodePath("platform_2x2x1_yellow12/LeverKnob")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://becs2nxjvitxd"]
+[gd_scene load_steps=57 format=3 uid="uid://becs2nxjvitxd"]
 
 [ext_resource type="PackedScene" uid="uid://vkee7ul42q82" path="res://Scenes/GameScenes/Level_UI/Level_UI.tscn" id="1_7wnsk"]
 [ext_resource type="Script" uid="uid://crgbw42ye0wxi" path="res://Scenes/GameScenes/MainScene/level_reference_script.gd" id="1_wfosk"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://de4nhm0c47le1" path="res://Objects/Bullets/BasicBullet/bullet.tscn" id="10_0hn51"]
 [ext_resource type="Script" uid="uid://bu627qc1w1r8i" path="res://Objects/TVBackground/tv_background_script.gd" id="10_4goo8"]
 [ext_resource type="PackedScene" uid="uid://dtw2euqnxwh7a" path="res://Objects/LevelCompleteTarget/level_complete_target.tscn" id="10_5px6u"]
+[ext_resource type="Resource" uid="uid://bt5hx5fig6r4w" path="res://LevelData/Level_7/Level_7_Data.tres" id="10_dd0le"]
 [ext_resource type="Resource" uid="uid://cnym8vkqdlgjw" path="res://LevelData/Level_8_Boss/Level_8_Data.tres" id="10_jjj1g"]
 [ext_resource type="Script" uid="uid://dojjjy2k3yc6k" path="res://Objects/LevelCompleteTarget/level_complete_nodes_script.gd" id="10_xqb21"]
 [ext_resource type="PackedScene" uid="uid://bxtk8t48rc7k5" path="res://Objects/Crosshair/target_crosshair_scene.tscn" id="11_exsey"]
@@ -119,7 +120,7 @@ crosshair_node = NodePath("SubViewport/GamePlayArea/TargetCrosshair")
 [node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("spawner", "level_cartridges")]
 script = ExtResource("1_wu6fb")
 starting_level = 4
-Levels = Array[ExtResource("2_j34ea")]([ExtResource("3_wejqe"), ExtResource("4_wfosk"), ExtResource("7_2rdu0"), ExtResource("6_lfvce"), ExtResource("8_gtdbg"), ExtResource("9_2kbtd"), null, ExtResource("10_jjj1g")])
+Levels = Array[ExtResource("2_j34ea")]([ExtResource("3_wejqe"), ExtResource("4_wfosk"), ExtResource("7_2rdu0"), ExtResource("6_lfvce"), ExtResource("8_gtdbg"), ExtResource("9_2kbtd"), ExtResource("10_dd0le"), ExtResource("10_jjj1g")])
 spawner = NodePath("../SubViewport/GamePlayArea/EnemySpawner")
 level_cartridges = [NodePath("../Levels/Level1"), NodePath("../Levels/Level2"), NodePath("../Levels/Level3"), NodePath("../Levels/Level4"), NodePath("../Levels/Level5"), NodePath("../Levels/Level6")]
 

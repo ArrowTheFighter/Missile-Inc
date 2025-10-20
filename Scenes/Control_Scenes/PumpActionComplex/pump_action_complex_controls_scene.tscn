@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b6eags7s01ifa"]
 
 [ext_resource type="Script" uid="uid://dwh0fp7bj24es" path="res://Objects/Controls/ControlsSpawnHandler/controls_spawn_handler.gd" id="1_0qds8"]
-[ext_resource type="PackedScene" uid="uid://b8oi31gd4xqhb" path="res://RawAssets/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/platform_2x2x1_yellow.gltf" id="2_cek3w"]
+[ext_resource type="PackedScene" uid="uid://b8oi31gd4xqhb" path="res://RawAssets/OLD/KayKit_Platformer_Pack_1.0_EXTRA/Assets/yellow/platform_2x2x1_yellow.gltf" id="2_cek3w"]
 [ext_resource type="PackedScene" uid="uid://dx0qam1hilnr6" path="res://Objects/Bullets/ExplodingBullet/exploding_bullet.tscn" id="2_ppycg"]
 [ext_resource type="PackedScene" uid="uid://cimng1naje5s6" path="res://Objects/Controls/Wheel/wheel_scene.tscn" id="3_uxoac"]
 [ext_resource type="PackedScene" uid="uid://s6qddpkxjec7" path="res://Objects/Controls/Lever/lever_grip_scene.tscn" id="4_0t5ps"]
@@ -29,6 +29,7 @@ transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-
 
 [node name="LeverGrip" parent="platform_2x2x1_yellow11" instance=ExtResource("4_0t5ps")]
 transform = Transform3D(1.25, 0, 0, 0, -5.4639234e-08, 1.25, 0, -1.25, -5.4639234e-08, 0.062425613, 0.9980824, 0.05647844)
+invert = true
 
 [node name="platform_2x2x1_yellow12" parent="." instance=ExtResource("2_cek3w")]
 transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -3.1258802, -0.95257795, 0.19779027)

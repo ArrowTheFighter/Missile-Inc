@@ -1,17 +1,18 @@
-[gd_scene load_steps=22 format=3 uid="uid://ditqny28g635d"]
+[gd_scene load_steps=25 format=3 uid="uid://ditqny28g635d"]
 
 [ext_resource type="Script" uid="uid://d4lqoody1kng5" path="res://Objects/Enemies/BossEnemy/boss_enemy_script.gd" id="1_rwpr8"]
 [ext_resource type="PackedScene" uid="uid://dat61ko2q16a" path="res://Objects/Enemies/BasicEnemy/enemy_scene.tscn" id="2_3kndx"]
 [ext_resource type="PackedScene" uid="uid://ervowdcakywf" path="res://Objects/Particles/EnemyDeathParticle/enemy_death_particle.tscn" id="2_7q3cr"]
+[ext_resource type="PackedScene" uid="uid://ds0pjo1fl13d0" path="res://Objects/Enemies/GhostEnemy/ghost_enemy.tscn" id="3_cfpyq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wc5p8"]
 size = Vector3(3.1240234, 1.4138184, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w12be"]
-albedo_color = Color(1, 0.5019608, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cfpyq"]
+albedo_color = Color(0.703845, 0.344972, 0, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_0ybio"]
-material = SubResource("StandardMaterial3D_w12be")
+[sub_resource type="SphereMesh" id="SphereMesh_gapuf"]
+material = SubResource("StandardMaterial3D_cfpyq")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ul0jf"]
 albedo_color = Color(0.5, 0, 0, 1)
@@ -43,6 +44,15 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="PrismMesh" id="PrismMesh_2jicj"]
 material = SubResource("StandardMaterial3D_8sh44")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3kndx"]
+transparency = 1
+albedo_color = Color(0.39, 0.84749997, 1, 0.45882353)
+
+[sub_resource type="SphereMesh" id="SphereMesh_cfpyq"]
+material = SubResource("StandardMaterial3D_3kndx")
+radius = 0.33
+height = 3.532
+
 [sub_resource type="Curve" id="Curve_0ybio"]
 _data = [Vector2(0, 0.83219445), 0.0, 0.70532167, 0, 0, Vector2(1, 0), -4.5373006, 0.0, 0, 0]
 point_count = 2
@@ -72,6 +82,8 @@ height = 0.5
 [node name="Tough_Enemy" type="Node3D" node_paths=PackedStringArray("Area")]
 script = ExtResource("1_rwpr8")
 enemy_to_spawn = ExtResource("2_3kndx")
+stop_after_distance = 2.5
+enemies_to_spawn = Array[PackedScene]([ExtResource("3_cfpyq"), ExtResource("2_3kndx")])
 health = 15
 speed = 0.4
 damage_strength = 500
@@ -89,7 +101,7 @@ transform = Transform3D(4.7537117, 0, 0, 0, 4.130904, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="visuals"]
 transform = Transform3D(0.7324786, 0, 0, 0, 0.52037185, 0, 0, 0, 0.42802414, -0.0044307155, -0.0047889203, -0.053840075)
-mesh = SubResource("SphereMesh_0ybio")
+mesh = SubResource("SphereMesh_gapuf")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="visuals"]
@@ -133,7 +145,7 @@ transform = Transform3D(-0.04422735, -0.05215111, 0, 0.05215111, -0.04422735, 0,
 mesh = SubResource("PrismMesh_2jicj")
 
 [node name="MeshInstance3D11" type="MeshInstance3D" parent="visuals/mouth"]
-transform = Transform3D(-0.14803833, 0.00093803497, 0, -0.0020645363, -0.06726214, 0, 0, 0, 0.0683798, 0, -0.020313697, 0.102)
+transform = Transform3D(-0.14803831, 0.00093803485, 0, -0.0020645363, -0.06726214, 0, 0, 0, 0.25335723, 0, -0.020313695, 0.101999976)
 mesh = SubResource("PrismMesh_2jicj")
 
 [node name="MeshInstance3D12" type="MeshInstance3D" parent="visuals/mouth"]
@@ -148,6 +160,11 @@ mesh = SubResource("PrismMesh_2jicj")
 transform = Transform3D(0.13192767, 0.02205766, 5.977952e-09, 0.06719154, -0.043309268, 0, 1.1533483e-08, 1.928342e-09, -0.0683798, 0.10612661, -0.00931067, 0.102)
 mesh = SubResource("PrismMesh_2jicj")
 
+[node name="Shield" type="MeshInstance3D" parent="visuals/mouth"]
+transform = Transform3D(-5.8175296e-09, 0.15315524, -2.7654858e-08, 0, -6.6946293e-09, -0.6326695, -0.13308954, -6.694627e-09, 4.0529264e-15, 2.245036e-05, 0.04971972, 0.26703948)
+mesh = SubResource("SphereMesh_cfpyq")
+skeleton = NodePath("../../..")
+
 [node name="GPUParticles3D" type="GPUParticles3D" parent="visuals"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10257912, 0.08238983, 0.17929077)
 amount = 15
@@ -161,3 +178,12 @@ amount = 15
 lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_j80x8")
 draw_pass_1 = SubResource("SphereMesh_pknvx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.46069688, 0.21127447)
+
+[connection signal="timeout" from="Timer" to="." method="toggle_invincible"]
