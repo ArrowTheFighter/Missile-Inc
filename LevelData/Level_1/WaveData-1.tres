@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WaveData" load_steps=11 format=3 uid="uid://cn4tvupjj3gkd"]
+[gd_resource type="Resource" script_class="WaveData" load_steps=12 format=3 uid="uid://cn4tvupjj3gkd"]
 
 [ext_resource type="Script" uid="uid://b130qkugcsawo" path="res://Objects/Enemies/EnemySpawner/Wave_Enemy_Data.gd" id="1_1kw5u"]
 [ext_resource type="PackedScene" uid="uid://ditqny28g635d" path="res://Objects/Enemies/BossEnemy/boss_enemy_scene.tscn" id="2_2acey"]
@@ -11,23 +11,24 @@
 script = ExtResource("1_1kw5u")
 EnemyScene = ExtResource("2_2acey")
 SpawnCount = 1
+SpawnDelay = 0.1
 metadata/_custom_type_script = "uid://b130qkugcsawo"
 
 [sub_resource type="Resource" id="Resource_8fdta"]
 script = ExtResource("1_1kw5u")
 EnemyScene = ExtResource("4_nn5kk")
 SpawnCount = 4
-SpawnDelay = 2.0
-EnemySpeed = 2.0
+SpawnDelay = 5.0
+EnemySpeed = 0.8
 metadata/_custom_type_script = "uid://b130qkugcsawo"
 
 [sub_resource type="Resource" id="Resource_qersm"]
 script = ExtResource("1_1kw5u")
 EnemyScene = ExtResource("4_cwn7o")
 SpawnCount = 7
-SpawnDelay = 1.0
-EnemySpeed = 3.0
-EnemyHealth = 4
+SpawnDelay = 7.0
+EnemySpeed = 0.8
+EnemyHealth = 2
 metadata/_custom_type_script = "uid://b130qkugcsawo"
 
 [sub_resource type="Resource" id="Resource_16x8x"]
@@ -37,8 +38,16 @@ SpawnCount = 6
 SpawnDelay = 4.0
 metadata/_custom_type_script = "uid://b130qkugcsawo"
 
+[sub_resource type="Resource" id="Resource_cwn7o"]
+script = ExtResource("1_1kw5u")
+EnemyScene = ExtResource("4_nn5kk")
+SpawnCount = 3
+SpawnDelay = 5.0
+EnemySpeed = 0.5
+metadata/_custom_type_script = "uid://b130qkugcsawo"
+
 [resource]
 script = ExtResource("4_0gfw3")
 initial_delay = 3.0
-Wave_Section = Array[ExtResource("1_1kw5u")]([SubResource("Resource_6l3ao"), SubResource("Resource_8fdta"), SubResource("Resource_qersm"), SubResource("Resource_16x8x")])
+Wave_Section = Array[ExtResource("1_1kw5u")]([SubResource("Resource_6l3ao"), SubResource("Resource_8fdta"), SubResource("Resource_qersm"), SubResource("Resource_16x8x"), SubResource("Resource_cwn7o")])
 metadata/_custom_type_script = "uid://c5y2s5btshlsd"

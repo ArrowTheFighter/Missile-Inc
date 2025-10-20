@@ -41,7 +41,8 @@ func enter_area(area: Area3D):
 	pass
 	
 func die():
-	spawner_refrence.Spawned_Enemies.erase(self)
+	if spawner_refrence != null:
+		spawner_refrence.Spawned_Enemies.erase(self)
 	if death_particle != null:
 		var instanced_death_particle = death_particle.instantiate()
 		get_tree().root.add_child(instanced_death_particle)
